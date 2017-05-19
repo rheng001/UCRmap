@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">Buildings</string>
 
-    <string-array name="names">
+    <string-array name="building_array">
         <item>CHUNG</item>
         <item>BRNHL</item>
         <item>MSE</item>
         <item>WAT</item>
     </string-array>
 
-    <string-array name="CHUNG">
+    <string-array name="CHUNG_array">
         <item>138</item>
         <item>139</item>
         <item>141</item>
@@ -16,15 +16,30 @@
         <item>143</item>
     </string-array>
 
-    <string-array name="BRNHL">
+    <string-array name="BRNHL_array">
         <item>A125</item>
         <item>B118</item>
     </string-array>
 
-    <string-array name="MSE">
+    <string-array name="MSE_array">
         <item>0003</item>
         <item>0011</item>
+        <item>0103</item>
+        <item>0104</item>
+        <item>0113</item>
+        <item>0116</item>
     </string-array>
+
+     <string-array name="WAT_array">
+        <item>1000</item>
+        <item>1101</item>
+        <item>1111</item>
+        <item>1117</item>
+        <item>2141</item>
+        <item>2240</item>
+    </string-array>
+
+
 
 
 </resources>
