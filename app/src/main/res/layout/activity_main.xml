@@ -17,11 +17,9 @@
         app:itemTextColor="@color/colorPrimaryDark"
         app:menu="@menu/bottom_navigation_main" />
 
-    <!-- Map Fragment embedded with the map object -->
-    <fragment
-        class="com.here.android.mpa.mapping.MapFragment"
-        android:id="@+id/mapfragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <org.osmdroid.views.MapView
+        android:id="@+id/map"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
 
 </RelativeLayout>
