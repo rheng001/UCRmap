@@ -22,6 +22,7 @@ public class NavActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav);
+        overridePendingTransition(0, 0);
 
         Spinner mySpinner = (Spinner) findViewById(R.id.building);
 
