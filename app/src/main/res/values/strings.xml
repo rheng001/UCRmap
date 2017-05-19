@@ -2,11 +2,28 @@
     <string name="app_name">Buildings</string>
 
     <string-array name="names">
-        <item>Chung</item>
-        <item>Winston</item>
-        <item>Bournes</item>
-        <item>Speith</item>
+        <item>CHUNG</item>
+        <item>BRNHL</item>
+        <item>MSE</item>
+        <item>WAT</item>
+    </string-array>
 
+    <string-array name="CHUNG">
+        <item>138</item>
+        <item>139</item>
+        <item>141</item>
+        <item>142</item>
+        <item>143</item>
+    </string-array>
+
+    <string-array name="BRNHL">
+        <item>A125</item>
+        <item>B118</item>
+    </string-array>
+
+    <string-array name="MSE">
+        <item>0003</item>
+        <item>0011</item>
     </string-array>
 
 
