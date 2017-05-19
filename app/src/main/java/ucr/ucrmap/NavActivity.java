@@ -35,6 +35,7 @@ public class NavActivity extends AppCompatActivity {
 
 
 
+
         //BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
