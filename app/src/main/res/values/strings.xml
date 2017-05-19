@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">UCRmap</string>
+    <string name="app_name">Buildings</string>
+
+    <string-array name="names">
+        <item>Chung</item>
+        <item>Winston</item>
+        <item>Bournes</item>
+        <item>Speith</item>
+
+    </string-array>
+
+
 </resources>
