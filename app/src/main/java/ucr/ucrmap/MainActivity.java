@@ -81,8 +81,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(navMenu);
                         break;
                     case R.id.action_map:
-                        Intent navMap = new Intent(MainActivity.this, MainActivity.class);
-                        startActivity(navMap);
                         break;
                     case R.id.action_places:
                         Intent navPlaces = new Intent(MainActivity.this, PlacesActivity.class);
