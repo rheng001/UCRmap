@@ -28,6 +28,12 @@ import ucr.ucrmap.NavActivity;
 import ucr.ucrmap.PlacesActivity;
 import ucr.ucrmap.R;
 
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
+import android.support.design.widget.BottomNavigationView;
+import android.util.Log;
+import java.lang.reflect.Field;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -69,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
             iconView.setLayoutParams(layoutParams);
         }
 
+        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
+
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -99,3 +107,5 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
+
+
