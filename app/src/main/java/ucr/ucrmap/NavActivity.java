@@ -11,6 +11,7 @@ import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Toast;
 import android.widget.ArrayAdapter;
@@ -24,17 +25,13 @@ public class NavActivity extends AppCompatActivity {
         setContentView(R.layout.activity_nav);
         overridePendingTransition(0, 0);
 
-        Spinner mySpinner = (Spinner) findViewById(R.id.building);
+        Spinner spinnerBuilding = (Spinner) findViewById(R.id.building);
+        Spinner spinnerRoom = (Spinner) findViewById(R.id.room);
 
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(NavActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.building_array));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner.setAdapter(myAdapter);
-
-
-
-
-
+        spinnerBuilding.setAdapter(myAdapter);
 
 
         //BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);

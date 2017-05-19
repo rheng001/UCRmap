@@ -42,14 +42,14 @@ public class PlacesActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_nav:
+                        Intent navMenu = new Intent(PlacesActivity.this, NavActivity.class);
+                        startActivity(navMenu);
                         break;
                     case R.id.action_map:
                         Intent navMap = new Intent(PlacesActivity.this, MainActivity.class);
                         startActivity(navMap);
                         break;
                     case R.id.action_places:
-                        Intent navPlaces = new Intent(PlacesActivity.this, PlacesActivity.class);
-                        startActivity(navPlaces);
                         break;
                     case R.id.action_about:
                         Intent navAbout = new Intent(PlacesActivity.this, AboutActivity.class);
