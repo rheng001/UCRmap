@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        overridePendingTransition(0, 0);
 
         Context ctx = getApplicationContext();
         //important! set your user agent to prevent getting banned from the osm servers
