@@ -28,6 +28,36 @@
         android:text="Activity 3"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="61dp" />
+
+    <Button
+        android:id="@+id/food_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Food" />
+
+    <Button
+        android:id="@+id/library_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/food_button"
+        android:layout_alignStart="@+id/food_button"
+        android:layout_below="@+id/food_button"
+        android:layout_marginTop="55dp"
+        android:text="Library" />
+
+    <Button
+        android:id="@+id/market_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/library_button"
+        android:layout_alignStart="@+id/library_button"
+        android:layout_below="@+id/library_button"
+        android:layout_marginTop="54dp"
+        android:text="Markets" />
+
 </RelativeLayout>
 
 

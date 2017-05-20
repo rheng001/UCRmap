@@ -1,10 +1,26 @@
 <resources>
     <string name="app_name">Buildings</string>
+    <!--<string name="choose_array">Choose building...</string>-->
 
     <string-array name="building_array">
-        <item>CHUNG</item>
+        <item>Choose building...</item>
         <item>BRNHL</item>
+        <item>BOYHL</item>
+        <item>INTN</item>
+        <item>INTS</item>
+        <item>CHUNG</item>
+        <item>HMNSS</item>
+        <item>LFSC</item>
         <item>MSE</item>
+        <item>OLMH</item>
+        <item>PHY</item>
+        <item>PRCE</item>
+        <item>SPR</item>
+        <item>MSE</item>
+        <item>MSE</item>
+        <item>MSE</item>
+        <item>MSE</item>
+
         <item>WAT</item>
     </string-array>
 
@@ -31,7 +47,7 @@
         <item>0116</item>
     </string-array>
 
-     <string-array name="WAT_array">
+    <string-array name="WAT_array">
         <item>1000</item>
         <item>1101</item>
         <item>1111</item>
@@ -39,8 +55,6 @@
         <item>2141</item>
         <item>2240</item>
     </string-array>
-
-
 
 
 </resources>

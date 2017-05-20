@@ -34,7 +34,8 @@
 
         <activity android:name=".NavActivity" />
         <activity android:name=".PlacesActivity" />
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".floor_plan"></activity>
     </application>
 
 </manifest>

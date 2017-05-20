@@ -53,6 +53,15 @@
         android:layout_below="@+id/building"
         android:layout_marginTop="62dp" />
 
+    <Button
+        android:id="@+id/start_nav_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/room"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="71dp"
+        android:text="Start Navigation" />
+
 </RelativeLayout>
 
 

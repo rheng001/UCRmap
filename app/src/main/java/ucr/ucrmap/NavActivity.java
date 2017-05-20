@@ -25,13 +25,90 @@ public class NavActivity extends AppCompatActivity {
         setContentView(R.layout.activity_nav);
         overridePendingTransition(0, 0);
 
-        Spinner spinnerBuilding = (Spinner) findViewById(R.id.building);
-        Spinner spinnerRoom = (Spinner) findViewById(R.id.room);
 
 
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(NavActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.building_array));
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerBuilding.setAdapter(myAdapter);
+
+
+
+            final Spinner spinnerBuilding = (Spinner) findViewById(R.id.building);
+            final Spinner spinnerRoom = (Spinner) findViewById(R.id.room);
+            final Button StartNavButton = (Button)findViewById(R.id.start_nav_button);
+
+//            spinnerRoom.setEnabled(false);
+
+            ArrayAdapter<CharSequence> buildingAdapter = ArrayAdapter.createFromResource(this, R.array.building_array, android.R.layout.simple_spinner_item);
+            buildingAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+            ArrayAdapter<CharSequence> buildingCodesAdapter = ArrayAdapter.createFromResource(this, R.array.CHUNG_array, android.R.layout.simple_spinner_item);
+            buildingCodesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+            spinnerBuilding.setAdapter(buildingAdapter);
+
+            spinnerBuilding.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    if (spinnerBuilding.getSelectedItem().equals("CHUNG")) {
+                        spinnerRoom.setEnabled(true);
+                        StartNavButton.setEnabled(true);
+
+                        ArrayAdapter buildingCodesAdapter = ArrayAdapter.createFromResource(getBaseContext(),
+                                R.array.CHUNG_array, android.R.layout.simple_spinner_item);
+                        spinnerRoom.setAdapter(buildingCodesAdapter);
+                    }
+
+                    else if (spinnerBuilding.getSelectedItem().equals("BRNHL")) {
+                        spinnerRoom.setEnabled(true);
+                        StartNavButton.setEnabled(true);
+
+                        ArrayAdapter buildingCodesAdapter = ArrayAdapter.createFromResource(getBaseContext(),
+                                R.array.BRNHL_array, android.R.layout.simple_spinner_item);
+                        spinnerRoom.setAdapter(buildingCodesAdapter);
+                    }
+
+                     else if (spinnerBuilding.getSelectedItem().equals("MSE")) {
+                        spinnerRoom.setEnabled(true);
+                        StartNavButton.setEnabled(true);
+
+                        ArrayAdapter buildingCodesAdapter = ArrayAdapter.createFromResource(getBaseContext(),
+                                R.array.MSE_array, android.R.layout.simple_spinner_item);
+                        spinnerRoom.setAdapter(buildingCodesAdapter);
+                    }
+
+                     else if (spinnerBuilding.getSelectedItem().equals("WAT")) {
+                        spinnerRoom.setEnabled(true);
+                        StartNavButton.setEnabled(true);
+
+                        ArrayAdapter buildingCodesAdapter = ArrayAdapter.createFromResource(getBaseContext(),
+                                R.array.WAT_array, android.R.layout.simple_spinner_item);
+                        spinnerRoom.setAdapter(buildingCodesAdapter);
+                    }
+
+                    else {
+                        spinnerRoom.setEnabled(false);
+                        StartNavButton.setEnabled(false);
+                    }
+                }
+
+
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                }
+            });
+            spinnerRoom.setAdapter(buildingCodesAdapter);
+
+        StartNavButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+               Intent FloorPlan = new Intent(NavActivity.this, floor_plan.class);
+               startActivity(FloorPlan);
+            }
+        });
+
+
+
 
 
         //BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
