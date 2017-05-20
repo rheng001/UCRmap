@@ -2,6 +2,10 @@ package ucr.ucrmap;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationMenuView;
@@ -17,22 +21,25 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import org.osmdroid.api.IMapController;
+import org.osmdroid.bonuspack.location.NominatimPOIProvider;
+import org.osmdroid.bonuspack.location.POI;
+import org.osmdroid.bonuspack.routing.GraphHopperRoadManager;
+import org.osmdroid.bonuspack.routing.OSRMRoadManager;
+import org.osmdroid.bonuspack.routing.Road;
+import org.osmdroid.bonuspack.routing.RoadManager;
+import org.osmdroid.bonuspack.routing.RoadNode;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.util.BoundingBox;
+import org.osmdroid.util.BoundingBoxE6;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
-import org.osmdroid.views.overlay.ScaleBarOverlay;
+import org.osmdroid.views.overlay.FolderOverlay;
+import org.osmdroid.views.overlay.Marker;
+import org.osmdroid.views.overlay.PathOverlay;
+import org.osmdroid.views.overlay.Polyline;
 
-import ucr.ucrmap.AboutActivity;
-import ucr.ucrmap.NavActivity;
-import ucr.ucrmap.PlacesActivity;
-import ucr.ucrmap.R;
-
-import android.support.design.internal.BottomNavigationItemView;
-import android.support.design.internal.BottomNavigationMenuView;
-import android.support.design.widget.BottomNavigationView;
-import android.util.Log;
-import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         overridePendingTransition(0, 0);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
         Context ctx = getApplicationContext();
         //important! set your user agent to prevent getting banned from the osm servers
@@ -52,14 +61,59 @@ public class MainActivity extends AppCompatActivity {
 
 
         map.setMultiTouchControls(true);
-
+        map.setMinZoomLevel(11);
 
         IMapController mapController = map.getController();
-        mapController.setZoom(19);
+        mapController.setZoom(22);
         GeoPoint startPoint = new GeoPoint(33.974942, -117.327270);
+        GeoPoint endPoint = new GeoPoint(33.973579, -117.326477);
         mapController.setCenter(startPoint);
 
+        //RoadManager roadManager = new OSRMRoadManager(this);
+        RoadManager roadManager = new GraphHopperRoadManager("4875b127-11b4-4669-9e66-730e41eb9856", false);
+        roadManager.addRequestOption("vehicle=foot");
 
+
+        ArrayList<GeoPoint> waypoints = new ArrayList<GeoPoint>();
+        waypoints.add(startPoint);
+        waypoints.add(endPoint);
+
+        Road road = roadManager.getRoad(waypoints);
+
+
+        //PathOverlay roadOverlay = RoadManager.buildRoadOverlay(road);
+
+
+        Polyline roadOverlay = RoadManager.buildRoadOverlay(road);
+        roadOverlay.setColor(Color.GREEN);
+        map.getOverlays().add(roadOverlay);
+        map.invalidate();
+
+
+        //Drawable nodeIcon = (getResources().getDrawable(R.drawable.ic_about);
+        for (int i=0; i<road.mNodes.size(); i++){
+            RoadNode node = road.mNodes.get(i);
+            Marker nodeMarker = new Marker(map);
+            nodeMarker.setSnippet(node.mInstructions);
+            nodeMarker.setSubDescription(Road.getLengthDurationText(this, node.mLength, node.mDuration));
+            nodeMarker.setPosition(node.mLocation);
+            nodeMarker.setIcon(getResources().getDrawable(R.drawable.ic_about));
+            nodeMarker.setTitle("Step "+i);
+            map.getOverlays().add(nodeMarker);
+        }
+
+        /*Set marker on map
+
+        Marker startMarker = new Marker(map);
+        startMarker.setPosition(startPoint);
+        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        map.getOverlays().add(startMarker);
+
+        startMarker.setIcon(getResources().getDrawable(R.drawable.ic_about)); //specify marker icon
+        startMarker.setTitle("Start point");
+        map.invalidate();
+
+        */
 
         //BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
 
