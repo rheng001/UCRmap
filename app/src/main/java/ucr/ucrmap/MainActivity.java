@@ -1,15 +1,19 @@
 package ucr.ucrmap;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -43,6 +47,13 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TrackGPS gps;
+    double longitude;
+    double latitude;
+
+    private static final int REQUEST_CODE_PERMISSION = 1;
+    String mPermission = Manifest.permission.ACCESS_FINE_LOCATION;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +61,18 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(0, 0);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+
+        /*
+        if(Build.VERSION.SDK_INT>= 23) {
+
+            if (checkSelfPermission(mPermission) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(MainActivity.this,
+                        new String[]{mPermission,
+                        },
+                        REQUEST_CODE_PERMISSION);
+                return;
+            }
+        }*/
 
         Context ctx = getApplicationContext();
         //important! set your user agent to prevent getting banned from the osm servers
@@ -59,31 +82,46 @@ public class MainActivity extends AppCompatActivity {
         MapView map = (MapView) findViewById(R.id.map);
         map.setTileSource(TileSourceFactory.MAPNIK);
 
-
+        map.setUseDataConnection(true);
         map.setMultiTouchControls(true);
         map.setMinZoomLevel(11);
 
         IMapController mapController = map.getController();
         mapController.setZoom(22);
+
+        /*
+        gps = new TrackGPS(MainActivity.this);
+        longitude = gps.getLongitude();
+        latitude = gps .getLatitude();
+        GeoPoint currentLocation = new GeoPoint(latitude, longitude);*/
+
+        gps = new TrackGPS(MainActivity.this);
+
+            if(gps.canGetLocation()){
+
+                longitude = gps.getLongitude();
+                latitude = gps .getLatitude();
+                Toast.makeText(getApplicationContext(),"Longitude:"+Double.toString(longitude)+"\nLatitude:"+Double.toString(latitude),Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+
+                gps.showSettingsAlert();
+            }
+
+
+        GeoPoint currentLocation = new GeoPoint(latitude, longitude);
+
         GeoPoint startPoint = new GeoPoint(33.974942, -117.327270);
-        GeoPoint endPoint = new GeoPoint(33.973579, -117.326477);
+        GeoPoint endPoint = new GeoPoint(33.973579, -117.326477); //Allow to select this endpoint
         mapController.setCenter(startPoint);
 
-        //RoadManager roadManager = new OSRMRoadManager(this);
         RoadManager roadManager = new GraphHopperRoadManager("4875b127-11b4-4669-9e66-730e41eb9856", false);
         roadManager.addRequestOption("vehicle=foot");
-
-
         ArrayList<GeoPoint> waypoints = new ArrayList<GeoPoint>();
-        waypoints.add(startPoint);
+        waypoints.add(currentLocation);
         waypoints.add(endPoint);
-
         Road road = roadManager.getRoad(waypoints);
-
-
-        //PathOverlay roadOverlay = RoadManager.buildRoadOverlay(road);
-
-
         Polyline roadOverlay = RoadManager.buildRoadOverlay(road);
         roadOverlay.setColor(Color.GREEN);
         map.getOverlays().add(roadOverlay);
@@ -102,21 +140,6 @@ public class MainActivity extends AppCompatActivity {
             map.getOverlays().add(nodeMarker);
         }
 
-        /*Set marker on map
-
-        Marker startMarker = new Marker(map);
-        startMarker.setPosition(startPoint);
-        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-        map.getOverlays().add(startMarker);
-
-        startMarker.setIcon(getResources().getDrawable(R.drawable.ic_about)); //specify marker icon
-        startMarker.setTitle("Start point");
-        map.invalidate();
-
-        */
-
-        //BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
-
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
         for (int i = 0; i < menuView.getChildCount(); i++) {
@@ -131,8 +154,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
-
-
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
