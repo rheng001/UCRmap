@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background='@color/colorPrimaryDark'
     tools:context="ucr.ucrmap.AboutActivity">
 
     <android.support.design.widget.BottomNavigationView
@@ -26,8 +27,63 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="© OpenStreetMap contributors"
+        android:textColor="@color/colorPrimary"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="43dp" />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="84dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@color/colorPrimary"
+        android:text="Created By" />
+
+    <EditText
+        android:id="@+id/editText6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editText5"
+        android:layout_alignRight="@+id/editText5"
+        android:layout_below="@+id/editText5"
+        android:layout_marginTop="21dp"
+        android:textColor="@color/colorPrimary"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Richard Heng" />
+
+    <EditText
+        android:id="@+id/editText7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Edward Hernandez"
+        android:textColor="@color/colorPrimary"
+        android:layout_below="@+id/editText6"
+        android:layout_alignLeft="@+id/editText6"
+        android:layout_alignStart="@+id/editText6"
+        android:layout_marginTop="19dp" />
+
+    <EditText
+        android:id="@+id/editText8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Jorge Flores"
+        android:background='@color/colorPrimaryDark'
+        android:textColor="@color/colorPrimary"
+        android:layout_below="@+id/editText7"
+        android:layout_alignLeft="@+id/editText7"
+        android:layout_alignStart="@+id/editText7" />
+
+
 </RelativeLayout>
 
 
