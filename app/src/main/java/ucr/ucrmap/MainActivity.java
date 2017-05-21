@@ -113,7 +113,11 @@ public class MainActivity extends AppCompatActivity {
         GeoPoint currentLocation = new GeoPoint(latitude, longitude);
 
         GeoPoint startPoint = new GeoPoint(33.974942, -117.327270);
+
+
         GeoPoint endPoint = new GeoPoint(33.973355, -117.328126); //Allow to select this endpoint
+
+
         mapController.setCenter(startPoint);
 
         Marker startMarker = new Marker(map);
