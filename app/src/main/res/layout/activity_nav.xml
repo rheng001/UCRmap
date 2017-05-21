@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background='@color/colorPrimaryDark'
     tools:context="ucr.ucrmap.NavActivity">
 
 
@@ -18,19 +19,22 @@
         android:layout_alignParentBottom="true" />
 
 
-    <EditText
+    <TextView
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="72dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="55dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="UCR Navigation Menu"
+        android:textColor="@color/colorPrimary"
+        android:background='@color/colorPrimaryDark'
+        android:textSize="75px"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp" />
 
     <Spinner
         android:id="@+id/building"
@@ -41,6 +45,7 @@
         android:layout_below="@+id/editText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:textColor="@color/colorAccent"
         android:layout_marginTop="31dp"/>
 
 
@@ -51,6 +56,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/building"
+        android:textColor="@color/colorAccent"
         android:layout_marginTop="62dp" />
 
     <Button
@@ -60,6 +66,8 @@
         android:layout_below="@+id/room"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="71dp"
+        android:textColor="@color/colorPrimary"
+        android:background='@color/colorPrimaryDark'
         android:text="Start Navigation" />
 
 </RelativeLayout>
