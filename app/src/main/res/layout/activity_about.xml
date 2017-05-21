@@ -34,6 +34,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:gravity = "center"
         android:layout_marginLeft="27dp"
         android:layout_marginStart="27dp"
         android:layout_marginTop="37dp" />
@@ -61,6 +62,7 @@
         android:layout_marginTop="21dp"
         android:textColor="@color/colorPrimary"
         android:ems="10"
+        android:gravity = "start"
         android:inputType="textPersonName"
         android:textSize="40px"
         android:text="Richard Heng" />
@@ -72,6 +74,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Edward Hernandez"
+        android:gravity = "start"
         android:textColor="@color/colorPrimary"
         android:layout_below="@+id/editText6"
         android:layout_alignLeft="@+id/editText6"
@@ -87,6 +90,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Jorge Flores"
+        android:gravity = "start"
         android:textSize="40px"
         android:background='@color/colorPrimaryDark'
         android:textColor="@color/colorPrimary"
