@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
+
         /*
         if(Build.VERSION.SDK_INT>= 23) {
 
@@ -112,11 +113,17 @@ public class MainActivity extends AppCompatActivity {
 
         GeoPoint currentLocation = new GeoPoint(latitude, longitude);
 
+        //Bundle bundle = getIntent().getExtras();
+        //double gotLatitude = bundle.getDouble("latitude");
+        //double gotLongitude = bundle.getDouble("longitude");
+        //double gotLatitude = getIntent().getDoubleExtra("latitude", defaultValue(you can give it anything));
+
+        double gotLatitude = getIntent().getDoubleExtra("latitude", 2.0);
+        double gotLongitude = getIntent().getDoubleExtra("longitude", 2.0);
+
+        GeoPoint endPoint = new GeoPoint(gotLatitude, gotLongitude);
+        //GeoPoint endPoint = new GeoPoint(33.975625, -117.327152);
         GeoPoint startPoint = new GeoPoint(33.974942, -117.327270);
-
-
-        GeoPoint endPoint = new GeoPoint(33.973355, -117.328126); //Allow to select this endpoint
-
 
         mapController.setCenter(startPoint);
 

@@ -210,12 +210,16 @@ public class NavActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent FloorPlan = new Intent(NavActivity.this, floor_plan.class);
-
-
+                Intent BuildingNum = new Intent(NavActivity.this, MainActivity.class);
 
                 if (spinnerBuilding.getSelectedItem().equals("BRNHL") && spinnerRoom.getSelectedItem().equals("A125")){
-                    FloorPlan.putExtra("myImageResource", R.drawable.brnhla125);
-                    startActivity(FloorPlan);
+                    //FloorPlan.putExtra("myImageResource", R.drawable.brnhla125);
+                    //startActivity(FloorPlan);
+
+                    BuildingNum.putExtra("latitude", 33.975625);
+                    BuildingNum.putExtra("longitude", -117.327152);
+                    startActivity(BuildingNum);
+
                 }
                 else if (spinnerBuilding.getSelectedItem().equals("BRNHL") && spinnerRoom.getSelectedItem().equals("B118")){
                     FloorPlan.putExtra("myImageResource", R.drawable.brnhlb118);
