@@ -302,7 +302,7 @@ public class NavActivity extends AppCompatActivity {
 
 
 
-                
+
                 else{
                startActivity(FloorPlan);
                 }
