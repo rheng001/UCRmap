@@ -98,6 +98,19 @@
         android:layout_alignLeft="@+id/editText7"
         android:layout_alignStart="@+id/editText7" />
 
+    <Button
+        android:background="@drawable/cutie"
+        android:layout_width="190dip"
+        android:layout_height="190dip"
+        android:layout_marginTop="13dp"
+        android:text="Cutie Hack 2017 UCRiverside"
+        android:textSize="40px"
+        android:gravity="bottom"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/editText8"
+        android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>
 

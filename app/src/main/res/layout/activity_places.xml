@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background='@color/colorPrimaryDark'
     tools:context="ucr.ucrmap.PlacesActivity">
 
 
@@ -28,6 +29,7 @@
         android:text="Places"
         android:gravity = "center"
         android:textSize="70px"
+        android:textColor="@color/colorPrimary"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="61dp" />
 
@@ -37,6 +39,7 @@
         android:layout_height="80dip"
         android:background="@drawable/food"
         android:text="Food"
+        android:textColor="@color/colorAccent"
         android:textSize="50px"
         android:gravity="bottom"
         android:textAlignment="center"
@@ -58,6 +61,7 @@
         android:textAlignment="center"
         android:layout_marginLeft="59dp"
         android:layout_marginStart="59dp"
+        android:textColor="@color/colorAccent"
         android:layout_alignTop="@+id/food"
         android:layout_toRightOf="@+id/food"
         android:layout_toEndOf="@+id/food" />
@@ -71,9 +75,11 @@
         android:textSize="40px"
         android:gravity="bottom"
         android:textAlignment="center"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/coffee"
-        android:layout_toStartOf="@+id/coffee" />
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/food"
+        android:layout_alignLeft="@+id/food"
+        android:layout_alignStart="@+id/food"
+        android:layout_marginTop="21dp" />
 
     <Button
         android:id="@+id/library"
@@ -84,10 +90,11 @@
         android:textSize="40px"
         android:gravity="bottom"
         android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="23dp"
         android:layout_below="@+id/market"
-        android:layout_toLeftOf="@+id/coffee"
-        android:layout_toStartOf="@+id/coffee"
-        android:layout_marginTop="38dp" />
+        android:layout_alignLeft="@+id/market"
+        android:layout_alignStart="@+id/market" />
 
     <Button
         android:id="@+id/bike"
@@ -95,6 +102,7 @@
         android:layout_height="80dip"
         android:background="@drawable/bike"
         android:text="bike"
+        android:textColor="@color/colorAccent"
         android:textSize="40px"
         android:gravity="bottom"
         android:textAlignment="center"
@@ -109,6 +117,7 @@
         android:background="@drawable/bus"
         android:text="bus"
         android:textSize="50px"
+        android:textColor="@color/colorAccent"
         android:gravity="bottom"
         android:textAlignment="center"
         android:layout_alignTop="@+id/market"
