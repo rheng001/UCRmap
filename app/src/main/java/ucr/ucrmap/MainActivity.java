@@ -116,6 +116,14 @@ public class MainActivity extends AppCompatActivity {
         GeoPoint endPoint = new GeoPoint(33.973579, -117.326477); //Allow to select this endpoint
         mapController.setCenter(startPoint);
 
+        Marker startMarker = new Marker(map);
+        startMarker.setPosition(currentLocation);
+        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        map.getOverlays().add(startMarker);
+        startMarker.setIcon(getResources().getDrawable(R.drawable.ic_places)); //specify marker icon
+        startMarker.setTitle("Current");
+        map.invalidate();
+
         RoadManager roadManager = new GraphHopperRoadManager("4875b127-11b4-4669-9e66-730e41eb9856", false);
         roadManager.addRequestOption("vehicle=foot");
         ArrayList<GeoPoint> waypoints = new ArrayList<GeoPoint>();
