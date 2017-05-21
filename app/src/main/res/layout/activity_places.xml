@@ -19,44 +19,18 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="132dp" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText2"
         android:layout_width="352dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Activity 3"
+        android:text="Places"
+        android:gravity = "center"
+        android:textSize="70px"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="61dp" />
-
-    <Button
-        android:id="@+id/food_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text="Food" />
-
-    <Button
-        android:id="@+id/library_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/food_button"
-        android:layout_alignStart="@+id/food_button"
-        android:layout_below="@+id/food_button"
-        android:layout_marginTop="55dp"
-        android:text="Library" />
-
-    <Button
-        android:id="@+id/market_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/library_button"
-        android:layout_alignStart="@+id/library_button"
-        android:layout_below="@+id/library_button"
-        android:layout_marginTop="54dp"
-        android:text="Markets" />
+    
 
 </RelativeLayout>
 
