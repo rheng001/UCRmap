@@ -11,14 +11,31 @@ import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 public class floor_plan extends AppCompatActivity {
+public  ImageView img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_floor_plan);
         overridePendingTransition(0, 0);
+
+
+
+//        ImageView img = (ImageView) findViewById(R.id.floor_plan_img);
+//        img.setImageResource(R.drawable.wch139);
+
+        img = (ImageView) findViewById(R.id.floor_plan_img);
+        img.setImageResource(getIntent().getIntExtra("myImageResource",R.drawable.chung138));
+
+
+
+
+
+
+
 
         //BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
 

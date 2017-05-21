@@ -19,12 +19,12 @@
         tools:layout_editor_absoluteY="441dp" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/floor_plan_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        app:srcCompat="@drawable/wch138" />
+        app:srcCompat="@drawable/chung138"
+        android:layout_above="@+id/bottom_navigation" />
 
 
 </RelativeLayout>
