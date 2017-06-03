@@ -10,8 +10,9 @@ UCRmap
 ![UCRmap](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/511/154/datas/gallery.jpg)
 
 
--------
+---------
 Cutie Hack 2017
+---------------
 
 ![CutieHack](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_thumbnails/000/502/637/datas/medium.png)
 
