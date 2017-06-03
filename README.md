@@ -15,7 +15,7 @@ Cutie Hack 2017
 
 ![CutieHack](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_thumbnails/000/502/637/datas/medium.png)
 
-Best Entrepreneurial Hack Winner
+Best Entrepreneurial Hack ![Winner](http://imgur.com/a/x14Rz)
 
 ----------
 High Level Description
