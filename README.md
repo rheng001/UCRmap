@@ -14,7 +14,7 @@ UCRmap
 Cutie Hack 2017
 ---------------
 
-![CutieHack](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_thumbnails/000/502/637/datas/medium.png)
+![CutieHack](https://cutiehack.com/img/Cutie_edit.png)
 
 Best Entrepreneurial Hack ![Winner](http://i.imgur.com/jWvSBeW.png)
 
