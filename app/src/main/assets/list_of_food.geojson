@@ -1,0 +1,69 @@
+﻿{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Panda Express",
+        "hours": "10:30AM - 6:00PM",
+        "phone": "(951) 827-5754",
+        "description": "Chinese Food"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.328906,
+          33.974400
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chronic Tacos",
+        "hours": "10:00AM - 7:00PM",
+        "phone": "(951) 827-5728",
+        "description": "Mexican Food"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.328995,
+          33.974346
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Subway",
+        "hours": "7:30AM - 10:00PM",
+        "phone": "(951) 827-4140",
+        "description": "Build-your-own sandwiches"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.328070,
+          33.974787
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "The Barn",
+        "hours": "10:30AM - 3:00PM",
+        "phone": "(951) 827-2776",
+        "description": "Casual Food"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.330552,
+          33.972377
+        ]
+      }
+    }
+  ]
+}

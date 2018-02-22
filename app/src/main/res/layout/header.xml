@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- Our header.xml file.
+- Defines the layout specification for our RecyclerView headers.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+	android:background="#FFFFFF"
+    android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="25dp"
+            android:textStyle="bold|italic"
+            android:text="Header"
+            android:id="@+id/headerTxt"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:layout_alignParentTop="true"/>
+</LinearLayout>

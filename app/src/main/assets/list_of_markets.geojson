@@ -1,0 +1,38 @@
+﻿{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Scotty Convience Store",
+        "hours": "7:00AM - 7:00PM",
+        "phone": "(xxx) xxx-xxxx",
+        "description": "Student Convience Store(HUB)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.328658,
+          33.974574
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Scotty Convience Store",
+        "hours": "8:00AM - 5:00PM",
+        "phone": "(951) 827-3701",
+        "description": "Student Convience Store(SoM)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.324524,
+          33.973718
+        ]
+      }
+    }
+
+  ]
+}

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="classrooms">
+        <item>Bourne</item>
+        <item>Chung</item>
+        <item>Surge</item>
+    </string-array>
+
+    <string-array name="building_array">
+        <item>Choose building...</item>
+        <item>BRNHL</item>
+        <item>BOYHL</item>
+        <item>INTN</item>
+        <item>INTS</item>
+        <item>CHUNG</item>
+        <item>HMNSS</item>
+        <item>LFSC</item>
+        <item>MSE</item>
+        <item>OLMH</item>
+        <item>PHY</item>
+        <item>PRCE</item>
+        <item>SPR</item>
+        <item>SURGE</item>
+        <item>SPTH</item>
+        <item>UV_THEATRE</item>
+        <item>UNLH</item>
+        <item>WAT</item>
+    </string-array>
+
+    <string-array name="BRNHL_array">
+        <item>A125</item>
+        <item>B118</item>
+    </string-array>
+
+    <string-array name="BOYHL_array">
+        <item>1471</item>
+    </string-array>
+
+    <string-array name="INTN_array">
+        <item>1002</item>
+        <item>1006</item>
+        <item>1020</item>
+    </string-array>
+
+    <string-array name="INTS_array">
+        <item>1121</item>
+        <item>1125</item>
+        <item>1130</item>
+        <item>1132</item>
+        <item>1134</item>
+        <item>2130</item>
+        <item>2132</item>
+        <item>2134</item>
+        <item>2136</item>
+        <item>2138</item>
+    </string-array>
+
+    <string-array name="CHUNG_array">
+        <item>138</item>
+        <item>139</item>
+        <item>141</item>
+        <item>142</item>
+        <item>143</item>
+    </string-array>
+
+    <string-array name="HMNSS_array">
+        <item>1400</item>
+        <item>1401</item>
+        <item>1402</item>
+        <item>1403</item>
+        <item>1404</item>
+        <item>1405</item>
+        <item>1406</item>
+        <item>1407</item>
+        <item>1501</item>
+        <item>1502</item>
+        <item>1503</item>
+    </string-array>
+
+    <string-array name="LFSC_array">
+        <item>2418</item>
+        <item>1500</item>
+    </string-array>
+
+    <string-array name="MSE_array">
+        <item>0003</item>
+        <item>0011</item>
+        <item>0103</item>
+        <item>0104</item>
+        <item>0113</item>
+        <item>0116</item>
+    </string-array>
+
+    <string-array name="OLMH_array">
+        <item>420</item>
+        <item>421</item>
+        <item>1116</item>
+        <item>1122</item>
+        <item>1123</item>
+        <item>1126</item>
+        <item>1127</item>
+        <item>1132</item>
+        <item>1133</item>
+        <item>1136</item>
+        <item>1208</item>
+        <item>1212</item>
+    </string-array>
+
+    <string-array name="PHY_array">
+        <item>2000</item>
+        <item>2104</item>
+        <item>2111</item>
+    </string-array>
+
+    <string-array name="PRCE_array">
+        <item>3374</item>
+    </string-array>
+
+    <string-array name="SPR_array">
+        <item>1102</item>
+        <item>1340</item>
+        <item>1358</item>
+        <item>2212</item>
+        <item>2339</item>
+        <item>2340</item>
+        <item>2343</item>
+        <item>2344</item>
+        <item>2351</item>
+        <item>2355</item>
+        <item>2356</item>
+        <item>2360</item>
+        <item>2361</item>
+        <item>2364</item>
+        <item>2365</item>
+    </string-array>
+
+    <string-array name="SURGE_array">
+        <item>171</item>
+        <item>172</item>
+        <item>173</item>
+    </string-array>
+
+    <string-array name="SPTH_array">
+        <item>1222</item>
+        <item>1307</item>
+        <item>2200</item>
+    </string-array>
+
+    <string-array name="UV_THEATRE_array">
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="UNLH_array">
+        <item>1000</item>
+    </string-array>
+
+    <string-array name="WAT_array">
+        <item>1000</item>
+        <item>1101</item>
+        <item>1111</item>
+        <item>1117</item>
+        <item>2141</item>
+        <item>2240</item>
+    </string-array>
+
+
+
+
+</resources>

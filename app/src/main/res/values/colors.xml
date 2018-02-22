@@ -2,5 +2,26 @@
 <resources>
     <color name="colorPrimary">#F1AB00</color>
     <color name="colorPrimaryDark">#003066</color>
-    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorAccent">#003066</color>
+    <color name="colorLight">#F1AB00</color>
+    <color name="colorLightBlue">#6F8135</color>
+
+    <color name="colorTransparent">#4D000000</color>
+
+
+
+    <color name="mapboxWhite">#ffffff</color>
+    <color name="mapboxBlue">#4264fb</color>
+    <color name="mapboxGrayLight">#c6d2e1</color>
+
+    // Neutral streets theme's colors
+    <color name="colorPrimary_neutral">#E8E5E0</color>
+    <color name="colorPrimaryDark_neutral">#E8E5E0</color>
+    <color name="colorAccent_neutral">#FFFFFF</color>
+    <color name="navigationRouteLine_neutral">#00BAFF</color>
+    <color name="cardHourAndPhoneTextColor_neutral">#000000</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
 </resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs xmlns:android="http://schemas.android.com/apk/res/android">
+    <tab
+        id="@+id/action_nav"
+        icon="@drawable/ic_nav"
+        title="Nav" />
+    <tab
+        id="@+id/action_map"
+        icon="@drawable/ic_map"
+        title="Map" />
+    <tab
+        id="@+id/action_places"
+        icon="@drawable/ic_places"
+        title="Places" />
+    <tab
+        id="@+id/action_profile"
+        icon="@drawable/ic_person_black_36dp"
+        title="Profile" />
+</tabs>
+

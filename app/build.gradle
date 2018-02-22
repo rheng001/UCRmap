@@ -1,19 +1,20 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 26
     defaultConfig {
         applicationId "ucr.ucrmap"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            shrinkResources true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -24,16 +25,49 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile files('libs/HERE-sdk.jar')
-    compile files('libs/HERE-sdk-javadoc.jar')
+    compile('com.mikepenz:materialdrawer:5.9.5@aar') {
+        transitive = true
+    }
+    compile 'com.jaredrummler:material-spinner:1.2.1'
+    compile 'com.github.clans:fab:1.6.4'
+    compile 'com.github.arimorty:floatingsearchview:2.1.1'
+    compile 'com.mikhaellopez:circularimageview:3.0.2'
+    compile 'com.github.jaychang0917:SimpleRecyclerView:1.2.7'
+    compile 'com.flipboard:bottomsheet-core:1.5.3'
+    compile 'com.sothree.slidinguppanel:library:3.4.0'
 
-    compile(name: 'osmbonuspack_v6.3', ext: 'aar')
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    implementation 'com.lapism:searchview:5.0.0-alpha7'
+    implementation 'com.google.android:flexbox:0.3.1'
+
+
+
+
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.google.code.gson:gson:2.8.0'
-    compile 'com.android.support:design:25.1.1'
-    compile 'org.osmdroid:osmdroid-android:5.6.4'
-    compile 'com.squareup.okhttp3:okhttp:3.4.1'
-    compile 'org.apache.commons:commons-lang3:3.3.2'
+    compile 'com.android.support:support-v4:26.0.1'
+    compile 'com.android.support:recyclerview-v7:26.0.1'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.android.support:cardview-v7:26.1.0'
+    compile 'com.android.support:preference-v7:26.1.0'
+    compile 'com.android.support:preference-v14:26.1.0'
+    compile 'org.osmdroid:osmdroid-android:5.6.5'
+    compile 'com.ncapdevi:frag-nav:2.2.2'
+    compile 'com.roughike:bottom-bar:2.3.1'
+    compile 'com.github.MKergall:osmbonuspack:6.4'
+    compile 'com.jaredrummler:material-spinner:1.2.1'
+    compile 'com.github.medyo:android-about-page:1.2.1'
+    compile 'gun0912.ted:tedpermission:2.0.3'
+    compile 'com.mapbox.mapboxsdk:mapbox-android-plugin-building:0.1.0'
+
+
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:5.3.2'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation:0.9.0'
+    implementation ('com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.9.0') {
+        transitive = true
+    }
+
+
+    implementation files('libs/jsoup-1.11.2.jar')
     testCompile 'junit:junit:4.12'
 }

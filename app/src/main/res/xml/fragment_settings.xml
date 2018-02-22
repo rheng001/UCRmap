@@ -1,0 +1,39 @@
+<android.support.v7.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.v7.preference.PreferenceCategory
+        android:title="User Settings">
+
+        <android.support.v7.preference.EditTextPreference
+            android:key="user_key"
+            android:title="Student Name"
+            android:summary="Set your user name"
+            android:defaultValue="" />
+
+        <android.support.v7.preference.SwitchPreferenceCompat
+            android:key="friend_key"
+            android:title="Friend Locator"
+            android:summary="Turn on/off locator"
+            android:defaultValue="false" />
+
+        <android.support.v7.preference.SwitchPreferenceCompat
+            android:key="gps_key"
+            android:title="GPS"
+            android:summary="Turn on/off GPS"
+            android:defaultValue="true" />
+
+        <android.support.v7.preference.ListPreference
+            android:entries="@array/lists"
+            android:entryValues="@array/lists"
+            android:title="List Preference"
+            android:key="list_key"
+            android:summary="List Preference"/>
+
+        <android.support.v7.preference.CheckBoxPreference
+            android:key="checkbox_key"
+            android:title="CheckBox Preference"
+            android:summary="CheckBox Summary"
+            android:defaultValue="true"/>
+    </android.support.v7.preference.PreferenceCategory>
+
+</android.support.v7.preference.PreferenceScreen>

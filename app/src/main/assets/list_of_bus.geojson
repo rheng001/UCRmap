@@ -1,0 +1,134 @@
+﻿{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "W Campus Dr C. Crest",
+        "hours": "",
+        "phone": "",
+        "description": "Buses 16"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.329831,
+          33.971798
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "W Campus Dr at Lot #4",
+        "hours": "",
+        "phone": "",
+        "description": "Buses 16 51"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.330241,
+          33.971807
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lot 30 at Canyon Crest",
+        "hours": "",
+        "phone": "",
+        "description": "Buses 51 208 210 212 220"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.331870,
+          33.969958
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Campus FS University",
+        "hours": "",
+        "phone": "",
+        "description": "Buses 16 51"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.332160,
+          33.975281
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cany. Crest FS University",
+        "hours": "",
+        "phone": "",
+        "description": "Buses 204"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.331034,
+          33.976817
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bannockburn Village",
+        "hours": "",
+        "phone": "",
+        "description": "Buses 1 16"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.331266,
+          33.977370
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bannockburn Village",
+        "hours": "",
+        "phone": "",
+        "description": "Buses 51 52 Gold"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.331258,
+          33.978268
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Canyon Crest FS Linden",
+        "hours": "",
+        "phone": "",
+        "description": "Buses 16"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.331212,
+          33.979021
+        ]
+      }
+    }
+
+  ]
+}

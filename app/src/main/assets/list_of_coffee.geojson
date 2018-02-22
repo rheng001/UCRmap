@@ -1,0 +1,38 @@
+﻿{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Coffee Bean & Tea Leaf",
+        "hours": "7:00AM - 9:00PM",
+        "phone": "(951) 827-7270",
+        "description": "Coffeehouse chain serving a variety of beverages including its signature ice-blended options."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.328057,
+          33.974558
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bytes",
+        "hours": "7:30AM - 7:00PM",
+        "phone": "(951) 827-9837",
+        "description": "Quick Bite to eat and coffee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.326258,
+          33.975628
+        ]
+      }
+    }
+
+  ]
+}

@@ -1,0 +1,118 @@
+﻿{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bike Rack",
+        "hours": "",
+        "phone": "",
+        "description": "Near HUB"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.329446,
+          33.973722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bike Rack",
+        "hours": "",
+        "phone": "",
+        "description": "In front of SPROUL"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.329767,
+          33.973243
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bike Rack",
+        "hours": "",
+        "phone": "",
+        "description": "Side of SPROUL"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.329454,
+          33.972978
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bike Rack",
+        "hours": "",
+        "phone": "",
+        "description": "In Front of WATKINS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.328882,
+          33.972998
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bike Rack",
+        "hours": "",
+        "phone": "",
+        "description": "Near Geology"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.326754,
+          33.974584
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bike Rack",
+        "hours": "",
+        "phone": "",
+        "description": "Near Chung"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.325586,
+          33.974960
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bike Rack",
+        "hours": "",
+        "phone": "",
+        "description": "In front of Chung"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.326132,
+          33.975713
+        ]
+      }
+    }
+
+  ]
+}

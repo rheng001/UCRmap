@@ -1,0 +1,199 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <EditText
+        android:id="@+id/classText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="33dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <Button
+        android:id="@+id/timeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/mondayButton"
+        android:layout_alignStart="@+id/mondayButton"
+        android:layout_below="@+id/roomButton"
+        android:layout_marginTop="14dp"
+        android:text="Choose Start" />
+
+    <Button
+        android:id="@+id/timeButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose End"
+        android:layout_below="@+id/timeButton"
+        android:layout_alignLeft="@+id/timeButton"
+        android:layout_alignStart="@+id/timeButton"
+        android:layout_alignRight="@+id/timeButton"
+        android:layout_alignEnd="@+id/timeButton" />
+
+    <Button
+        android:id="@+id/buildingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:text="Choose Building"
+        android:layout_below="@+id/classText"
+        android:layout_alignLeft="@+id/timeButton"
+        android:layout_alignStart="@+id/timeButton" />
+
+    <Button
+        android:id="@+id/roomButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/timeButton"
+        android:layout_alignStart="@+id/timeButton"
+        android:layout_below="@+id/buildingButton"
+        android:layout_marginTop="13dp"
+        android:text="Choose Room" />
+
+    <TextView
+        android:id="@+id/startText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:text="Start Time: "
+        android:layout_alignBaseline="@+id/timeButton"
+        android:layout_alignBottom="@+id/timeButton"
+        android:layout_toRightOf="@+id/buildingButton"
+        android:layout_toEndOf="@+id/buildingButton" />
+
+    <TextView
+        android:id="@+id/endText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/startText"
+        android:layout_alignStart="@+id/startText"
+        android:layout_below="@+id/timeButton"
+        android:layout_marginTop="14dp"
+        android:text="End Time:" />
+
+    <TextView
+        android:id="@+id/startTextTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HH:MM"
+        android:layout_alignBaseline="@+id/startText"
+        android:layout_alignBottom="@+id/startText"
+        android:layout_toRightOf="@+id/startText"
+        android:layout_toEndOf="@+id/startText" />
+
+    <TextView
+        android:id="@+id/endTextTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/startTextTime"
+        android:layout_alignRight="@+id/startTextTime"
+        android:layout_alignTop="@+id/endText"
+        android:text="HH:MM" />
+
+    <ToggleButton
+        android:id="@+id/mondayButton"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/classText"
+        android:layout_alignStart="@+id/classText"
+        android:textOff="M"
+        android:textOn="M"
+        android:layout_below="@+id/classText"
+        style="@style/YellowLight"
+        android:layout_marginTop="12dp"
+        android:text="MON" />
+
+    <ToggleButton
+        android:id="@+id/tuesdayButton"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:textOff="T"
+        android:textOn="T"
+        android:text="Tuesday"
+        android:layout_alignBaseline="@+id/mondayButton"
+        android:layout_alignBottom="@+id/mondayButton"
+        android:layout_toRightOf="@+id/mondayButton"
+        android:layout_toEndOf="@+id/mondayButton" />
+
+    <ToggleButton
+        android:id="@+id/wednesdayButton"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:textOff="W"
+        android:textOn="W"
+        android:text="Wednesday"
+        android:layout_alignBaseline="@+id/tuesdayButton"
+        android:layout_alignBottom="@+id/tuesdayButton"
+        android:layout_toRightOf="@+id/tuesdayButton"
+        android:layout_toEndOf="@+id/tuesdayButton" />
+
+    <ToggleButton
+        android:id="@+id/thursdayButton"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:textOff="R"
+        android:textOn="R"
+        android:text="Thursday"
+        android:layout_alignBaseline="@+id/wednesdayButton"
+        android:layout_alignBottom="@+id/wednesdayButton"
+        android:layout_toRightOf="@+id/wednesdayButton"
+        android:layout_toEndOf="@+id/wednesdayButton" />
+
+    <ToggleButton
+        android:id="@+id/fridayButton"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:text="Friday"
+        android:layout_alignBaseline="@+id/thursdayButton"
+        android:layout_alignBottom="@+id/thursdayButton"
+        android:textOff="F"
+        android:textOn="F"
+        android:layout_toRightOf="@+id/thursdayButton"
+        android:layout_toEndOf="@+id/thursdayButton" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timeButton2"
+        android:layout_marginTop="44dp"
+        android:text="Save"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/buildingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No building selected"
+        android:layout_alignBaseline="@+id/buildingButton"
+        android:layout_alignBottom="@+id/buildingButton"
+        android:layout_alignRight="@+id/fridayButton"
+        android:layout_alignEnd="@+id/fridayButton" />
+
+    <TextView
+        android:id="@+id/roomText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/roomButton"
+        android:layout_alignBottom="@+id/roomButton"
+        android:layout_alignLeft="@+id/startText"
+        android:layout_alignStart="@+id/startText"
+        android:text="No room selected" />
+
+
+</RelativeLayout>

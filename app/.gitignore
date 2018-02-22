@@ -1,10 +1,1 @@
 /build
-
-.bundle
-.DS_Store
-.idea
-db/*.sqlite3
-log/*.log
-tmp/
-public/system/images/
-public/system/avatars/

@@ -10,32 +10,21 @@
 
     <application
         android:allowBackup="true"
-        android:hardwareAccelerated="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:label="UCR Map">
+        <activity android:name=".MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="com.here.android.maps.appid"
-            android:value="6THlrpX9d46cmMpwCXn0" />
-        <meta-data
-            android:name="com.here.android.maps.apptoken"
-            android:value="5nqmxP-6qV9gFr6AjqACkQ" />
-
-        <activity android:name=".NavActivity" />
-        <activity android:name=".PlacesActivity" />
-        <activity android:name=".AboutActivity" />
-        <activity android:name=".floor_plan"></activity>
     </application>
 
 </manifest>

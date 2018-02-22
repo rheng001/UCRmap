@@ -1,0 +1,38 @@
+﻿{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tomas Rivera Library",
+        "hours": "7:30AM - 12:00AM",
+        "phone": "(951) 827-3220",
+        "description": "Rivera Library"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.327485,
+          33.972635
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Orbach Science Library",
+        "hours": "7:30AM - 12:00AM",
+        "phone": "(951) 827-3701",
+        "description": "Orbach Library"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.324447,
+          33.974532
+        ]
+      }
+    }
+
+  ]
+}
