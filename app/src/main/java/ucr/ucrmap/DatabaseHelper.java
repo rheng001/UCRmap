@@ -79,8 +79,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + E_COL1 + " TEXT NOT NULL ,"
                 + E_COL2 + " TEXT NOT NULL , "
                 + E_COL3 + " TEXT NOT NULL)";
-        // + E_COL4 + " TEXT NOT NULL , "
-        // + E_COL5 + " TEXT NOT NULL)";
 
         db.execSQL(create_Friend);
         db.execSQL(create_Class);
