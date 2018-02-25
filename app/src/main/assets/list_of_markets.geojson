@@ -32,7 +32,55 @@
           33.973718
         ]
       }
-    }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Scotty Convience Store",
+        "hours": "10:00AM - 2:00AM",
+        "phone": "(951) 827-3701",
+        "description": "Student Convience Store(Glen Mor)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.320572,
+          33.977864
+        ]
+      }
+     },
+     {
+       "type": "Feature",
+       "properties": {
+         "name": "Scotty Convience Store",
+         "hours": "4:30AM - 2:00AM",
+         "phone": "(951) 827-3701",
+         "description": "Student Convience Store(Lothian)"
+       },
+       "geometry": {
+         "type": "Point",
+         "coordinates": [
+           -117.322792,
+           33.975591
+         ]
+       }
+     },
+     {
+       "type": "Feature",
+       "properties": {
+         "name": "Scotty Convience Store",
+         "hours": "11:00AM - 2:00AM",
+         "phone": "(951) 827-3701",
+         "description": "Student Convience Store(AI)"
+       },
+       "geometry": {
+         "type": "Point",
+         "coordinates": [
+           -117.326043,
+           33.978137
+         ]
+       }
+      }
 
   ]
 }
