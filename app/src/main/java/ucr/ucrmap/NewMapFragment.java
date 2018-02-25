@@ -437,6 +437,8 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
         Icon bus = IconFactory.getInstance(getActivity()).fromResource(R.drawable.bus);
         Icon library = IconFactory.getInstance(getActivity()).fromResource(R.drawable.library);
         Icon bike = IconFactory.getInstance(getActivity()).fromResource(R.drawable.bike);
+        Icon building = IconFactory.getInstance(getActivity()).fromResource(R.drawable.white_unselected_house);
+
 
 
 
@@ -762,16 +764,16 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
             // Loop through the locations to add markers to the map
             for (int x = 0; x < featureList7.size(); x++) {
 
-                Feature singleLocation6 = featureList7.get(x);
+                Feature singleLocation7 = featureList7.get(x);
 
                 // Get the single location's String properties to place in its map marker
-                String singleLocationName7= singleLocation6.getStringProperty("name");
-                String singleLocationHours7 = singleLocation6.getStringProperty("hours");
-                String singleLocationDescription7 = singleLocation6.getStringProperty("description");
-                String singleLocationPhoneNum7 = singleLocation6.getStringProperty("phone");
+                String singleLocationName7= singleLocation7.getStringProperty("name");
+                String singleLocationHours7 = singleLocation7.getStringProperty("hours");
+                String singleLocationDescription7 = singleLocation7.getStringProperty("description");
+                String singleLocationPhoneNum7 = singleLocation7.getStringProperty("phone");
 
                 // Get the single location's LatLng coordinates
-                Position singleLocationPosition7 = (Position) singleLocation6.getGeometry().getCoordinates();
+                Position singleLocationPosition7 = (Position) singleLocation7.getGeometry().getCoordinates();
 
                 // Create a new LatLng object with the Position object created above
                 LatLng singleLocationLatLng7 = new LatLng(singleLocationPosition7.getLatitude(),
@@ -792,7 +794,7 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
                 mapboxMap.addMarker(new MarkerOptions()
                         .position(singleLocationLatLng7)
                         .title(singleLocationName7)
-                        .icon(bike));
+                        .icon(building));
 
                 getInformationFromDirectionsApi(singleLocationLatLng7.getLatitude(),
                         singleLocationLatLng7.getLongitude(), false, x);
@@ -1208,7 +1210,7 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
             busCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_bus.geojson"));
             libraryCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_libraries.geojson"));
             bikeCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_bike.geojson"));
-            buildingCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_building.geojson"));
+            buildingCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_building"));
         } catch (Exception exception) {
             Log.e("MainActivity", "getFeatureCollectionFromJson: " + exception);
         }
