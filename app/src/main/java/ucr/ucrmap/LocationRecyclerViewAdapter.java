@@ -83,7 +83,7 @@ public class LocationRecyclerViewAdapter extends RecyclerView.Adapter<LocationRe
           emojiForCircle = ResourcesCompat.getDrawable(context.getResources(), R.drawable.coffee, null);
         }
         if (poiIcon == 3) {
-          emojiForCircle = ResourcesCompat.getDrawable(context.getResources(), R.drawable.market, null);
+          emojiForCircle = ResourcesCompat.getDrawable(context.getResources(), R.mipmap.ic_scotty, null);
         }
         if (poiIcon == 4) {
           emojiForCircle = ResourcesCompat.getDrawable(context.getResources(), R.drawable.bus, null);
