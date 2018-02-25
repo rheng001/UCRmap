@@ -418,6 +418,7 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
             else if (poi == 6)
                 set_poi = "Buildings";
 
+
             bottomBar.selectTabAtPosition(INDEX_NEWMAP);
             mNavController.switchTab(INDEX_NEWMAP);
 

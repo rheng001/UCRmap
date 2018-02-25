@@ -751,16 +751,17 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
             setUpRecyclerViewOfLocationCards(chosenTheme, 6);
 
         }
-        //BUILDINGS
+
+        //BUILDINGS (works to this point)
         else if (receiveData.getPOI() == "Buildings") {
 
             for (Marker singleMarker : mapboxMap.getMarkers()) {
                 singleMarker.remove();
             }
 
-            List<Feature> featureList7 = buildingCollection.getFeatures();
+            List<Feature> featureList7 = buildingCollection.getFeatures(); //ERROR HERE
 
-            //LIBRARIES
+
             // Loop through the locations to add markers to the map
             for (int x = 0; x < featureList7.size(); x++) {
 
@@ -780,7 +781,7 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
                         singleLocationPosition7.getLongitude());
 
                 // Add the location to the Arraylist of locations for later use in the recyclerview
-                listOfBuildingLocations.add(new IndividualLocation(
+                listOfBuildingLocations.add(new IndividualLocation( //AND HERE
                         singleLocationName7,
                         singleLocationDescription7,
                         singleLocationHours7,
@@ -799,7 +800,7 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
                 getInformationFromDirectionsApi(singleLocationLatLng7.getLatitude(),
                         singleLocationLatLng7.getLongitude(), false, x);
             }
-            setUpRecyclerViewOfLocationCards(chosenTheme, 7);
+            setUpRecyclerViewOfLocationCards(chosenTheme, 7); //MAYBE HERE
 
         }
 
@@ -1210,7 +1211,7 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
             busCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_bus.geojson"));
             libraryCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_libraries.geojson"));
             bikeCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_bike.geojson"));
-            buildingCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_building"));
+            buildingCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_building.geojson"));
         } catch (Exception exception) {
             Log.e("MainActivity", "getFeatureCollectionFromJson: " + exception);
         }
