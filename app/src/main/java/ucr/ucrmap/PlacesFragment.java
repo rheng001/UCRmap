@@ -91,9 +91,9 @@ public class PlacesFragment extends Fragment {
     public static List<recycler_information> getData()
     {
         List<recycler_information> placeData = new ArrayList<>();
-        String[] placeName = {"Food", "Coffee Shops", "Markets", "Bus Stops", "Libraries", "Bike Racks"};
+        String[] placeName = {"Food", "Coffee Shops", "Markets", "Bus Stops", "Libraries", "Bike Racks", "Buildings"};
         int[] placeIcon = {R.drawable.food, R.drawable.coffee, R.drawable.market, R.drawable.bus,
-                R.drawable.library,  R.drawable.bike};
+                R.drawable.library,  R.drawable.bike, R.drawable.house_icon};
         for (int i = 0; i < placeName.length; i++) //add icon as well
         {
             recycler_information current = new recycler_information();

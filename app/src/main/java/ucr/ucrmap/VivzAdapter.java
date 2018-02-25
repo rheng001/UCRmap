@@ -484,6 +484,10 @@ public class VivzAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
             {
                 placeName = "Bike Racks";
             }
+            else if (setPlaceName == 6)
+            {
+                placeName = "Buildings";
+            }
 
             AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
             builder.setTitle("Place Navigation");

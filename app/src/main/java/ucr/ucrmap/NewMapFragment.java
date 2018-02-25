@@ -162,6 +162,7 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
     private FeatureCollection busCollection;
     private FeatureCollection libraryCollection;
     private FeatureCollection bikeCollection;
+    private FeatureCollection buildingCollection;
 
 
     private ArrayList<IndividualLocation> listofFoodLocations;
@@ -170,6 +171,8 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
     private ArrayList<IndividualLocation> listOfBusLocations;
     private ArrayList<IndividualLocation> listOfLibraryLocations;
     private ArrayList<IndividualLocation> listOfBikeLocations;
+    private ArrayList<IndividualLocation> listOfBuildingLocations;
+
 
     private RecyclerView locationsRecyclerView;
     private LocationRecyclerViewAdapter styleRvAdapter;
@@ -381,6 +384,7 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
         listOfBusLocations = new ArrayList<>();
         listOfLibraryLocations = new ArrayList<>();
         listOfBikeLocations = new ArrayList<>();
+        listOfBuildingLocations = new ArrayList<>();
 
 
 
@@ -745,6 +749,57 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
             setUpRecyclerViewOfLocationCards(chosenTheme, 6);
 
         }
+        //BUILDINGS
+        else if (receiveData.getPOI() == "Buildings") {
+
+            for (Marker singleMarker : mapboxMap.getMarkers()) {
+                singleMarker.remove();
+            }
+
+            List<Feature> featureList7 = buildingCollection.getFeatures();
+
+            //LIBRARIES
+            // Loop through the locations to add markers to the map
+            for (int x = 0; x < featureList7.size(); x++) {
+
+                Feature singleLocation6 = featureList7.get(x);
+
+                // Get the single location's String properties to place in its map marker
+                String singleLocationName7= singleLocation6.getStringProperty("name");
+                String singleLocationHours7 = singleLocation6.getStringProperty("hours");
+                String singleLocationDescription7 = singleLocation6.getStringProperty("description");
+                String singleLocationPhoneNum7 = singleLocation6.getStringProperty("phone");
+
+                // Get the single location's LatLng coordinates
+                Position singleLocationPosition7 = (Position) singleLocation6.getGeometry().getCoordinates();
+
+                // Create a new LatLng object with the Position object created above
+                LatLng singleLocationLatLng7 = new LatLng(singleLocationPosition7.getLatitude(),
+                        singleLocationPosition7.getLongitude());
+
+                // Add the location to the Arraylist of locations for later use in the recyclerview
+                listOfBuildingLocations.add(new IndividualLocation(
+                        singleLocationName7,
+                        singleLocationDescription7,
+                        singleLocationHours7,
+                        singleLocationPhoneNum7,
+                        singleLocationLatLng7
+                ));
+
+                // Add the location's marker to the map (RESPONSIBLE FOR ADDING MARKER TO MAP
+
+
+                mapboxMap.addMarker(new MarkerOptions()
+                        .position(singleLocationLatLng7)
+                        .title(singleLocationName7)
+                        .icon(bike));
+
+                getInformationFromDirectionsApi(singleLocationLatLng7.getLatitude(),
+                        singleLocationLatLng7.getLongitude(), false, x);
+            }
+            setUpRecyclerViewOfLocationCards(chosenTheme, 7);
+
+        }
 
         //Set destination from navigation menu input
         destinationPoint = Point.fromLngLat(receiveData.getLongitude(), receiveData.getLatitude());
@@ -926,6 +981,11 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
                                     listOfBikeLocations.get(listIndex).setDistance(finalConvertedFormattedDistance);
                                     styleRvAdapter.notifyDataSetChanged(); //UNCOMMENT
                                 }
+                                if (receiveData.getPOI() == "Buildings")
+                                {
+                                    listOfBuildingLocations.get(listIndex).setDistance(finalConvertedFormattedDistance);
+                                    styleRvAdapter.notifyDataSetChanged(); //UNCOMMENT
+                                }
                             }
                         }
                     }
@@ -1008,6 +1068,15 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
             repositionMapCamera(selectedLocationLatLng);
             getInformationFromDirectionsApi(selectedLocationLatLng.getLatitude(), selectedLocationLatLng.getLongitude(), true, null);
         }
+        if (receiveData.getPOI() == "Buildings")
+        {
+            IndividualLocation selectedLocation = listOfBuildingLocations.get(position);
+            Marker markerTiedToSelectedCard = mapboxMap.getMarkers().get(position);
+            adjustMarkerSelectStateIcons(markerTiedToSelectedCard);
+            LatLng selectedLocationLatLng = selectedLocation.getLocation();
+            repositionMapCamera(selectedLocationLatLng);
+            getInformationFromDirectionsApi(selectedLocationLatLng.getLatitude(), selectedLocationLatLng.getLongitude(), true, null);
+        }
 
     }
 
@@ -1066,6 +1135,15 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
             locationsRecyclerView.setHasFixedSize(true);
             locationsRecyclerView.setLayoutManager(new LinearLayoutManagerWithSmoothScroller(getActivity())); //Need this to display recyclerview
             styleRvAdapter = new LocationRecyclerViewAdapter(listOfBikeLocations, getContext(), this, chosenTheme, 6);
+            locationsRecyclerView.setOnFlingListener(null);
+            locationsRecyclerView.setAdapter(styleRvAdapter);
+            snapHelper.attachToRecyclerView(locationsRecyclerView);
+        }
+        if (flag == 7)
+        {
+            locationsRecyclerView.setHasFixedSize(true);
+            locationsRecyclerView.setLayoutManager(new LinearLayoutManagerWithSmoothScroller(getActivity())); //Need this to display recyclerview
+            styleRvAdapter = new LocationRecyclerViewAdapter(listOfBuildingLocations, getContext(), this, chosenTheme, 7);
             locationsRecyclerView.setOnFlingListener(null);
             locationsRecyclerView.setAdapter(styleRvAdapter);
             snapHelper.attachToRecyclerView(locationsRecyclerView);
@@ -1130,6 +1208,7 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
             busCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_bus.geojson"));
             libraryCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_libraries.geojson"));
             bikeCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_bike.geojson"));
+            buildingCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_building.geojson"));
         } catch (Exception exception) {
             Log.e("MainActivity", "getFeatureCollectionFromJson: " + exception);
         }

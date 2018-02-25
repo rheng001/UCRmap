@@ -1,0 +1,69 @@
+﻿{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Student Recreation Center",
+        "hours": "",
+        "phone": "",
+        "description": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.327943,
+          33.978290
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "UCR Bookstore",
+        "hours": "8:00AM - 5:00PM",
+        "phone": "(951) 827-2665",
+        "description": "UCR Official Bookstore"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.328183
+          33.975166
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Student Services",
+        "hours": "",
+        "phone": "",
+        "description": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.329622,
+          33.974146
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Botanical Gardens",
+        "hours": "",
+        "phone": "",
+        "description": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.320628,
+          33.971640
+        ]
+      }
+    }
+  ]
+}
