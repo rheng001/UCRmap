@@ -110,7 +110,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long result = db.insert(Friend_Table, null, contentValues);
         return result;
     }
-    public boolean addData_Class(String name, String building, String room, String start_time, String end_Time)
+    public long addData_Class(String name, String building, String room, String start_time, String end_Time)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -125,13 +125,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d(TAG, "addData: Adding " + name + " to " + Class_Table);
         if(result == -1) {
             toastMessage("FAILED");
-            return false;
         }
         else
         {
             toastMessage("WORKED");
-            return true;
         }
+        return result;
+
     }
 
     public long addData_Event(String title,String day, String time)
@@ -184,6 +184,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String query = "SELECT * " + " FROM " + Event_Table ;
         Cursor data = db.rawQuery(query,null);
         Log.d(TAG, "addData: Display" + Event_Table);
+        return data;
+    }
+    public Cursor getAllClasses()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * " + " FROM " + Class_Table ;
+        Cursor data = db.rawQuery(query,null);
+        Log.d(TAG, "addData: Display" + Class_Table);
         return data;
     }
     private void toastMessage(String message){

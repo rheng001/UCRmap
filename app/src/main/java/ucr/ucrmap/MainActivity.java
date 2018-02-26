@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
 
         mDataBaseHelper = new DatabaseHelper(this);
         //web_Crawl_Events crawl= new web_Crawl_Events();
-        new doit().execute();
+       // new doit().execute(); uncomment for web crawler
 
 
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
