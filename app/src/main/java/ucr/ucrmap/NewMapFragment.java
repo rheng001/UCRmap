@@ -791,11 +791,28 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
 
                 // Add the location's marker to the map (RESPONSIBLE FOR ADDING MARKER TO MAP
 
+                Toast.makeText(getActivity(), singleLocationName7.toString(), Toast.LENGTH_LONG).show();
 
-                mapboxMap.addMarker(new MarkerOptions()
-                        .position(singleLocationLatLng7)
-                        .title(singleLocationName7)
-                        .icon(building));
+                //OLD WAY TO add marker
+                //mapboxMap.addMarker(new MarkerOptions()
+                        //.position(singleLocationLatLng7)
+                        //.title(singleLocationName7));
+
+                //new way for more customization
+                MarkerOptions options = new MarkerOptions();
+                options.position(singleLocationLatLng7);
+                options.title(singleLocationName7);
+                if (singleLocationName7.toString().equals("UCR Bookstore"))
+                {
+                    options.icon(building);
+                }
+                else
+                {
+                    options.icon(bike);
+                }
+                mapboxMap.addMarker(options);
+
+
 
                 getInformationFromDirectionsApi(singleLocationLatLng7.getLatitude(),
                         singleLocationLatLng7.getLongitude(), false, x);
