@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "17609610637",
+    "firebase_url": "https://ucrmap-63651.firebaseio.com",
+    "project_id": "ucrmap-63651",
+    "storage_bucket": "ucrmap-63651.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17609610637:android:ed69da6fb9388b42",
+        "android_client_info": {
+          "package_name": "ucr.ucrmap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "17609610637-vtl295jbbg7nag0qj44nh122nh0p99f4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ucr.ucrmap",
+            "certificate_hash": "5896fa1829fdc134a920a1e8ec1be9fabd7476a2"
+          }
+        },
+        {
+          "client_id": "17609610637-42cvrh9ust7pbh5b6gk3he4tmfq7vueg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsyTjiGsBLbFrUOkXxHGUWpA32xlTAi1M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "17609610637-42cvrh9ust7pbh5b6gk3he4tmfq7vueg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
