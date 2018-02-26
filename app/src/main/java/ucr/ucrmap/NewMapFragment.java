@@ -439,6 +439,9 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
         Icon bike = IconFactory.getInstance(getActivity()).fromResource(R.drawable.bike);
         Icon building = IconFactory.getInstance(getActivity()).fromResource(R.drawable.white_unselected_house);
 
+        Icon panda = IconFactory.getInstance(getActivity()).fromResource(R.mipmap.ic_panda);
+
+
 
 
 
@@ -484,11 +487,18 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
 
                 // Add the location's marker to the map (RESPONSIBLE FOR ADDING MARKER TO MAP
 
-
-                mapboxMap.addMarker(new MarkerOptions()
-                        .position(singleLocationLatLng)
-                        .title(singleLocationName)
-                        .icon(food));
+                MarkerOptions options = new MarkerOptions();
+                options.position(singleLocationLatLng);
+                options.title(singleLocationName);
+                if (singleLocationName.toString().equals("Panda Express"))
+                {
+                    options.icon(panda);
+                }
+                else
+                {
+                    options.icon(food);
+                }
+                mapboxMap.addMarker(options);
 
                 getInformationFromDirectionsApi(singleLocationLatLng.getLatitude(),
                         singleLocationLatLng.getLongitude(), false, x);
@@ -808,7 +818,7 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
                 }
                 else
                 {
-                    options.icon(bike);
+                    options.icon(building);
                 }
                 mapboxMap.addMarker(options);
 
