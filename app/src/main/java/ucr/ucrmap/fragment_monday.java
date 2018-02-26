@@ -130,7 +130,7 @@ public class fragment_monday extends Fragment{
             String room_name = c.getString(3);
             String start_time = c.getString(4);
             String end_time = c.getString(5);
-            recycler_information r = new recycler_information(class_name,building_name,room_name,start_time,end_time, 2);
+            recycler_information r = new recycler_information(class_name,building_name,room_name,start_time,end_time, receivemonClass.getIntLayout());
             classData.add(r);
         }
         if(!(classData.size()<1))
