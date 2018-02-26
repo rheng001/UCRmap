@@ -17,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     private static final String TAG = "DatabaseHelper";
-    private static final String DATABASE_NAME = "MYDATABASE.db";
+    private static final String DATABASE_NAME = "UCRmapDatabase.db";
     private static final String Friend_Table = "Friends";
     private static final String COL1= "Entry";
     private static final String COL2 = "name";
@@ -29,7 +29,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String C_COL4= "room";
     private static final String C_COL5 = "start_Time";
     private static final String C_COL6 = "end_Time";
-    private static final String Event_Table = "Event";
+    private static final String Event_Table = "Eventss";
     private static final String E_COL1= "Title";
     //    private static final String E_COL2 = "Location";
     // private static final String E_COL3 = "Event Details";
@@ -56,11 +56,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // have to clear app data to create new tables in setting and ucrmap delete data
 
-        String create_Friend = "CREATE TABLE " + Friend_Table + "("
-                + student.num + " INTEGER AUTOINCREMENT ,"
-                + student.name + " TEXT NOT NULL , "
-                + student.id + " INTEGER PRIMARY KEY NOT NULL )";
+        try {
+            String create_Friend = "CREATE TABLE " + Friend_Table + "("
+                    + student.num + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
+                    + student.name + " TEXT NOT NULL , "
+                    + student.id + " INTEGER NOT NULL)";
+            db.execSQL(create_Friend);
 
+        }catch(Exception e)
+        {
+            Log.e(TAG,"ERROR: " + Log.getStackTraceString(e));
+        }
         String create_Class = "CREATE TABLE " + Class_Table + "("
                 + C_COL1 + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
                 + C_COL2 + " TEXT NOT NULL , "
@@ -76,7 +82,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // + E_COL4 + " TEXT NOT NULL , "
         // + E_COL5 + " TEXT NOT NULL)";
 
-        db.execSQL(create_Friend);
         db.execSQL(create_Class);
         db.execSQL(create_Event);
         toastMessage("Created database");
