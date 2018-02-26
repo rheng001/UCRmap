@@ -22,10 +22,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL1= "Entry";
     private static final String COL2 = "name";
     private static final String COL3 = "ID";
-
-
-
-
     private static final String Class_Table = "Class";
     private static final String C_COL1= "Entry";
     private static final String C_COL2 = "name";
@@ -33,7 +29,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String C_COL4= "room";
     private static final String C_COL5 = "start_Time";
     private static final String C_COL6 = "end_Time";
-
     private static final String Event_Table = "Event";
     private static final String E_COL1= "Title";
     //    private static final String E_COL2 = "Location";
@@ -43,8 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String E_COL2 = "Day";
     private static final String E_COL3 = "Time"; //duration
 
-
-
+    Student student = new Student("name","id","","entry");
 
     private final Context mContext;
 
@@ -63,9 +57,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // have to clear app data to create new tables in setting and ucrmap delete data
 
         String create_Friend = "CREATE TABLE " + Friend_Table + "("
-                + COL1 + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
-                + COL2 + " TEXT NOT NULL , "
-                + COL3 + " INTEGER NOT NULL)";
+                + student.num + " INTEGER AUTOINCREMENT ,"
+                + student.name + " TEXT NOT NULL , "
+                + student.id + " INTEGER PRIMARY KEY NOT NULL )";
 
         String create_Class = "CREATE TABLE " + Class_Table + "("
                 + C_COL1 + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
@@ -79,6 +73,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + E_COL1 + " TEXT NOT NULL ,"
                 + E_COL2 + " TEXT NOT NULL , "
                 + E_COL3 + " TEXT NOT NULL)";
+        // + E_COL4 + " TEXT NOT NULL , "
+        // + E_COL5 + " TEXT NOT NULL)";
 
         db.execSQL(create_Friend);
         db.execSQL(create_Class);
@@ -102,8 +98,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL2,name);
-        contentValues.put(COL3,id);
+        contentValues.put(student.name,name);
+        contentValues.put(student.id,id);
         toastMessage("ADDING TO FRIEND TABLE");
         Log.d(TAG, "addData: Adding " + name + " and " + id + " to " + Friend_Table);
         long result = db.insert(Friend_Table, null, contentValues);
@@ -150,7 +146,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void DeleteData_Friends(int id){
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "DELETE FROM " + Friend_Table+ " WHERE " + COL3 + " = '" + id + "'" ;
+        String query = "DELETE FROM " + Friend_Table+ " WHERE " + student.id + " = '" + id + "'" ;
         db.execSQL(query);
         Log.d(TAG,"DELETE : " + id + " from database");
     }
@@ -163,8 +159,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void updateName(String newName,int id, String oldName)
     {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "UPDATE "+ Friend_Table + " SET " + COL2 + " = '" + newName
-                + "' WHERE "+ COL1 +" = '" + id + "'" + " AND " + COL2 + " = '" +oldName + "'";
+        String query = "UPDATE "+ Friend_Table + " SET " + student.name+ " = '" + newName
+                + "' WHERE "+ student.id +" = '" + id + "'" + " AND " + student.name + " = '" +oldName + "'";
 
         Log.d(TAG,"update query: " + query);
         db.execSQL(query);
