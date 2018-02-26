@@ -88,4 +88,36 @@ public class AboutFragment extends Fragment {
         return copyRightsElement;
     }
 
+    /*
+        <application
+    android:allowBackup="true"
+    android:hardwareAccelerated="false"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme">
+        <activity
+    android:name=".MainActivity"
+    android:configChanges="orientation"
+    android:screenOrientation="portrait">
+        </activity>
+        <activity
+    android:name=".Login_Firebase"
+
+    android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+    android:name=".Register_Firebase"
+    android:theme="@style/AppTheme"></activity>
+    </application>
+    */
+
+
+
+
 }

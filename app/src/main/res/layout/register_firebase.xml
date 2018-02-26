@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
+    tools:context="ucr.ucrmap.Register_Firebase">
+
+
+
+
+    <EditText
+        android:id="@+id/Email_Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Reg_Password"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/Reg_Password"
+        android:layout_marginTop="50dp"
+        android:background="@color/colorPrimary"
+        android:ems="4"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:inputType="none"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="Email" />
+
+
+    <EditText
+        android:id="@+id/Reg_Email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Password_Text"
+        android:layout_alignStart="@+id/Password_Text"
+        android:layout_below="@+id/Email_Text"
+        android:ems="14"
+        android:inputType="textEmailAddress"
+        android:imeOptions="actionDone"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/Password_Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Reg_Password"
+        android:layout_alignStart="@+id/Reg_Password"
+        android:layout_below="@+id/Reg_Email"
+        android:background="@color/colorPrimary"
+        android:ems="4"
+        android:hint="Password"
+        android:inputType="none"
+        android:textSize="20dp"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/Reg_Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Password_Text"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
+        android:ems="14"
+        android:inputType="textPassword"
+        android:imeOptions="actionDone"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/FirstName_Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Reg_Password"
+        android:layout_alignStart="@+id/Reg_Password"
+        android:layout_below="@+id/Reg_Password"
+        android:background="@color/colorPrimary"
+        android:ems="4"
+        android:hint="First Name"
+        android:textSize="20dp"
+        android:inputType="none"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/Reg_First_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/FirstName_Text"
+        android:layout_alignStart="@+id/FirstName_Text"
+        android:layout_below="@+id/FirstName_Text"
+        android:ems="14"
+        android:inputType="textPersonName"
+        android:imeOptions="actionDone"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/LastName_Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="none"
+        android:layout_alignLeft="@+id/Reg_First_Name"
+        android:layout_alignStart="@+id/Reg_First_Name"
+        android:layout_below="@+id/Reg_First_Name"
+        android:layout_marginTop="13dp"
+        android:background="@color/colorPrimary"
+        android:ems="4"
+        android:hint="Last Name"
+        android:textSize="20dp"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/Reg_LastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/LastName_Text"
+        android:layout_alignStart="@+id/LastName_Text"
+        android:layout_below="@+id/LastName_Text"
+        android:ems="14"
+        android:inputType="textPersonName"
+        android:imeOptions="actionDone"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/Button_Firebase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="92dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="REGISTER"
+        android:textColor="@color/colorLight" />
+
+
+    <ProgressBar
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>
