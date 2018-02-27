@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 //import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
@@ -110,8 +111,8 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
 
         DatabaseHelper mDatabasehelper = new DatabaseHelper(getActivity().getApplicationContext()); // this part understand
 
-        tabLayout = (TabLayout)v.findViewById(R.id.tabs);
-        mViewPager = (ViewPager)v.findViewById(R.id.container2); //list
+        tabLayout = (TabLayout) v.findViewById(R.id.tabs);
+        mViewPager = (ViewPager) v.findViewById(R.id.container2); //list
 
         //Using SectionsPageAdapter to bind the TabLayout (tabs with different titles) and ViewPager(different pages of fragment) together
         //mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
@@ -134,6 +135,7 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
         adapter.addFragment(new fragment_friday(), "FRI");
         viewPager.setAdapter(adapter);
     }
+
 
 
     @Override
@@ -629,19 +631,12 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
 
                 Toast.makeText(getActivity(), set_class.getText().toString() + " was successfully added to your schedule.", Toast.LENGTH_LONG).show();
 
-                //Toast.makeText(getActivity(), monResult + tuesResult + wedResult + thurResult + friResult, Toast.LENGTH_LONG).show();
-                //Toast.makeText(getActivity(), set_class.getText(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(getActivity(), set_building.getText(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(getActivity(), set_start.getText(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(getActivity(), set_end.getText(), Toast.LENGTH_LONG).show();
-
-
-                //myClass.add(new recycler_information(set_class.getText().toString(),set_building.getText().toString(),  set_start.getText().toString(),set_end.getText().toString(), 1 ));
 
                 if (monResult == "mon") {
                     sendData.setClass(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "mon");
                     monResult = "false";
                     add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), "mon");
+
 
                 }
                 if (tuesResult == "tues")
@@ -673,7 +668,7 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
                     friResult   = "false";
                     add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), "fri");
                 }
-                //adapter.notifyDataSetChanged();
+                mViewPager.getAdapter().notifyDataSetChanged(); //CODE THAT UPDATES/REFRESHES WOOO
                 show.dismiss();
 
             }
@@ -685,5 +680,6 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
         long result = mDatabasehelper.addData_Class(class_name,building_name,room_name,start,end,day);
 
     }
+
 
 }

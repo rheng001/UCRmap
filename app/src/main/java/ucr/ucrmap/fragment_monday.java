@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -71,7 +72,6 @@ public class fragment_monday extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_monday, container, false);
-        //View v1 = inflater.inflate(R.layout.fragment_add_class, container, false);
 
         classData = new ArrayList<>();
         DatabaseHelper mDatabasehelper = new DatabaseHelper(getActivity().getApplicationContext()); // this part understand
@@ -80,14 +80,11 @@ public class fragment_monday extends Fragment{
         rv = (RecyclerView) v.findViewById(R.id.rv_recycler_view);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        String s = receivemonClass.getDay();
-
         adapter = new VivzAdapter(getActivity(), classData);
-
         rv.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         rv.setAdapter(adapter);
+
         retreive();
-        // classData.add(new recycler_information("CS 190", "UV-theatre","101", "5:00PM", "6:00PM", 1));
         return v;
 
     }
