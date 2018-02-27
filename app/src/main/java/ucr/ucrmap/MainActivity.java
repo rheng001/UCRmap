@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
 
         mDataBaseHelper = new DatabaseHelper(this);
         //web_Crawl_Events crawl= new web_Crawl_Events();
-        new doit().execute();
+       // new doit().execute(); uncomment for web crawler
 
 
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
@@ -417,6 +417,7 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
                 set_poi = "Bike Racks";
             else if (poi == 6)
                 set_poi = "Buildings";
+
 
             bottomBar.selectTabAtPosition(INDEX_NEWMAP);
             mNavController.switchTab(INDEX_NEWMAP);

@@ -96,7 +96,7 @@ public class LocationRecyclerViewAdapter extends RecyclerView.Adapter<LocationRe
         }
         if (poiIcon == 7)
         {
-          emojiForCircle = ResourcesCompat.getDrawable(context.getResources(), R.drawable.white_unselected_house, null);
+          emojiForCircle = ResourcesCompat.getDrawable(context.getResources(), R.drawable.house_icon, null);
         }
 
 

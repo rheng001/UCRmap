@@ -439,6 +439,9 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
         Icon bike = IconFactory.getInstance(getActivity()).fromResource(R.drawable.bike);
         Icon building = IconFactory.getInstance(getActivity()).fromResource(R.drawable.white_unselected_house);
 
+        Icon panda = IconFactory.getInstance(getActivity()).fromResource(R.mipmap.ic_panda);
+
+
 
 
 
@@ -484,11 +487,18 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
 
                 // Add the location's marker to the map (RESPONSIBLE FOR ADDING MARKER TO MAP
 
-
-                mapboxMap.addMarker(new MarkerOptions()
-                        .position(singleLocationLatLng)
-                        .title(singleLocationName)
-                        .icon(food));
+                MarkerOptions options = new MarkerOptions();
+                options.position(singleLocationLatLng);
+                options.title(singleLocationName);
+                if (singleLocationName.toString().equals("Panda Express"))
+                {
+                    options.icon(panda);
+                }
+                else
+                {
+                    options.icon(food);
+                }
+                mapboxMap.addMarker(options);
 
                 getInformationFromDirectionsApi(singleLocationLatLng.getLatitude(),
                         singleLocationLatLng.getLongitude(), false, x);
@@ -751,16 +761,17 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
             setUpRecyclerViewOfLocationCards(chosenTheme, 6);
 
         }
-        //BUILDINGS
+
+        //BUILDINGS (works to this point)
         else if (receiveData.getPOI() == "Buildings") {
 
             for (Marker singleMarker : mapboxMap.getMarkers()) {
                 singleMarker.remove();
             }
 
-            List<Feature> featureList7 = buildingCollection.getFeatures();
+            List<Feature> featureList7 = buildingCollection.getFeatures(); //ERROR HERE
 
-            //LIBRARIES
+
             // Loop through the locations to add markers to the map
             for (int x = 0; x < featureList7.size(); x++) {
 
@@ -780,7 +791,7 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
                         singleLocationPosition7.getLongitude());
 
                 // Add the location to the Arraylist of locations for later use in the recyclerview
-                listOfBuildingLocations.add(new IndividualLocation(
+                listOfBuildingLocations.add(new IndividualLocation( //AND HERE
                         singleLocationName7,
                         singleLocationDescription7,
                         singleLocationHours7,
@@ -790,16 +801,33 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
 
                 // Add the location's marker to the map (RESPONSIBLE FOR ADDING MARKER TO MAP
 
+                Toast.makeText(getActivity(), singleLocationName7.toString(), Toast.LENGTH_LONG).show();
 
-                mapboxMap.addMarker(new MarkerOptions()
-                        .position(singleLocationLatLng7)
-                        .title(singleLocationName7)
-                        .icon(building));
+                //OLD WAY TO add marker
+                //mapboxMap.addMarker(new MarkerOptions()
+                        //.position(singleLocationLatLng7)
+                        //.title(singleLocationName7));
+
+                //new way for more customization
+                MarkerOptions options = new MarkerOptions();
+                options.position(singleLocationLatLng7);
+                options.title(singleLocationName7);
+                if (singleLocationName7.toString().equals("UCR Bookstore"))
+                {
+                    options.icon(building);
+                }
+                else
+                {
+                    options.icon(building);
+                }
+                mapboxMap.addMarker(options);
+
+
 
                 getInformationFromDirectionsApi(singleLocationLatLng7.getLatitude(),
                         singleLocationLatLng7.getLongitude(), false, x);
             }
-            setUpRecyclerViewOfLocationCards(chosenTheme, 7);
+            setUpRecyclerViewOfLocationCards(chosenTheme, 7); //MAYBE HERE
 
         }
 
@@ -1210,7 +1238,7 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
             busCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_bus.geojson"));
             libraryCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_libraries.geojson"));
             bikeCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_bike.geojson"));
-            buildingCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_building"));
+            buildingCollection = FeatureCollection.fromJson(loadGeoJsonFromAsset("list_of_building.geojson"));
         } catch (Exception exception) {
             Log.e("MainActivity", "getFeatureCollectionFromJson: " + exception);
         }
