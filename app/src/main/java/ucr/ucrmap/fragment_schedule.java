@@ -659,9 +659,8 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
                     add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), "wed");
 
                 }
-                if (thurResult == "thur")
+                if (thurResult == "thurs")
                 {
-
                     sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "thur");
                     thurResult = "false";
                     add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), "thur");
