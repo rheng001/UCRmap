@@ -76,17 +76,10 @@ public class fragment_friends extends Fragment {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        setRecyclerViewData();
         retreive();
         return v;
     }
-    private void setRecyclerViewData() //Initialzing friends on start
-    {
-        //friendData.add(new recycler_information("Richard", "861303379", "male", R.drawable.ic_bear2, 2));
-       // friendData.add(new recycler_information(name.getText().toString(),job.getText().toString(), gender, R.drawable.ic_bear2, 2));
 
-
-    }
     private View.OnClickListener onAddingListener() {
         return new View.OnClickListener() {
             @Override
@@ -108,21 +101,6 @@ public class fragment_friends extends Fragment {
                 View btnCancel = mView.findViewById(R.id.btn_cancel);
 
 
-
-                //btnAdd.setOnClickListener(onConfirmListener(name, job, show));
-
-                //Turn this on when decide to remove button from layout
-                /*
-                builder.setPositiveButton(android.R.string.ok,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(getActivity(), "Okay", Toast.LENGTH_LONG).show();
-
-
-                            }
-                        });
-                        */
 
                 final AlertDialog show = builder.show();
 
@@ -176,7 +154,7 @@ public class fragment_friends extends Fragment {
                 }
                 Toast.makeText(getActivity(), "Added friend", Toast.LENGTH_LONG).show();
 
-                //notify data set changed in RecyclerView adapter
+                //notify data set changed in RecyclerView  adapter
                 adapter.notifyDataSetChanged();
                 show.dismiss();
 
@@ -227,7 +205,5 @@ public class fragment_friends extends Fragment {
             rv.setAdapter(adapter);
         }
     }
-    private void toastMessage(String message){
-        Toast.makeText(mcontext,message,Toast.LENGTH_SHORT).show();
-    }
+
 }
