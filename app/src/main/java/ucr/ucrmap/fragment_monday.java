@@ -74,20 +74,23 @@ public class fragment_monday extends Fragment{
 
         rv = (RecyclerView) v.findViewById(R.id.rv_recycler_view);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+
         adapter = new VivzAdapter(getActivity(), classData);
 
         rv.addItemDecoration(new DividerItemDecoration(getActivity(),LinearLayoutManager.VERTICAL));
         rv.setAdapter(adapter);
-
+        retreive();
        // classData.add(new recycler_information("CS 190", "UV-theatre","101", "5:00PM", "6:00PM", 1));
 
-        retreive();
         if (receivemonClass.getDay() == null)
         {
             //classData.add(new recycler_information("", "", "", "", 0));
         }
         else if (receivemonClass.getDay().toString() == "mon")
         {
+
             add();
 
 
@@ -121,23 +124,32 @@ public class fragment_monday extends Fragment{
     public void retreive()
     {
         classData.clear();
+        System.out.println("in here222222");
+
         DatabaseHelper mDatabasehelper = new DatabaseHelper(getActivity().getApplicationContext()); // this part understand
         Cursor c = mDatabasehelper.getAllClasses();
         while(c.moveToNext())
         {
+            System.out.println("in here466");
+
             String class_name = c.getString(1);
             String building_name = c.getString(2);
             String room_name = c.getString(3);
             String start_time = c.getString(4);
             String end_time = c.getString(5);
-            recycler_information r = new recycler_information(class_name,building_name,room_name,start_time,end_time, receivemonClass.getIntLayout());
+            System.out.println(class_name);
+
+            recycler_information r = new recycler_information(class_name,building_name,room_name,start_time,end_time, 1); // added the 1 to make it retreive the classes when you open the page
             classData.add(r);
         }
         if(!(classData.size()<1))
         {
-
+            //System.out.println("in here4444");
+           // System.out.println(classData);
+           // adapter = new VivzAdapter(getActivity(), classData);
             rv.setAdapter(adapter);
         }
+       // System.out.println(classData);
     }
 
     @Override
