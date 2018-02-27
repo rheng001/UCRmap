@@ -29,6 +29,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String C_COL4= "room";
     private static final String C_COL5 = "start_Time";
     private static final String C_COL6 = "end_Time";
+    private static final String C_COL7 = "day";
     private static final String Event_Table = "Eventss";
     private static final String E_COL1= "Title";
     //    private static final String E_COL2 = "Location";
@@ -67,14 +68,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         {
             Log.e(TAG,"ERROR: " + Log.getStackTraceString(e));
         }
+
+        try {
         String create_Class = "CREATE TABLE " + Class_Table + "("
                 + C_COL1 + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
                 + C_COL2 + " TEXT NOT NULL , "
                 + C_COL3 + " TEXT NOT NULL , "
                 + C_COL4 + " TEXT NOT NULL , "
                 + C_COL5 + " TEXT NOT NULL , "
-                + C_COL6 + " TEXT NOT NULL)";
-
+                + C_COL6 + " TEXT NOT NULL , "
+                + C_COL7 + " TEXT NOT NULL)";
+                db.execSQL(create_Class);
+        }catch(Exception e)
+        {
+            Log.e(TAG,"ERROR: " + Log.getStackTraceString(e));
+        }
         String create_Event = "CREATE TABLE " + Event_Table + "("
                 + E_COL1 + " TEXT NOT NULL ,"
                 + E_COL2 + " TEXT NOT NULL , "
@@ -82,9 +90,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // + E_COL4 + " TEXT NOT NULL , "
         // + E_COL5 + " TEXT NOT NULL)";
 
-        db.execSQL(create_Class);
         db.execSQL(create_Event);
         toastMessage("Created database");
+        Log.e(TAG,"DATABASE: " + "hhh");
+
     }
 
 
@@ -110,7 +119,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long result = db.insert(Friend_Table, null, contentValues);
         return result;
     }
-    public long addData_Class(String name, String building, String room, String start_time, String end_Time)
+    public long addData_Class(String name, String building, String room, String start_time, String end_Time,String day)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -119,6 +128,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(C_COL4,room);
         contentValues.put(C_COL5,start_time);
         contentValues.put(C_COL6,end_Time);
+        contentValues.put(C_COL7,day);
 
         toastMessage("ADDING TO CLASS TABLE");
         long result = db.insert(Class_Table, null, contentValues);
@@ -186,12 +196,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d(TAG, "addData: Display" + Event_Table);
         return data;
     }
-    public Cursor getAllClasses()
+    public Cursor getAllClasses(String day)
     {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * " + " FROM " + Class_Table ;
+        String query = "SELECT * " + " FROM " + Class_Table + " WHERE " + C_COL7 + " = '" + day + "'";
         Cursor data = db.rawQuery(query,null);
         Log.d(TAG, "addData: Display" + Class_Table);
+        Log.d(TAG, "getallclasses" + day);
+
         return data;
     }
     private void toastMessage(String message){

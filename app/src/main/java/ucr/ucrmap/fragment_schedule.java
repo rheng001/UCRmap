@@ -119,6 +119,7 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
     {
         //create a fragment list in order for tablayout
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getFragmentManager()); //FragmentPagerAdapter
+        System.out.println(adapter.toString());
         adapter.addFragment(new fragment_monday(), "MON");
         adapter.addFragment(new fragment_tuesday(), "TUES");
         adapter.addFragment(new fragment_wednesday(), "WED");
@@ -632,26 +633,28 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
 
                 if (monResult == "true") {
                     sendData.setClass(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "mon");
+                    monResult = "false";
+
                 }
                 if (tuesResult == "true")
                 {
                     sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "tues");
-
+                    tuesResult = "false";
                 }
                 if (wedResult == "true")
                 {
                     sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "wed");
-
+                    wedResult = "false";
                 }
                 if (thurResult == "true")
                 {
                     sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "thur");
-
+                    thurResult = "false";
                 }
                 if (friResult == "true")
                 {
                     sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "fri");
-
+                    friResult   = "false";
                 }
                 //adapter.notifyDataSetChanged();
                 show.dismiss();

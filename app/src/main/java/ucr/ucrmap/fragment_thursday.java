@@ -2,6 +2,7 @@ package ucr.ucrmap;
 
 
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
@@ -24,6 +25,7 @@ public class fragment_thursday extends Fragment{
 
     private VivzAdapter adapter;
     List<recycler_information> classData;
+    RecyclerView rv;
 
     public fragment_thursday() {
         // Required empty public constructor
@@ -64,7 +66,7 @@ public class fragment_thursday extends Fragment{
         View v = inflater.inflate(R.layout.fragment_thursday, container, false);
         classData = new ArrayList<>();
 
-        RecyclerView rv = (RecyclerView) v.findViewById(R.id.rv_recycler_view4);
+        rv = (RecyclerView) v.findViewById(R.id.rv_recycler_view4);
         adapter = new VivzAdapter(getActivity(), classData);
         rv.setAdapter(adapter);
         rv.setHasFixedSize(true);
@@ -72,12 +74,7 @@ public class fragment_thursday extends Fragment{
         rv.addItemDecoration(new DividerItemDecoration(getActivity(),LinearLayoutManager.VERTICAL));
 
 
-
-        classData.add(new recycler_information("CS 161", "CHUNG","138", "5:00PM", "6:00PM", 1));
-        classData.add(new recycler_information("CS 101", "WAT", "1000","5:00PM", "6:00PM", 1));
-
-
-
+        retreive();
         if (receivethurClass.getDay() == null)
         {
             //classData.add(new recycler_information("", "", "", "", 0));
@@ -96,13 +93,45 @@ public class fragment_thursday extends Fragment{
 
         return v;
     }
-
     public void add()
     {
-        classData.add(new recycler_information(receivethurClass.getClassName(), receivethurClass.getBuildingName(), receivethurClass.getRoomName(), receivethurClass.getStartTime(), receivethurClass.getEndTime(), receivethurClass.getIntLayout()));
+        DatabaseHelper mDatabasehelper = new DatabaseHelper(getActivity().getApplicationContext()); // this part understand
+        String class_name = receivethurClass.getClassName();
+        String building_name = receivethurClass.getBuildingName();
+        String room_name = receivethurClass.getRoomName();
+        String start_time = receivethurClass.getStartTime();
+        String end_time = receivethurClass.getEndTime();
+        long result = mDatabasehelper.addData_Class(class_name,building_name,room_name,start_time,end_time,receivethurClass.getDay());
+        // close database
+        retreive();
         adapter.notifyDataSetChanged();
-
     }
+    public void retreive()
+    {
+        classData.clear();
+        DatabaseHelper mDatabasehelper = new DatabaseHelper(getActivity().getApplicationContext()); // this part understand
+        Cursor c = mDatabasehelper.getAllClasses("thur");
+        if (c == null)
+        {
+            return;
+        }
+        else {
+            while (c.moveToNext()) {
+
+                String class_name = c.getString(1);
+                String building_name = c.getString(2);
+                String room_name = c.getString(3);
+                String start_time = c.getString(4);
+                String end_time = c.getString(5);
+                recycler_information r = new recycler_information(class_name, building_name, room_name, start_time, end_time, 1); // added the 1 to make it retreive the classes when you open the page
+                classData.add(r);
+            }
+            if (!(classData.size() < 1)) {
+                rv.setAdapter(adapter);
+            }
+        }
+    }
+
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {

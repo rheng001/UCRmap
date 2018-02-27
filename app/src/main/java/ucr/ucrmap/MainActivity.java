@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
         Room = new ArrayList<Pair<String, String>>();
 
         mDataBaseHelper = new DatabaseHelper(this);
+
         //web_Crawl_Events crawl= new web_Crawl_Events();
        // new doit().execute(); uncomment for web crawler
 

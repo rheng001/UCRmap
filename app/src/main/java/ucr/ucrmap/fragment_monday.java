@@ -72,10 +72,11 @@ public class fragment_monday extends Fragment{
         DatabaseHelper mDatabasehelper = new DatabaseHelper(getActivity().getApplicationContext()); // this part understand
 
 
+
         rv = (RecyclerView) v.findViewById(R.id.rv_recycler_view);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-
+        String s = receivemonClass.getDay();
 
         adapter = new VivzAdapter(getActivity(), classData);
 
@@ -90,63 +91,46 @@ public class fragment_monday extends Fragment{
         }
         else if (receivemonClass.getDay().toString() == "mon")
         {
+            System.out.println("IN HERE");
+
             add();
+
         }
-
-
-
 
         return v;
     }
     public void add()
     {
         DatabaseHelper mDatabasehelper = new DatabaseHelper(getActivity().getApplicationContext()); // this part understand
-        // classData.add(new recycler_information(receivemonClass.getClassName(), receivemonClass.getBuildingName(), receivemonClass.getRoomName(), receivemonClass.getStartTime(), receivemonClass.getEndTime(), receivemonClass.getIntLayout()));
         String class_name = receivemonClass.getClassName();
         String building_name = receivemonClass.getBuildingName();
         String room_name = receivemonClass.getRoomName();
         String start_time = receivemonClass.getStartTime();
         String end_time = receivemonClass.getEndTime();
-        System.out.println("in here");
-        //sleep()
-        long result = mDatabasehelper.addData_Class(receivemonClass.getClassName(), receivemonClass.getBuildingName(), receivemonClass.getRoomName(), receivemonClass.getStartTime(), receivemonClass.getEndTime());
-        //long result = mDatabasehelper.addData_Friend("ggg",3);
-        //long result = mDatabasehelper.addData_Class(class_name,building_name,room_name,start_time,end_time);
+        long result = mDatabasehelper.addData_Class(class_name,building_name,room_name,start_time,end_time,receivemonClass.getDay());
         // close database
-        System.out.println("worked");
         retreive();
         adapter.notifyDataSetChanged();
-
     }
     public void retreive()
     {
         classData.clear();
-        System.out.println("in here222222");
-
         DatabaseHelper mDatabasehelper = new DatabaseHelper(getActivity().getApplicationContext()); // this part understand
-        Cursor c = mDatabasehelper.getAllClasses();
-        while(c.moveToNext())
-        {
-            System.out.println("in here466");
+        Cursor c = mDatabasehelper.getAllClasses("mon");
+            while (c.moveToNext()) {
 
-            String class_name = c.getString(1);
-            String building_name = c.getString(2);
-            String room_name = c.getString(3);
-            String start_time = c.getString(4);
-            String end_time = c.getString(5);
-            System.out.println(class_name);
+                String class_name = c.getString(1);
+                String building_name = c.getString(2);
+                String room_name = c.getString(3);
+                String start_time = c.getString(4);
+                String end_time = c.getString(5);
+                recycler_information r = new recycler_information(class_name, building_name, room_name, start_time, end_time, 1); // added the 1 to make it retreive the classes when you open the page
+                classData.add(r);
+            }
+            if (!(classData.size() < 1)) {
+                rv.setAdapter(adapter);
+            }
 
-            recycler_information r = new recycler_information(class_name,building_name,room_name,start_time,end_time, 1); // added the 1 to make it retreive the classes when you open the page
-            classData.add(r);
-        }
-        if(!(classData.size()<1))
-        {
-            //System.out.println("in here4444");
-           // System.out.println(classData);
-           // adapter = new VivzAdapter(getActivity(), classData);
-            rv.setAdapter(adapter);
-        }
-       // System.out.println(classData);
     }
 
     @Override
