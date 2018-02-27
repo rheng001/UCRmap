@@ -74,11 +74,13 @@ public class fragment_tuesday extends Fragment{
         rv.addItemDecoration(new DividerItemDecoration(getActivity(),LinearLayoutManager.VERTICAL));
         retreive();
 
-        if (receivetuesClass.getDay() == null)
+        System.out.println(receivetuesClass.getDay());
+
+        if (receivetuesClass.getDay() == "")
         {
-            //classData.add(new recycler_information("", "", "", "", 0));
+            System.out.println("TESTING HERE");
         }
-        else if (receivetuesClass.getDay().toString() == "tues")
+        else if (receivetuesClass.getDay() == "tues")
         {
             System.out.println("IN HERE");
 

@@ -79,7 +79,7 @@ public class fragment_thursday extends Fragment{
         {
             //classData.add(new recycler_information("", "", "", "", 0));
         }
-        else if (receivethurClass.getDay().toString() == "thur")
+        else if (receivethurClass.getDay() == "thur")
         {
 
             add();

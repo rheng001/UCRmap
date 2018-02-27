@@ -65,11 +65,11 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
     private TabLayout tabLayout;
 
     //Initializing toggle button holders to false
-    String monResult = "false";
-    String tuesResult  = "false";
-    String wedResult  = "false";
-    String thurResult  = "false";
-    String friResult  = "false";
+    String monResult = "";
+    String tuesResult  = "";
+    String wedResult  = "";
+    String thurResult  = "";
+    String friResult  = "";
 
     private int mSelectedItem;
 
@@ -83,6 +83,7 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
     TextView set_end;
     TextView set_building;
     TextView set_room;
+
 
     EditText set_class;
 
@@ -513,45 +514,45 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
                 {
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         if(isChecked)
-                            monResult = "true";
+                            monResult = "mon";
                         else
-                            monResult = "false";
+                            monResult = "";
                     }
                 });
                 tues.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
                 {
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         if (isChecked)
-                            tuesResult = "true";
+                            tuesResult = "tues";
                         else
-                            tuesResult = "false";
+                            tuesResult = "";
                     }
                 });
                 wed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
                 {
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         if (isChecked)
-                            wedResult = "true";
+                            wedResult = "wed";
                         else
-                            wedResult = "false";
+                            wedResult = "";
                     }
                 });
                 thurs.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
                 {
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         if (isChecked)
-                            thurResult = "true";
+                            thurResult = "thurs";
                         else
-                            thurResult = "false";
+                            thurResult = "";
                     }
                 });
                 fri.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
                 {
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         if (isChecked)
-                            friResult = "true";
+                            friResult = "fri";
                         else
-                            friResult = "false";
+                            friResult = "";
                     }
                 });
                 /////////end of toggle button
@@ -631,30 +632,32 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
 
                 //myClass.add(new recycler_information(set_class.getText().toString(),set_building.getText().toString(),  set_start.getText().toString(),set_end.getText().toString(), 1 ));
 
-                if (monResult == "true") {
-                    sendData.setClass(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "mon");
-                    monResult = "false";
+                if (monResult == "mon") {
+                    sendData.setClass(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(),
+                            set_start.getText().toString(), set_end.getText().toString(), 1, monResult); //KEEP SENDING CONTIOUS BAD
+                    monResult = "";
+                }
+                if (tuesResult == "tues")
+                {
+                    sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(),
+                            set_start.getText().toString(), set_end.getText().toString(), 1, tuesResult);
+                    tuesResult = "";
+                }
 
-                }
-                if (tuesResult == "true")
+                if (wedResult == "wed")
                 {
-                    sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "tues");
-                    tuesResult = "false";
+                    sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, wedResult);
+                    wedResult = "";
                 }
-                if (wedResult == "true")
+                if (thurResult == "thur")
                 {
-                    sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "wed");
-                    wedResult = "false";
+                    sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, thurResult);
+                    thurResult = "";
                 }
-                if (thurResult == "true")
+                if (friResult == "fri")
                 {
-                    sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "thur");
-                    thurResult = "false";
-                }
-                if (friResult == "true")
-                {
-                    sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "fri");
-                    friResult   = "false";
+                    sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, friResult);
+                    friResult   = "";
                 }
                 //adapter.notifyDataSetChanged();
                 show.dismiss();

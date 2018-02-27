@@ -85,11 +85,13 @@ public class fragment_monday extends Fragment{
         retreive();
        // classData.add(new recycler_information("CS 190", "UV-theatre","101", "5:00PM", "6:00PM", 1));
 
-        if (receivemonClass.getDay() == null)
+        System.out.println(receivemonClass.getDay());
+
+        if (receivemonClass.getDay() == "")
         {
-            //classData.add(new recycler_information("", "", "", "", 0));
+            System.out.println("TESTING HERE");
         }
-        else if (receivemonClass.getDay().toString() == "mon")
+        else if (receivemonClass.getDay() == "mon")
         {
             System.out.println("IN HERE");
 
