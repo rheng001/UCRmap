@@ -74,9 +74,6 @@ public class fragment_wednesday extends Fragment{
         rv.addItemDecoration(new DividerItemDecoration(getActivity(),LinearLayoutManager.VERTICAL));
         retreive();
 
-
-
-
         return v;
     }
 

@@ -75,8 +75,6 @@ public class fragment_thursday extends Fragment{
 
 
         retreive();
-
-
         return v;
     }
 

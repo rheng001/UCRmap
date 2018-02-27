@@ -94,8 +94,6 @@ public class fragment_monday extends Fragment{
 
 
 
-
-
     public void retreive()
     {
         classData.clear();
