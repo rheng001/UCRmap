@@ -85,9 +85,6 @@ public class fragment_monday extends Fragment{
         {
             add();
 
-
-
-
         }
 
 
