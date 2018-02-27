@@ -74,36 +74,13 @@ public class fragment_tuesday extends Fragment{
         rv.addItemDecoration(new DividerItemDecoration(getActivity(),LinearLayoutManager.VERTICAL));
         retreive();
 
-        if (receivetuesClass.getDay() == null)
-        {
-            //classData.add(new recycler_information("", "", "", "", 0));
-        }
-        else if (receivetuesClass.getDay().toString() == "tues")
-        {
-            System.out.println("IN HERE");
-
-            add();
-
-        }
 
 
 
         return v;
     }
 
-    public void add()
-    {
-        DatabaseHelper mDatabasehelper = new DatabaseHelper(getActivity().getApplicationContext()); // this part understand
-        String class_name = receivetuesClass.getClassName();
-        String building_name = receivetuesClass.getBuildingName();
-        String room_name = receivetuesClass.getRoomName();
-        String start_time = receivetuesClass.getStartTime();
-        String end_time = receivetuesClass.getEndTime();
-        long result = mDatabasehelper.addData_Class(class_name,building_name,room_name,start_time,end_time,receivetuesClass.getDay());
-        // close database
-        retreive();
-        adapter.notifyDataSetChanged();
-    }
+
     public void retreive()
     {
         classData.clear();

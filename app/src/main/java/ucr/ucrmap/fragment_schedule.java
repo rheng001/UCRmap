@@ -3,6 +3,7 @@ package ucr.ucrmap;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -64,6 +65,9 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
     private ViewPager mViewPager;
     private TabLayout tabLayout;
 
+
+    DatabaseHelper mDatabasehelper;
+
     //Initializing toggle button holders to false
     String monResult = "false";
     String tuesResult  = "false";
@@ -102,6 +106,8 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
 
         Button deleteButton = (Button) v.findViewById(R.id.deleteButton);
         deleteButton.setOnClickListener(this);
+
+        DatabaseHelper mDatabasehelper = new DatabaseHelper(getActivity().getApplicationContext()); // this part understand
 
         tabLayout = (TabLayout)v.findViewById(R.id.tabs);
         mViewPager = (ViewPager)v.findViewById(R.id.container2); //list
@@ -634,27 +640,35 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
                 if (monResult == "true") {
                     sendData.setClass(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "mon");
                     monResult = "false";
-
+                    add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), "mon");
                 }
                 if (tuesResult == "true")
                 {
                     sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "tues");
                     tuesResult = "false";
+                    add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), "tues");
+
                 }
                 if (wedResult == "true")
                 {
                     sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "wed");
                     wedResult = "false";
+                    add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), "wed");
+
                 }
                 if (thurResult == "true")
                 {
                     sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "thur");
                     thurResult = "false";
+                    add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), "thur");
+
                 }
                 if (friResult == "true")
                 {
                     sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "fri");
                     friResult   = "false";
+                    add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), "fri");
+
                 }
                 //adapter.notifyDataSetChanged();
                 show.dismiss();
@@ -662,4 +676,11 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
             }
         };
     }
+    public void add(String class_name, String building_name, String room_name, String start,String end,String day)
+    {
+        DatabaseHelper mDatabasehelper = new DatabaseHelper(getActivity().getApplicationContext()); // this part understand
+        long result = mDatabasehelper.addData_Class(class_name,building_name,room_name,start,end,day);
+
+    }
+
 }

@@ -75,47 +75,17 @@ public class fragment_friday extends Fragment{
         rv.addItemDecoration(new DividerItemDecoration(getActivity(),LinearLayoutManager.VERTICAL));
 
         retreive();
-        if (receivefriClass.getDay() == null)
-        {
-            //classData.add(new recycler_information("", "", "", "", 0));
-        }
-        else if (receivefriClass.getDay().toString() == "fri")
-        {
-
-            add();
-
-        }
-
 
 
         return v;
     }
 
 
-
-    public void add()
-    {
-        DatabaseHelper mDatabasehelper = new DatabaseHelper(getActivity().getApplicationContext()); // this part understand
-        String class_name = receivefriClass.getClassName();
-        String building_name = receivefriClass.getBuildingName();
-        String room_name = receivefriClass.getRoomName();
-        String start_time = receivefriClass.getStartTime();
-        String end_time = receivefriClass.getEndTime();
-        long result = mDatabasehelper.addData_Class(class_name,building_name,room_name,start_time,end_time,receivefriClass.getDay());
-        // close database
-        retreive();
-        adapter.notifyDataSetChanged();
-    }
     public void retreive()
     {
         classData.clear();
         DatabaseHelper mDatabasehelper = new DatabaseHelper(getActivity().getApplicationContext()); // this part understand
         Cursor c = mDatabasehelper.getAllClasses("fri");
-        if (c == null)
-        {
-            return;
-        }
-        else {
             while (c.moveToNext()) {
 
                 String class_name = c.getString(1);
@@ -129,7 +99,7 @@ public class fragment_friday extends Fragment{
             if (!(classData.size() < 1)) {
                 rv.setAdapter(adapter);
             }
-        }
+
     }
 
 

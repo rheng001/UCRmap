@@ -75,48 +75,18 @@ public class fragment_wednesday extends Fragment{
         retreive();
 
 
-        if (receivewedClass.getDay() == null)
-        {
-            //classData.add(new recycler_information("", "", "", "", 0));
-        }
-        else if (receivewedClass.getDay().toString() == "wed")
-        {
-
-            add();
-            //classData.add(new recycler_information(receivetuesClass.getClassName(), receivetuesClass.getBuildingName(), receivetuesClass.getStartTime(), receivetuesClass.getEndTime(), receivetuesClass.getIntLayout()));
-            //adapter.notifyDataSetChanged();
-
-
-        }
-
 
 
         return v;
     }
 
-    public void add()
-    {
-        DatabaseHelper mDatabasehelper = new DatabaseHelper(getActivity().getApplicationContext()); // this part understand
-        String class_name = receivewedClass.getClassName();
-        String building_name = receivewedClass.getBuildingName();
-        String room_name = receivewedClass.getRoomName();
-        String start_time = receivewedClass.getStartTime();
-        String end_time = receivewedClass.getEndTime();
-        long result = mDatabasehelper.addData_Class(class_name,building_name,room_name,start_time,end_time,receivewedClass.getDay());
-        // close database
-        retreive();
-        adapter.notifyDataSetChanged();
-    }
+
     public void retreive()
     {
         classData.clear();
         DatabaseHelper mDatabasehelper = new DatabaseHelper(getActivity().getApplicationContext()); // this part understand
         Cursor c = mDatabasehelper.getAllClasses("wed");
-        if (c == null)
-        {
-            return;
-        }
-        else {
+
             while (c.moveToNext()) {
 
                 String class_name = c.getString(1);
@@ -130,7 +100,7 @@ public class fragment_wednesday extends Fragment{
             if (!(classData.size() < 1)) {
                 rv.setAdapter(adapter);
             }
-        }
+
     }
 
     @Override
