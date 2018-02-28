@@ -62,8 +62,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements NewMapFragment.ReceiveData, fragment_ucrevent.ReceiveData, fragment_monday.ReceiveMonClass, fragment_tuesday.ReceiveTuesClass, fragment_wednesday.ReceiveWedClass, fragment_thursday.ReceiveThurClass, fragment_friday.ReceiveFriClass,
-        fragment_profile.SendCategory, NavigationFragment.SendNavigation, fragment_schedule.SendClass, VivzAdapter.OnRecyclerItemClickListener {
+public class MainActivity extends AppCompatActivity implements NewMapFragment.ReceiveData, fragment_ucrevent.ReceiveData,
+        fragment_profile.SendCategory, NavigationFragment.SendNavigation, VivzAdapter.OnRecyclerItemClickListener {
 
     double set_longitude;
     double set_latitude;
@@ -72,13 +72,6 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
     TextView set_start;
     TextView set_end;
 
-    String className;
-    String buildingName;
-    String roomName;
-    String startTime;
-    String endTime;
-    int classLayout;
-    String classDay;
 
     ArrayList<String> Dates;
     ArrayList<Pair<String,String>> Title;
@@ -136,19 +129,6 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ArrayList<String> test = new ArrayList<>();
-
-
-        Intent i = getIntent();
-        //test = (ArrayList<String>) getIntent().getSerializableExtra("list");
-        test = i.getStringArrayListExtra("my_array");
-
-        /*
-        for (int k = 0; k< 4; k++)
-        {
-            Toast.makeText(MainActivity.this, test.get(k).toString(), Toast.LENGTH_SHORT).show();
-
-        }*/
-
 
 
 
@@ -379,12 +359,6 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
         set_latitude = latitude;
         set_longitude = longitude;
 
-        //Toast.makeText(getApplicationContext(), String.valueOf(set_latitude), Toast.LENGTH_LONG).show();
-        //Toast.makeText(getApplicationContext(), String.valueOf(set_longitude), Toast.LENGTH_LONG).show();
-
-        //getLatitude(set_latitude);
-        //getLongitude(set_longitude);
-
         bottomBar.selectTabAtPosition(INDEX_NEWMAP);
         mNavController.switchTab(INDEX_NEWMAP);
 
@@ -498,53 +472,6 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
         }
     }
 
-    @Override
-    public void setClass(String classNameData, String buildingDescriptionData,String roomDescriptionData, String startTimeData, String endTimeData, int layoutType, String classDayData) {
-
-        className = classNameData;
-        buildingName = buildingDescriptionData;
-        roomName = roomDescriptionData;
-        startTime = startTimeData;
-        endTime = endTimeData;
-        classLayout = layoutType;
-        classDay = classDayData;
-
-    }
-
-    @Override
-    public String getClassName() {
-        return className;
-    }
-
-    @Override
-    public String getBuildingName() {
-        return buildingName;
-    }
-
-    @Override
-    public String getRoomName() {
-        return roomName;
-    }
-
-    @Override
-    public String getStartTime() {
-        return startTime;
-    }
-
-    @Override
-    public String getEndTime() {
-        return endTime;
-    }
-
-    @Override
-    public int getIntLayout() {
-        return classLayout;
-    }
-
-    @Override
-    public String getDay() {
-        return classDay;
-    }
 
     @Override
     public ArrayList<String> getDays() {

@@ -27,31 +27,6 @@ import java.util.List;
 
 public class fragment_schedule extends AppCompatDialogFragment implements View.OnClickListener {
 
-    SendClass sendData;
-
-    public interface SendClass {
-        void setClass(String classNameData, String buildingDescriptionData, String roomDescriptionData, String startTimeData, String endTimeData, int layoutType, String classDayData);
-
-
-
-    }
-
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        try {
-            // Instantiate the TimeListener so we can send events to the host
-            sendData = (SendClass) context;
-        } catch (ClassCastException e) {
-            // The activity doesn't implement the interface, throw exception
-            throw new ClassCastException(context.toString()
-                    + " must implement SendClass");
-        }
-    }
-
-
-
 
     public static fragment_schedule newInstance(int instance) {
         Bundle args = new Bundle();
@@ -549,7 +524,7 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
                 {
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         if (isChecked)
-                            thurResult = "thurs";
+                            thurResult = "thur";
                         else
                             thurResult = "";
                     }
@@ -634,42 +609,31 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
 
                 Toast.makeText(getActivity(), set_class.getText().toString() + " was successfully added to your schedule.", Toast.LENGTH_LONG).show();
 
-
-                if (monResult == "mon") {
-                    sendData.setClass(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "mon");
-                    monResult = "false";
-                    add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), "mon");
-
-
+                if (monResult == "mon")
+                {
+                    add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), monResult);
+                    monResult = "";
                 }
                 if (tuesResult == "tues")
                 {
-                    sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "tues");
-                    tuesResult = "false";
-                    add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), "tues");
-
+                    add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), tuesResult);
+                    tuesResult = "";
                 }
 
                 if (wedResult == "wed")
                 {
-                    sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "wed");
-                    wedResult = "false";
-                    add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), "wed");
-
+                    add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), wedResult);
+                    wedResult = "";
                 }
-                if (thurResult == "thurs")
+                if (thurResult == "thur")
                 {
-                    sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "thur");
-                    thurResult = "false";
-                    add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), "thur");
-
+                    add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), thurResult);
+                    thurResult = "";
                 }
                 if (friResult == "fri")
                 {
-
-                    sendData.setClass(set_class.getText().toString(), set_building.getText().toString(),set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), 1, "fri");
-                    friResult   = "false";
-                    add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), "fri");
+                    add(set_class.getText().toString(), set_building.getText().toString(), set_room.getText().toString(), set_start.getText().toString(), set_end.getText().toString(), friResult);
+                    friResult = "";
                 }
                 mViewPager.getAdapter().notifyDataSetChanged(); //CODE THAT UPDATES/REFRESHES WOOO
                 show.dismiss();

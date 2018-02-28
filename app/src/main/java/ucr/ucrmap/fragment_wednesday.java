@@ -31,33 +31,6 @@ public class fragment_wednesday extends Fragment{
         // Required empty public constructor
     }
 
-    ReceiveWedClass receivewedClass;
-
-
-    public interface ReceiveWedClass {
-        String getClassName();
-        String getBuildingName();
-        String getRoomName();
-        String getStartTime();
-        String getEndTime();
-        int getIntLayout();
-        String getDay();
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        try {
-            // Instantiate the TimeListener so we can send events to the host
-            receivewedClass = (ReceiveWedClass) context;
-        } catch (ClassCastException e) {
-            // The activity doesn't implement the interface, throw exception
-            throw new ClassCastException(context.toString()
-                    + " must implement ReceiveData");
-        }
-    }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
