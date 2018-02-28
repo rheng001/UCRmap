@@ -576,6 +576,9 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         mSelectedItem = which;
+                                        //System.out.println(which);
+                                        //mDatabasehelper.DeleteData_Class(mSelectedItem);
+
                                     }
                                 })
                         .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {

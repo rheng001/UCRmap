@@ -171,6 +171,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
         Log.d(TAG,"DELETE : " + title + " from database");
     }
+    public void DeleteData_Class(String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM " + Class_Table+ " WHERE " + "name" + " = '" + name + "'" ;
+        db.execSQL(query);
+        Log.d(TAG,"DELETE : " + name + " from database");
+    }
     public void updateName(String newName,int id, String oldName)
     {
         SQLiteDatabase db = this.getWritableDatabase();

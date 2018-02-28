@@ -36,7 +36,6 @@ public class VivzAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
     private static final int TYPE_EVENT = 3;
     private static final int TYPE_PLACES = 4;
 
-
     private LayoutInflater inflater;
     private final Context mcontext;
     private OnRecyclerItemClickListener recycleMe;
@@ -53,6 +52,7 @@ public class VivzAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
     ////////////done initalizing
 
     public VivzAdapter(Context context, List<recycler_information> data) {
+        DatabaseHelper mDatabasehelper = new DatabaseHelper(context); // this part understand
         inflater = LayoutInflater.from(context);
         this.recycleData = data;
         mcontext = context;
@@ -250,7 +250,8 @@ public class VivzAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
                     .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             toastMessage("Deleted : " + className.getText().toString());
-
+                            DatabaseHelper mDatabasehelper = new DatabaseHelper(mcontext); // this part understand
+                            mDatabasehelper.DeleteData_Class(className.getText().toString());
                             recycleData.remove(getAdapterPosition());
                             notifyItemRemoved(getAdapterPosition());
                             notifyItemRangeChanged(getAdapterPosition(),recycleData.size());
