@@ -45,6 +45,8 @@ dependencies {
     compile 'com.firebase:firebase-client-android:2.3.1'
 
 
+    compile 'com.nex3z:toggle-button-group:1.1.2'
+
 
 
 

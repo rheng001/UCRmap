@@ -22,8 +22,12 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.nex3z.togglebuttongroup.MultiSelectToggleGroup;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class fragment_schedule extends AppCompatDialogFragment implements View.OnClickListener {
 
@@ -53,18 +57,13 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
 
     private int mSelectedItem;
 
-    ToggleButton mon,
-                 tues,
-                 wed,
-                 thurs,
-                 fri;
+
+    MultiSelectToggleGroup multi;
 
     TextView set_start;
     TextView set_end;
     TextView set_building;
     TextView set_room;
-
-
     EditText set_class;
 
 
@@ -93,6 +92,8 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
         //mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
         setupViewPager(mViewPager);
         tabLayout.setupWithViewPager(mViewPager);
+
+
 
         return v;
     }
@@ -144,11 +145,8 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
                 set_room = (TextView) mView.findViewById(R.id.roomText);
                 set_class = (EditText) mView.findViewById(R.id.classText);
 
-                mon = (ToggleButton) mView.findViewById(R.id.mondayButton);
-                tues = (ToggleButton) mView.findViewById(R.id.tuesdayButton);
-                wed = (ToggleButton) mView.findViewById(R.id.wednesdayButton);
-                thurs = (ToggleButton) mView.findViewById(R.id.thursdayButton);
-                fri = (ToggleButton) mView.findViewById(R.id.fridayButton);
+                multi = (MultiSelectToggleGroup) mView.findViewById(R.id.group_weekdays);
+
 
                 //CHOOSE BUILDING
                 chooseBuilding.setOnClickListener(new View.OnClickListener() ////////ADD TIME BUTTON
@@ -492,53 +490,34 @@ public class fragment_schedule extends AppCompatDialogFragment implements View.O
 
 
 
-                ///toggle button
-                mon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-                {
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if(isChecked)
-                            monResult = "mon";
-                        else
-                            monResult = "";
-                    }
-                });
-                tues.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-                {
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                //TOGGLE BUTTONS
+                multi.setOnCheckedChangeListener(new MultiSelectToggleGroup.OnCheckedStateChangeListener() {
+                    @Override
+                    public void onCheckedStateChanged(MultiSelectToggleGroup group, int checkedId, boolean isChecked)
+                    {
+                        Set<Integer> checkedIds = multi.getCheckedIds();
+                        Set<Integer> positions = new HashSet<>(); // Holder for all checked positions
+                        for (int id : checkedIds) {
+                            View bview = multi.findViewById(id);
+                            int position = multi.indexOfChild(bview);
+                            positions.add(position);
+                        }
                         if (isChecked)
-                            tuesResult = "tues";
-                        else
-                            tuesResult = "";
+                        {
+                            if(positions.contains(0))
+                                monResult = "mon";
+                            if(positions.contains(1))
+                                tuesResult = "tues";
+                            if(positions.contains(2))
+                                wedResult = "wed";
+                            if(positions.contains(3))
+                                thurResult = "thur";
+                            if(positions.contains(4))
+                                friResult = "fri";
+                        }
+                        //Toast.makeText(getActivity(), positions.toString(), Toast.LENGTH_SHORT).show(); //Need to change this to class databasse -this is filler
                     }
                 });
-                wed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-                {
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if (isChecked)
-                            wedResult = "wed";
-                        else
-                            wedResult = "";
-                    }
-                });
-                thurs.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-                {
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if (isChecked)
-                            thurResult = "thur";
-                        else
-                            thurResult = "";
-                    }
-                });
-                fri.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-                {
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if (isChecked)
-                            friResult = "fri";
-                        else
-                            friResult = "";
-                    }
-                });
-                /////////end of toggle button
 
                 builder.create();
                 break;

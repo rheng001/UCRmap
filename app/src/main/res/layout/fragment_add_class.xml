@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -9,15 +10,14 @@
         android:id="@+id/classText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="18dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="33dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:inputType="textPersonName" />
 
 
     <Button
@@ -102,86 +102,79 @@
         android:layout_alignTop="@+id/endText"
         android:text="HH:MM" />
 
-    <ToggleButton
-        android:id="@+id/mondayButton"
-        android:layout_width="55dp"
+
+    <com.nex3z.togglebuttongroup.MultiSelectToggleGroup
+        android:id="@+id/group_weekdays"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/classText"
-        android:layout_alignStart="@+id/classText"
-        android:textOff="M"
-        android:textOn="M"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/classText"
-        style="@style/YellowLight"
-        android:layout_marginTop="12dp"
-        android:text="MON" />
+        android:layout_marginTop="23dp"
+        android:padding="8dp"
+        app:tbgChildSpacing="auto">
 
-    <ToggleButton
-        android:id="@+id/tuesdayButton"
-        android:layout_width="55dp"
-        android:layout_height="wrap_content"
-        android:textOff="T"
-        android:textOn="T"
-        android:text="Tuesday"
-        android:layout_alignBaseline="@+id/mondayButton"
-        android:layout_alignBottom="@+id/mondayButton"
-        android:layout_toRightOf="@+id/mondayButton"
-        android:layout_toEndOf="@+id/mondayButton" />
 
-    <ToggleButton
-        android:id="@+id/wednesdayButton"
-        android:layout_width="55dp"
-        android:layout_height="wrap_content"
-        android:textOff="W"
-        android:textOn="W"
-        android:text="Wednesday"
-        android:layout_alignBaseline="@+id/tuesdayButton"
-        android:layout_alignBottom="@+id/tuesdayButton"
-        android:layout_toRightOf="@+id/tuesdayButton"
-        android:layout_toEndOf="@+id/tuesdayButton" />
+        <com.nex3z.togglebuttongroup.button.CircularToggle
+            android:id="@+id/mondayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M"
+            android:textSize="16sp" />
 
-    <ToggleButton
-        android:id="@+id/thursdayButton"
-        android:layout_width="55dp"
-        android:layout_height="wrap_content"
-        android:textOff="R"
-        android:textOn="R"
-        android:text="Thursday"
-        android:layout_alignBaseline="@+id/wednesdayButton"
-        android:layout_alignBottom="@+id/wednesdayButton"
-        android:layout_toRightOf="@+id/wednesdayButton"
-        android:layout_toEndOf="@+id/wednesdayButton" />
+        <com.nex3z.togglebuttongroup.button.CircularToggle
+            android:id="@+id/tuesdayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="T"
+            android:textSize="16sp" />
 
-    <ToggleButton
-        android:id="@+id/fridayButton"
-        android:layout_width="55dp"
-        android:layout_height="wrap_content"
-        android:text="Friday"
-        android:layout_alignBaseline="@+id/thursdayButton"
-        android:layout_alignBottom="@+id/thursdayButton"
-        android:textOff="F"
-        android:textOn="F"
-        android:layout_toRightOf="@+id/thursdayButton"
-        android:layout_toEndOf="@+id/thursdayButton" />
+        <com.nex3z.togglebuttongroup.button.CircularToggle
+            android:id="@+id/wednesdayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="W"
+            android:textSize="16sp" />
+
+        <com.nex3z.togglebuttongroup.button.CircularToggle
+            android:id="@+id/thursdayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="T"
+            android:textSize="16sp" />
+
+        <com.nex3z.togglebuttongroup.button.CircularToggle
+            android:id="@+id/fridayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="F"
+            android:textSize="16sp" />
+
+
+    </com.nex3z.togglebuttongroup.MultiSelectToggleGroup>
+
 
     <Button
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/classText"
+        android:layout_alignRight="@+id/classText"
         android:layout_below="@+id/timeButton2"
-        android:layout_marginTop="44dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginRight="34dp"
+        android:layout_marginTop="45dp"
         android:text="Save" />
 
     <TextView
         android:id="@+id/buildingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No building selected"
         android:layout_alignBaseline="@+id/buildingButton"
         android:layout_alignBottom="@+id/buildingButton"
-        android:layout_alignRight="@+id/fridayButton"
-        android:layout_alignEnd="@+id/fridayButton" />
+        android:layout_alignLeft="@+id/roomText"
+        android:layout_alignStart="@+id/roomText"
+        android:text="No building selected" />
 
     <TextView
         android:id="@+id/roomText"
