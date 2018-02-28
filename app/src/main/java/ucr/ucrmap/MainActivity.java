@@ -52,6 +52,9 @@ import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
 import com.roughike.bottombar.TabSelectionInterceptor;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -62,6 +65,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.surveymonkey.surveymonkeyandroidsdk.SurveyMonkey;
+import com.surveymonkey.surveymonkeyandroidsdk.utils.SMError;
+
+import static com.surveymonkey.surveymonkeyandroidsdk.SMFeedbackActivity.SM_RESPONDENT;
+import static com.surveymonkey.surveymonkeyandroidsdk.model.SMAnswerResponse.ROW_ID;
+import static com.surveymonkey.surveymonkeyandroidsdk.model.SMQuestionResponse.ANSWERS;
+import static com.surveymonkey.surveymonkeyandroidsdk.model.SMQuestionResponse.QUESTION_ID;
+
 public class MainActivity extends AppCompatActivity implements NewMapFragment.ReceiveData, fragment_ucrevent.ReceiveData,
         fragment_profile.SendCategory, NavigationFragment.SendNavigation, VivzAdapter.OnRecyclerItemClickListener {
 
@@ -71,6 +82,8 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
 
     TextView set_start;
     TextView set_end;
+
+    private SurveyMonkey sdkInstance = new SurveyMonkey();
 
 
     ArrayList<String> Dates;
@@ -105,6 +118,8 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sdkInstance.onStart(this, "UCRmap", 0, "HWV5X2W");
 
         Dates = new ArrayList<>();
         Title = new ArrayList<Pair<String, String>>();
@@ -248,7 +263,7 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
                         new PrimaryDrawerItem().withName("Visit our website").withIcon(R.drawable.ic_link_variant_black_24dp).withIdentifier(2),
                         new PrimaryDrawerItem().withName("Rate This App").withIcon(R.drawable.ic_stars_black_24dp).withIdentifier(3),
                         new PrimaryDrawerItem().withName("Contact Us").withIcon(R.drawable.ic_email_black_24dp).withIdentifier(4),
-                        new PrimaryDrawerItem().withName("Advertise with us").withIcon(R.drawable.ic_domain_black_24dp).withIdentifier(5),
+                        new PrimaryDrawerItem().withName("Take a survey").withIcon(R.drawable.ic_domain_black_24dp).withIdentifier(5),
                         new PrimaryDrawerItem().withName("FAQ").withIcon(R.drawable.ic_help_circle_black_24dp).withIdentifier(6),
 
                         new SectionDrawerItem().withName("Privacy & Legal"),
@@ -281,8 +296,9 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
                                 startActivity(emailIntent); // <-- AND HERE
 
                                 //mNavController.switchTab(INDEX_EVENTS);
-                            } else if (drawerItem.getIdentifier() == 5) {
-                                //mNavController.switchTab(INDEX_UCREVENT);
+                            } else if (drawerItem.getIdentifier() == 5)
+                            {
+                                sdkInstance.startSMFeedbackActivityForResult(MainActivity.this, 0,"HWV5X2W"); //Request
 
                             }
                         }
@@ -317,6 +333,45 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
                 .check();
         //end Permission
 
+
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        //This is where you consume the respondent data returned by the SurveyMonkey Mobile Feedback SDK
+        //In this example, we deserialize the user's response, check to see if they gave our app 4 or 5 stars, and then provide visual prompts to the user based on their response
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (resultCode == RESULT_OK) {
+            boolean isPromoter = false;
+            try {
+                String respondent = intent.getStringExtra(SM_RESPONDENT);
+                Log.d("SM", respondent);
+                JSONObject surveyResponse = new JSONObject(respondent);
+                JSONArray responsesList = surveyResponse.getJSONArray("responses");
+                JSONObject response;
+                JSONArray answers;
+                JSONObject currentAnswer;
+                for (int i = 0; i < responsesList.length(); i++) {
+                    response = responsesList.getJSONObject(i);
+                    if (response.getString(QUESTION_ID).equals("One")) {
+                        answers = response.getJSONArray(ANSWERS);
+                        for (int j = 0; j < answers.length(); j++) {
+                            currentAnswer = answers.getJSONObject(j);
+                            if (currentAnswer.getString(ROW_ID).equals("Two") || currentAnswer.getString(ROW_ID).equals("9082377274")) {
+                                isPromoter = true;
+                                break;
+                            }
+                        }
+                        if (isPromoter) {
+                            break;
+                        }
+                    }
+                }
+            } catch (JSONException e) {
+                Log.getStackTraceString(e);
+            }
+        }
     }
 
     @Override

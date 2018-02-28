@@ -46,6 +46,7 @@ dependencies {
 
 
     compile 'com.nex3z:toggle-button-group:1.1.2'
+    compile 'com.surveymonkey:surveymonkey-android-sdk:1.0.6'
 
 
 
