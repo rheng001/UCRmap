@@ -71,7 +71,9 @@ public class Login_Firebase extends AppCompatActivity {
 
         String pass = Password.getText().toString().trim();
         String email = Email.getText().toString();
-        if(email.isEmpty())
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        /*if(email.isEmpty())
         {
             Email.setError("Email is required");
             Email.requestFocus();
@@ -92,6 +94,7 @@ public class Login_Firebase extends AppCompatActivity {
         }
         else
         {
+
             progressBar.setVisibility(View.VISIBLE);
             auth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -121,7 +124,7 @@ public class Login_Firebase extends AppCompatActivity {
                     }
                 }
             });
-        }
+        }*/
     }
 
 

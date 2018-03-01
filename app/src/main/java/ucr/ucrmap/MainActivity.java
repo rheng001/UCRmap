@@ -73,10 +73,12 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
     TextView set_end;
 
 
-    ArrayList<String> Dates;
+    ArrayList<Pair<String,String>> Date;
+    ArrayList<Pair<String,String>> Room;
     ArrayList<Pair<String,String>> Title;
     ArrayList<Pair<String,String>> Building;
-    ArrayList<Pair<String,String>> Room;
+    ArrayList<Pair<String,String>> Time;
+    ArrayList<Pair<String,String>> Link;
 
 
     DatabaseHelper mDataBaseHelper;
@@ -106,15 +108,18 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Dates = new ArrayList<>();
+
+        Date = new ArrayList<Pair<String, String>>();
         Title = new ArrayList<Pair<String, String>>();
         Building = new ArrayList<Pair<String, String>>();
+        Time = new ArrayList<Pair<String, String>>();
+        Link = new ArrayList<Pair<String, String>>();
+
         Room = new ArrayList<Pair<String, String>>();
 
         mDataBaseHelper = new DatabaseHelper(this);
 
-        //web_Crawl_Events crawl= new web_Crawl_Events();
-       // new doit().execute(); uncomment for web crawler
+        new doit().execute(); //uncomment for web crawler
 
 
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
@@ -474,9 +479,9 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
 
 
     @Override
-    public ArrayList<String> getDays() {
+    public ArrayList<Pair<String,String>> getDays() {
 
-        return Dates;
+        return Date;
     }
 
     @Override
@@ -492,9 +497,14 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
     }
 
     @Override
-    public ArrayList<Pair<String,String>> getRoom() {
+    public ArrayList<Pair<String,String>> getLink() {
 
-        return Room;
+        return Link;
+    }
+    @Override
+    public ArrayList<Pair<String,String>> getTime() {
+
+        return Time;
     }
 
     public class doit extends AsyncTask<Void,ArrayList<String>,ArrayList<String>> { //Returning string
@@ -502,10 +512,13 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
         String title, date;
         Document document,document1;
         int count;
-        ArrayList<String> Date = new ArrayList<String>();
-        //ArrayList<String> Title = new ArrayList<String>();
-        //ArrayList<String> Building = new ArrayList<String>();
-        //ArrayList<String> Room = new ArrayList<String>();
+        //ArrayList<Pair<String,String>> Date;
+        //ArrayList<Pair<String,String>> Title;
+        //ArrayList<Pair<String,String>> Building;
+        //ArrayList<Pair<String,String>> Time;
+        //ArrayList<Pair<String,String>> Link;
+
+
         Elements dates_content, eventlist,testlinks,testloc1;
         Element testtable,testloc;
         int counter= 0;
@@ -516,7 +529,7 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
         protected ArrayList<String> doInBackground(Void... arg0) { //Want string returned
 
             try {
-                document = Jsoup.connect("https://events.ucr.edu/calendar/week").get();
+                document = Jsoup.connect("https://events.ucr.edu/calendar/week").timeout(0).get();
                 title = document.title();
                 dates_content = document.getElementsByClass("box_title_small date_divider");
                 eventlist = document.getElementsByClass("item event_item vevent");
@@ -525,13 +538,18 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
                 for(Element link: dates_content.select("h2")) // gets the date from <h2>
                 {
                     // get dates
-                    Log.i("date:",link.ownText());
                     String day_number = link.ownText();
                     day_number = day_number.substring(day_number.length()-2);
-                    Date.add(link.ownText());
-                    System.out.println(link.ownText());
-                   // Log.i("day:",day_number);
+                    day_number = day_number.replace(" ", "");
+                    if(day_number.length() == 1)
+                    {
+                        day_number = "0" + day_number;
+                    }
+                    day_number = day_number.trim();
+                    Date.add(new Pair<String,String>(link.ownText(),day_number));
+                    Log.i("date:",Date.get(0).toString());
 
+                    //System.out.println(link.ownText());
                     eventlist = document.getElementsByClass("item event_item vevent");
                     for(Element link2:eventlist)
                     {
@@ -539,50 +557,24 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
                         int cut = match_date.indexOf('T');
                         match_date = match_date.substring(13,cut); // start of date from <abbr text >
                         match_date = match_date.substring(match_date.length()-2);
-                       // Log.i("mmmm",match_date);
-                       // Log.i("test2",link2.id());
-
-
-
+                        match_date = match_date.trim();
                         if(day_number.equals(match_date))
                         {
                             Element link4 = document.getElementById(link2.id().toString());
-                            Log.i("test5",link4.select("div.heading").text());
-                            System.out.println("Title: " +link4.select("div.heading").text()); // title
-                            System.out.println("Location: "+link4.select("div.location").text()); // location
-                            System.out.println("Time: "+link4.select("abbr").text()); // time and day
-                            System.out.println("Link: "+link4.select("a").first().attr("abs:href").toString()); // link to event
+                            //Log.i("Day workkss: ",match_date);
+                            //Log.i("Day workkss: ",link4.select("div.heading").text());
+                            //Log.i("test5",link4.select("div.heading").text());
+                            Title.add(new Pair<String,String>(link4.select("div.heading").text(),match_date)); // title
+                            Building.add(new Pair<String,String>(link4.select("div.location").text(),match_date)); // building/location and room
+                            Time.add(new Pair<String,String>(link4.select("abbr").text(),match_date)); // time
+                            Link.add(new Pair<String,String>(link4.select("a").first().attr("abs:href").toString(),match_date)); // link to event
+
+
                         }
                     }
 
 
                 }
-
-                // get the description of the events
-                for(Element link1:eventlist.select("h4.description"))
-                {
-                   // Log.i("test",link1.ownText());
-                }
-               // testtable = document.getElementById("event_instance_3296816");
-               // String  x = testtable.select("h4.description").text();
-
-               // Log.i("yes",x);
-
-
-                for(Element link2:eventlist.select("div.heading"))
-                {
-                    //Log.i("test2",link2.ownText());
-                }
-             /*   eventlist = document.getElementsByClass("item event_item vevent");
-                for(Element link2:eventlist)
-                {
-                    String match_date = link2.select("abbr").toString(); // get the date for the event
-                    int cut = match_date.indexOf('T');
-                    match_date = match_date.substring(13,cut); // start of date from <abbr text >
-                    match_date = match_date.substring(match_date.length()-2);
-                    Log.i("mmmm",match_date);
-                    Log.i("test2",link2.id());
-                }*/
 
             } catch (IOException e) {
                 Log.i("NOOO: ","gg");
@@ -594,9 +586,15 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
 
         protected void onPostExecute(ArrayList<String> str) {
             super.onPostExecute(str);
-            for (int i = 0; i < Room.size(); i++) {
-                System.out.println(Building.get(i));
-                System.out.println(Room.get(i));
+            for(int i =0; i<Date.size(); i ++)
+            {
+                System.out.println("Day: " + Date.get(i));
+            }
+            for (int i = 0; i < Title.size(); i++) {
+                System.out.println("Title: " +Title.get(i));
+                System.out.println("Building: "+Building.get(i));
+                System.out.println("Time: " +Time.get(i));
+                System.out.println("Link: " + Link.get(i));
             }
 
         }

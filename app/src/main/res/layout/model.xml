@@ -12,7 +12,7 @@
     card_view:cardCornerRadius="15dp"
     card_view:cardElevation="10dp"
     card_view:cardBackgroundColor="#F1AB00"
-    android:layout_height="150dp">
+    android:layout_height="170dp">
 
     <LinearLayout
 	     android:orientation="vertical"
@@ -57,6 +57,23 @@
                 android:id="@+id/timeTxt"
                 android:textSize="15dp"
                 android:padding="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Link"
+                android:id="@+id/linkTxt"
+                android:textSize="15dp"
+                android:padding="10dp"/>
+
         </LinearLayout>
 
     </LinearLayout>

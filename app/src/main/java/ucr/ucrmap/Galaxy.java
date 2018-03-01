@@ -9,7 +9,7 @@ package ucr.ucrmap;
 
 public class Galaxy {
 
-    private String name, description, time;
+    private String name, description, time, link;
     private Category category;
 
     public Galaxy()
@@ -17,10 +17,11 @@ public class Galaxy {
 
     }
 
-    public Galaxy(String name, String description, String time, Category category) {
+    public Galaxy(String name, String description, String time, String link, Category category) {
         this.name = name;
         this.description = description;
         this.time = time;
+        this.link = link;
         this.category = category;
     }
 
@@ -35,6 +36,9 @@ public class Galaxy {
     public String getTime() {
         return time;
     }
+
+    public String getLink() { return link; }
+
 
 
     public int getCategoryId() {

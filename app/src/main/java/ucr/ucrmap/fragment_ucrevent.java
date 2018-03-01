@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +37,6 @@ public class fragment_ucrevent extends Fragment {
     NavigationFragment.SendNavigation sendData;
 
 
-
     public fragment_ucrevent() {
         // Required empty public constructor
     }
@@ -50,10 +50,15 @@ public class fragment_ucrevent extends Fragment {
     }
 
     public interface ReceiveData {
-        ArrayList<String> getDays();
-        ArrayList<Pair<String,String>> getEventTitle();
-        ArrayList<Pair<String,String>> getBuilding();
-        ArrayList<Pair<String,String>> getRoom();
+        ArrayList<Pair<String, String>> getDays();
+
+        ArrayList<Pair<String, String>> getEventTitle();
+
+        ArrayList<Pair<String, String>> getBuilding();
+
+        ArrayList<Pair<String, String>> getTime();
+
+        ArrayList<Pair<String, String>> getLink();
 
     }
 
@@ -72,15 +77,13 @@ public class fragment_ucrevent extends Fragment {
     }
 
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_ucrevent, container, false);
 
-        simpleRecyclerView=v.findViewById(R.id.recyclerView);
+        simpleRecyclerView = v.findViewById(R.id.recyclerView);
 
 
         /*
@@ -98,8 +101,7 @@ public class fragment_ucrevent extends Fragment {
         addRecyclerHeaders();
         bindData();
 
-
-
+        //Log.i("Testing", receiveData.getDays().get(2).first);
 
         return v;
     }
@@ -107,14 +109,13 @@ public class fragment_ucrevent extends Fragment {
     /*
     - Create RecyclerViewHeaders
      */
-    private void addRecyclerHeaders()
-    {
-        SectionHeaderProvider<Galaxy> sh=new SimpleSectionHeaderProvider<Galaxy>() {
+    private void addRecyclerHeaders() {
+        SectionHeaderProvider<Galaxy> sh = new SimpleSectionHeaderProvider<Galaxy>() {
             @NonNull
             @Override
             public View getSectionHeaderView(@NonNull Galaxy Galaxy, int i) {
                 View view = LayoutInflater.from(getActivity()).inflate(R.layout.header, null, false);
-                TextView textView =  view.findViewById(R.id.headerTxt);
+                TextView textView = view.findViewById(R.id.headerTxt);
                 textView.setText(Galaxy.getCategoryName());
                 return view;
             }
@@ -123,6 +124,7 @@ public class fragment_ucrevent extends Fragment {
             public boolean isSameSection(@NonNull Galaxy Galaxy, @NonNull Galaxy nextGalaxy) {
                 return Galaxy.getCategoryId() == nextGalaxy.getCategoryId();
             }
+
             // Optional, whether the header is sticky, default false
             @Override
             public boolean isSticky() {
@@ -135,11 +137,10 @@ public class fragment_ucrevent extends Fragment {
     /*
     - Bind data to our RecyclerView
      */
-    private void bindData()
-    {
+    private void bindData() {
         List<Galaxy> Galaxys = getData();
         //CUSTOM SORT ACCORDING TO CATEGORIES
-        Collections.sort(Galaxys, new Comparator<Galaxy>(){
+        Collections.sort(Galaxys, new Comparator<Galaxy>() {
             public int compare(Galaxy Galaxy, Galaxy nextGalaxy) {
                 return Galaxy.getCategoryId() - nextGalaxy.getCategoryId();
             }
@@ -158,16 +159,16 @@ public class fragment_ucrevent extends Fragment {
                     //Toast.makeText(getActivity(), item.getDescription().toString(), Toast.LENGTH_SHORT).show(); //Description = buildng name
                     //Toast.makeText(getActivity(), item.getTime().toString(), Toast.LENGTH_SHORT).show(); //Time = room number
 
-                    if (item.getDescription().toString().equals("BELL TOWER"))
-                    {
+                    if (item.getDescription().toString().equals("Bell Tower")) {
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                         builder.setTitle("Navigate to Event");
-                        builder.setMessage("Navigate to " +item.getDescription().toString() + "?");
+                        builder.setMessage("Navigate to " + item.getDescription().toString() + "?");
                         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int id) {
-                            sendData.setNavigation(33.973413, -117.328156); }
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                sendData.setNavigation(33.973413, -117.328156);
+                            }
                         });
                         builder.create();
                         builder.show();
@@ -187,7 +188,6 @@ public class fragment_ucrevent extends Fragment {
             });
 
 
-
             cells.add(cell);
         }
         simpleRecyclerView.addCells(cells);
@@ -197,31 +197,34 @@ public class fragment_ucrevent extends Fragment {
     - Data Source
     - Returns an arraylist of galaxies.
      */
-    private ArrayList<Galaxy> getData()
-    {
-        ArrayList<Galaxy> galaxies=new ArrayList<>();
+    private ArrayList<Galaxy> getData() {
+        ArrayList<Galaxy> galaxies = new ArrayList<>();
 
-        /*for (int i = 0; i < receiveData.getEventTitle().size(); i++)
+       /* for (int i = 0; i < receiveData.getEventTitle().size(); i++)
         {
             //Category cat = new Category(i, days.get(i));
-            Toast.makeText(getActivity(), receiveData.getEventTitle().toString(),Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getActivity(), receiveData.getEventTitle().toString(),Toast.LENGTH_SHORT).show();
+        }*/
 
-        }
-        */
+
 
         int counter = 0;
-        for (int i = 0; i <= receiveData.getDays().size()-1; i++) {
+        for (int i = 0; i <= receiveData.getDays().size() - 1; i++) {
 
 
-            Category cat = new Category(i, receiveData.getDays().get(i));
+            Category cat = new Category(i, receiveData.getDays().get(i).first);
+            Log.i("Testing1", receiveData.getDays().get(i).first);
             //Toast.makeText(getActivity(), receiveData.getEventTitle().get(counter).second.toString(), Toast.LENGTH_SHORT).show();
+            Log.i("Testing2", receiveData.getDays().get(i).second);
+            Log.i("Testing3", receiveData.getEventTitle().get(counter).second);
 
             try {
-            while (receiveData.getEventTitle().get(counter).second == receiveData.getDays().get(i))
+            while (receiveData.getEventTitle().get(counter).second.equals(receiveData.getDays().get(i).second))
             {
-
-                Galaxy g1 = new Galaxy(receiveData.getEventTitle().get(counter).first, receiveData.getBuilding().get(counter).first,
-                        receiveData.getRoom().get(counter).first, cat);
+                Log.i("Testing2", receiveData.getDays().get(i).second);
+                Log.i("Testing3", receiveData.getEventTitle().get(counter).second);
+                Galaxy g1 = new Galaxy(receiveData.getEventTitle().get(counter).first.toString(), receiveData.getBuilding().get(counter).first.toString(),
+                        receiveData.getTime().get(counter).first.toString(), receiveData.getLink().get(counter).first.toString(),cat);
 
                 galaxies.add(g1);
                 counter = counter + 1;
@@ -231,15 +234,12 @@ public class fragment_ucrevent extends Fragment {
                 ex.printStackTrace();
             }
         }
+            return galaxies;
+        }
 
+        //Solutions
 
-        return galaxies;
-    }
-
-    //Solutions
-
-    //https://github.com/codepath/android_guides/wiki/Implementing-Pull-to-Refresh-Guide#step-2-setup-swiperefreshlayout
-
+        //https://github.com/codepath/android_guides/wiki/Implementing-Pull-to-Refresh-Guide#step-2-setup-swiperefreshlayout
 
 
 }
