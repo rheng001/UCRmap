@@ -1,34 +1,30 @@
 
----------
-UCRmap Navigation App
-------------
+----
+School Campus App
+----
 
 ------
-UCRmap
+Rmate
 --------
 
-![UCRmap](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/511/154/datas/gallery.jpg)
+![Rmate](https://i.imgur.com/jMnuRcE.png)
 
-
----------
-UCR Cutie Hack 2017
----------------
-
-![CutieHack](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_thumbnails/000/502/637/datas/medium.png)
-
-Best Entrepreneurial Hack ![Winner](http://i.imgur.com/jWvSBeW.png)
 
 ----------
-High Level Description
+Description
 -----
 
-UCRmap is an classroom navigation app created on android OS.
+Rmate is an all purpose student campus app. It is design to help students navigate through school and provide students with tools to succeed.
 
-This app is meant for all incoming UCR freshmen, tranfser students, and UCR vistors when they first arrive.
+-----
+Features
+--------
 
-UCRmap is able to navigate students and visitors to classroom buildings and popular UCR locations on campus.
-
-This app was built in Android studio.
+* Campus Navigation
+* Classroom Schedule
+* School Events
+* Points of Interest
+* Quick iLearn Access
 
 ------
 Future Additions

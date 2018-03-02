@@ -8,75 +8,121 @@
     tools:context="ucr.ucrmap.Login_Firebase">
 
 
+    <ImageView
+        android:id="@+id/screen_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:fillViewport="true"
+        app:srcCompat="@drawable/group2" />
 
-    <EditText
-        android:id="@+id/Edit_Email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:ems="13"
-        android:hint="Email"
-        android:textStyle="bold"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/Edit_Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Edit_Email"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="11dp"
-        android:ems="13"
-        android:hint="Password"
-        android:textStyle="bold"
-        android:inputType="textPassword" />
-
-    <Button
-        android:id="@+id/Button_Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Edit_Password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorPrimaryDark"
-        android:text="LOG IN"
-        android:textColor="@color/colorLight" />
-
-    <Button
-        android:id="@+id/Button_Register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/Button_Login"
-        android:layout_alignStart="@+id/Button_Login"
-        android:layout_below="@+id/Button_Login"
-        android:layout_marginTop="18dp"
-        android:background="@color/colorPrimaryDark"
-        android:text="REGISTER"
-        android:textColor="@color/colorLight" />
-
-
-    <TextView
-        android:id="@+id/textView"
+    <ImageView
+        android:id="@+id/screen_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="188dp"
-        android:gravity="center_horizontal"
-        android:padding="10dp"
-        android:text="UCRMAPS"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="26sp"
-        android:textStyle="bold" />
+        android:layout_marginTop="14dp"
+        android:adjustViewBounds="true"
+        android:fillViewport="true"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/campus_logo" />
 
-    <ProgressBar
-        android:id="@+id/progressbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/Button_Login"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="25dp"
-        android:visibility="gone"/>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="190dp">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/login_email"
+            android:theme="@style/WhiteTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/Edit_Email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                app:backgroundTint="@color/white"
+                android:hint="UCR NetID"
+                android:textColor="@color/white"
+                app:hintTextAppearance="@style/WhiteTextInputLayout"
+
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/login_password"
+            android:theme="@style/WhiteTextInputLayout"
+            app:passwordToggleTint="@color/white"
+            app:passwordToggleEnabled="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/Edit_Password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@color/white"
+                android:textColor="@color/white"
+                android:hint="Password"
+                android:inputType="textPassword"
+                app:hintTextAppearance="@style/WhiteTextInputLayout"
+
+                />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/forgot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:textSize="15dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:text="FORGOT PASSWORD >" />
+
+
+        <Button
+            android:id="@+id/Button_Login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="LOG IN"
+            android:textSize="20dp"
+            android:background="@drawable/corner"
+            android:layout_marginTop="25dp"
+            android:textColor="@android:color/black"/>
+
+        <Button
+            android:id="@+id/Button_Register"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="REGISTER"
+            android:textSize="20dp"
+            android:background="@drawable/corner"
+            android:layout_marginTop="20dp"
+            android:textColor="@android:color/black"/>
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/Button_Login"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="25dp"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+
 </RelativeLayout>

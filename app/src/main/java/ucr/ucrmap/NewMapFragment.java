@@ -801,8 +801,6 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
 
                 // Add the location's marker to the map (RESPONSIBLE FOR ADDING MARKER TO MAP
 
-                Toast.makeText(getActivity(), singleLocationName7.toString(), Toast.LENGTH_LONG).show();
-
                 //OLD WAY TO add marker
                 //mapboxMap.addMarker(new MarkerOptions()
                         //.position(singleLocationLatLng7)

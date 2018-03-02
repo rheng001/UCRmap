@@ -49,7 +49,7 @@
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_alignParentTop="false"
-                android:background="@drawable/border"
+                android:background="@color/colorAccent"
                 android:layout_weight="0.5"
                 android:text="ADD"
                 />
@@ -58,7 +58,7 @@
                 android:id="@+id/deleteButton"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
-                android:background="@drawable/border"
+                android:background="@color/colorAccent"
                 android:layout_weight="0.5"
                 android:text="DELETE" />
         </LinearLayout>

@@ -97,4 +97,14 @@
         <item name="fab_colorRipple">@color/colorTransparent</item>
     </style>
 
+    <style name="WhiteTextInputLayout" parent="TextAppearance.AppCompat">
+        <item name="android:textColorHint">@color/white</item>
+        <!--The size of the text appear on label in false state -->
+        <item name="android:textSize">20sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/white</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+    </style>
+
 </resources>
