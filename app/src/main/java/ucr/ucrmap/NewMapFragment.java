@@ -437,7 +437,7 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
         Icon bus = IconFactory.getInstance(getActivity()).fromResource(R.drawable.bus);
         Icon library = IconFactory.getInstance(getActivity()).fromResource(R.drawable.library);
         Icon bike = IconFactory.getInstance(getActivity()).fromResource(R.drawable.bike);
-        Icon building = IconFactory.getInstance(getActivity()).fromResource(R.drawable.white_unselected_house);
+        Icon building = IconFactory.getInstance(getActivity()).fromResource(R.drawable.ic_moo);
 
         Icon panda = IconFactory.getInstance(getActivity()).fromResource(R.mipmap.ic_panda);
 
