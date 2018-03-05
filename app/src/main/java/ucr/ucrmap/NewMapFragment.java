@@ -345,6 +345,8 @@ public class NewMapFragment extends Fragment implements OnMapReadyCallback, Loca
                     Toast.makeText(getActivity(),"Error getting route", Toast.LENGTH_LONG).show();
 
                 }
+                //Closes the button after click
+                mapMenu.toggle(true);
 
 
             }
