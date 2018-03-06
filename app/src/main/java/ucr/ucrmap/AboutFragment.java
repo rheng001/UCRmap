@@ -21,7 +21,7 @@ import mehdi.sakout.aboutpage.Element;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple {@link Fragment} ssubclass.
  */
 public class AboutFragment extends Fragment {
 
