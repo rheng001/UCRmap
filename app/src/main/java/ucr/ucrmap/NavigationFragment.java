@@ -252,11 +252,14 @@ public class NavigationFragment extends Fragment {
             }
         }));
 
+        //Miscoordinate, UV Theatre, Physics 2000
 
+        //ONLY BUILDINGS FOR NOW
         StartNavButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                /*BACKUP
                 if (spinnerBuilding.getText().toString().equals("BRNHL") && spinnerRoom.getText().toString().equals("A125")){
                     Cursor c = mDatabasehelper.getLatLong("BRNHL");
 
@@ -267,8 +270,9 @@ public class NavigationFragment extends Fragment {
                     }
                     sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
 
-                }
-                else if (spinnerBuilding.getText().toString().equals("BRNHL") && spinnerRoom.getText().toString().equals("B118")){
+                }*/
+
+                if (spinnerBuilding.getText().toString().equals("BRNHL")){
                     Cursor c = mDatabasehelper.getLatLong("BRNHL");
 
                     while(c.moveToNext())
@@ -279,7 +283,7 @@ public class NavigationFragment extends Fragment {
                     sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
 
                 }
-                else if (spinnerBuilding.getText().toString().equals("BOYHL") && spinnerRoom.getText().toString().equals("1471")){
+                else if (spinnerBuilding.getText().toString().equals("BOYHL")){
                     Cursor c = mDatabasehelper.getLatLong("BOYHL");
 
                     while(c.moveToNext())
@@ -290,7 +294,7 @@ public class NavigationFragment extends Fragment {
                     sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
 
                 }
-                else if (spinnerBuilding.getText().toString().equals("INTN") && spinnerRoom.getText().toString().equals("1002")){
+                else if (spinnerBuilding.getText().toString().equals("INTN")){
                     Cursor c = mDatabasehelper.getLatLong("INTN");
 
                     while(c.moveToNext())
@@ -301,8 +305,8 @@ public class NavigationFragment extends Fragment {
                     sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
 
                 }
-                else if (spinnerBuilding.getText().toString().equals("INTN") && spinnerRoom.getText().toString().equals("1006")){
-                    Cursor c = mDatabasehelper.getLatLong("INTN");
+                else if (spinnerBuilding.getText().toString().equals("INTS")){
+                    Cursor c = mDatabasehelper.getLatLong("INTS");
 
                     while(c.moveToNext())
                     {
@@ -312,118 +316,7 @@ public class NavigationFragment extends Fragment {
                     sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
 
                 }
-                else if (spinnerBuilding.getText().toString().equals("INTN") && spinnerRoom.getText().toString().equals("1020")){
-
-                    Cursor c = mDatabasehelper.getLatLong("INTN");
-
-                    while(c.moveToNext())
-                    {
-                        long_coord = c.getString(0);
-                        lat_coord = c.getString(1);
-                    }
-                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
-                }
-                else if (spinnerBuilding.getText().toString().equals("INTS") && spinnerRoom.getText().toString().equals("1121")){
-                    Cursor c = mDatabasehelper.getLatLong("INTN");
-
-                    while(c.moveToNext())
-                    {
-                        long_coord = c.getString(0);
-                        lat_coord = c.getString(1);
-                    }
-                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
-                }
-                else if (spinnerBuilding.getText().toString().equals("INTS") && spinnerRoom.getText().toString().equals("1125")){
-                    Cursor c = mDatabasehelper.getLatLong("INTN");
-
-                    while(c.moveToNext())
-                    {
-                        long_coord = c.getString(0);
-                        lat_coord = c.getString(1);
-                    }
-                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
-                }
-                else if (spinnerBuilding.getText().toString().equals("INTS") && spinnerRoom.getText().toString().equals("1130")){
-                    Cursor c = mDatabasehelper.getLatLong("INTN");
-
-                    while(c.moveToNext())
-                    {
-                        long_coord = c.getString(0);
-                        lat_coord = c.getString(1);
-                    }
-                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
-                }
-                else if (spinnerBuilding.getText().toString().equals("INTS") && spinnerRoom.getText().toString().equals("1132")){
-                    Cursor c = mDatabasehelper.getLatLong("INTN");
-
-                    while(c.moveToNext())
-                    {
-                        long_coord = c.getString(0);
-                        lat_coord = c.getString(1);
-                    }
-                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
-                }
-                else if (spinnerBuilding.getText().toString().equals("INTS") && spinnerRoom.getText().toString().equals("1134")){
-                    Cursor c = mDatabasehelper.getLatLong("INTN");
-
-                    while(c.moveToNext())
-                    {
-                        long_coord = c.getString(0);
-                        lat_coord = c.getString(1);
-                    }
-                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
-                }
-                else if (spinnerBuilding.getText().toString().equals("INTS") && spinnerRoom.getText().toString().equals("2130")){
-                    Cursor c = mDatabasehelper.getLatLong("INTN");
-
-                    while(c.moveToNext())
-                    {
-                        long_coord = c.getString(0);
-                        lat_coord = c.getString(1);
-                    }
-                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
-                }
-                else if (spinnerBuilding.getText().toString().equals("INTS") && spinnerRoom.getText().toString().equals("2132")){
-                    Cursor c = mDatabasehelper.getLatLong("INTN");
-
-                    while(c.moveToNext())
-                    {
-                        long_coord = c.getString(0);
-                        lat_coord = c.getString(1);
-                    }
-                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
-                }
-                else if (spinnerBuilding.getText().toString().equals("INTS") && spinnerRoom.getText().toString().equals("2134")){
-                    Cursor c = mDatabasehelper.getLatLong("INTN");
-
-                    while(c.moveToNext())
-                    {
-                        long_coord = c.getString(0);
-                        lat_coord = c.getString(1);
-                    }
-                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
-                }
-                else if (spinnerBuilding.getText().toString().equals("INTS") && spinnerRoom.getText().toString().equals("2136")){
-                    Cursor c = mDatabasehelper.getLatLong("INTN");
-
-                    while(c.moveToNext())
-                    {
-                        long_coord = c.getString(0);
-                        lat_coord = c.getString(1);
-                    }
-                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
-                }
-                else if (spinnerBuilding.getText().toString().equals("INTS") && spinnerRoom.getText().toString().equals("2138")){
-                    Cursor c = mDatabasehelper.getLatLong("INTN");
-
-                    while(c.moveToNext())
-                    {
-                        long_coord = c.getString(0);
-                        lat_coord = c.getString(1);
-                    }
-                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
-                }
-                else if (spinnerBuilding.getText().toString().equals("CHUNG") && spinnerRoom.getText().toString().equals("138")){
+                else if (spinnerBuilding.getText().toString().equals("CHUNG")){
                     Cursor c = mDatabasehelper.getLatLong("CHUNG");
 
                     while(c.moveToNext())
@@ -434,8 +327,8 @@ public class NavigationFragment extends Fragment {
                     sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
 
                 }
-                else if (spinnerBuilding.getText().toString().equals("CHUNG") && spinnerRoom.getText().toString().equals("139")){
-                    Cursor c = mDatabasehelper.getLatLong("CHUNG");
+                else if (spinnerBuilding.getText().toString().equals("HMNSS")){
+                    Cursor c = mDatabasehelper.getLatLong("HMNSS");
 
                     while(c.moveToNext())
                     {
@@ -445,8 +338,8 @@ public class NavigationFragment extends Fragment {
                     sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
 
                 }
-                else if (spinnerBuilding.getText().toString().equals("CHUNG") && spinnerRoom.getText().toString().equals("141")){
-                    Cursor c = mDatabasehelper.getLatLong("CHUNG");
+                else if (spinnerBuilding.getText().toString().equals("LFSC")){
+                    Cursor c = mDatabasehelper.getLatLong("LFSC");
 
                     while(c.moveToNext())
                     {
@@ -456,8 +349,8 @@ public class NavigationFragment extends Fragment {
                     sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
 
                 }
-                else if (spinnerBuilding.getText().toString().equals("CHUNG") && spinnerRoom.getText().toString().equals("142")){
-                    Cursor c = mDatabasehelper.getLatLong("CHUNG");
+                else if (spinnerBuilding.getText().toString().equals("MSE")){
+                    Cursor c = mDatabasehelper.getLatLong("MSE");
 
                     while(c.moveToNext())
                     {
@@ -467,8 +360,8 @@ public class NavigationFragment extends Fragment {
                     sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
 
                 }
-                else if (spinnerBuilding.getText().toString().equals("CHUNG") && spinnerRoom.getText().toString().equals("143")){
-                    Cursor c = mDatabasehelper.getLatLong("CHUNG");
+                else if (spinnerBuilding.getText().toString().equals("OLMH")){
+                    Cursor c = mDatabasehelper.getLatLong("OLMH");
 
                     while(c.moveToNext())
                     {
@@ -476,7 +369,97 @@ public class NavigationFragment extends Fragment {
                         lat_coord = c.getString(1);
                     }
                     sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
+
                 }
+                else if (spinnerBuilding.getText().toString().equals("PHY")){
+                    Cursor c = mDatabasehelper.getLatLong("PHY");
+
+                    while(c.moveToNext())
+                    {
+                        long_coord = c.getString(0);
+                        lat_coord = c.getString(1);
+                    }
+                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
+
+                }
+                else if (spinnerBuilding.getText().toString().equals("PRCE")){
+                    Cursor c = mDatabasehelper.getLatLong("PRCE");
+
+                    while(c.moveToNext())
+                    {
+                        long_coord = c.getString(0);
+                        lat_coord = c.getString(1);
+                    }
+                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
+
+                }
+                else if (spinnerBuilding.getText().toString().equals("SPR")){
+                    Cursor c = mDatabasehelper.getLatLong("SPR");
+
+                    while(c.moveToNext())
+                    {
+                        long_coord = c.getString(0);
+                        lat_coord = c.getString(1);
+                    }
+                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
+
+                }
+                else if (spinnerBuilding.getText().toString().equals("SURGE")){
+                    Cursor c = mDatabasehelper.getLatLong("SURGE");
+
+                    while(c.moveToNext())
+                    {
+                        long_coord = c.getString(0);
+                        lat_coord = c.getString(1);
+                    }
+                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
+
+                }
+                else if (spinnerBuilding.getText().toString().equals("SPTH")){
+                    Cursor c = mDatabasehelper.getLatLong("SPTH");
+
+                    while(c.moveToNext())
+                    {
+                        long_coord = c.getString(0);
+                        lat_coord = c.getString(1);
+                    }
+                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
+
+                }
+                else if (spinnerBuilding.getText().toString().equals("UV_THEATRE")){
+                    Cursor c = mDatabasehelper.getLatLong("UV_THEATRE");
+
+                    while(c.moveToNext())
+                    {
+                        long_coord = c.getString(0);
+                        lat_coord = c.getString(1);
+                    }
+                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
+
+                }
+                else if (spinnerBuilding.getText().toString().equals("UNLH")){
+                    Cursor c = mDatabasehelper.getLatLong("UNLH");
+
+                    while(c.moveToNext())
+                    {
+                        long_coord = c.getString(0);
+                        lat_coord = c.getString(1);
+                    }
+                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
+
+                }
+                else if (spinnerBuilding.getText().toString().equals("WAT")){
+                    Cursor c = mDatabasehelper.getLatLong("WAT");
+
+                    while(c.moveToNext())
+                    {
+                        long_coord = c.getString(0);
+                        lat_coord = c.getString(1);
+                    }
+                    sendData.setNavigation(Double.parseDouble(long_coord), Double.parseDouble(lat_coord));
+
+                }
+
 
             }
         });
