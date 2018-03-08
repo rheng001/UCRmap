@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -94,6 +95,8 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
     ArrayList<Pair<String,String>> Building;
     ArrayList<Pair<String,String>> Time;
     ArrayList<Pair<String,String>> Link;
+    ArrayList<Pair<String,String>> ImageUrl;
+
 
 
     DatabaseHelper mDataBaseHelper;
@@ -130,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
         Building = new ArrayList<Pair<String, String>>();
         Time = new ArrayList<Pair<String, String>>();
         Link = new ArrayList<Pair<String, String>>();
-
+        ImageUrl = new ArrayList<Pair<String, String>>();
         Room = new ArrayList<Pair<String, String>>();
 
         mDataBaseHelper = new DatabaseHelper(this);
@@ -574,7 +577,7 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
 
 
         Elements dates_content, eventlist,testlinks,testloc1;
-        Element testtable,testloc;
+        Element testtable,testloc, imageelement;
         int counter= 0;
         int counter_row= 0;
         String link1,new_loc,event_info,room;
@@ -601,7 +604,7 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
                     }
                     day_number = day_number.trim();
                     Date.add(new Pair<String,String>(link.ownText(),day_number));
-                    Log.i("date:",Date.get(0).toString());
+                   // Log.i("date:",Date.get(0).toString());
 
                     //System.out.println(link.ownText());
                     eventlist = document.getElementsByClass("item event_item vevent");
@@ -617,12 +620,12 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
                             Element link4 = document.getElementById(link2.id().toString());
                             //Log.i("Day workkss: ",match_date);
                             //Log.i("Day workkss: ",link4.select("div.heading").text());
-                            //Log.i("test5",link4.select("div.heading").text());
+                            //Log.i("image src",link4.select("img").first().attr("src").toString());
                             Title.add(new Pair<String,String>(link4.select("div.heading").text(),match_date)); // title
                             Building.add(new Pair<String,String>(link4.select("div.location").text(),match_date)); // building/location and room
                             Time.add(new Pair<String,String>(link4.select("abbr").text(),match_date)); // time
                             Link.add(new Pair<String,String>(link4.select("a").first().attr("abs:href").toString(),match_date)); // link to event
-
+                            ImageUrl.add(new Pair<String, String>(link4.select("img").first().attr("src").toString(),match_date));
 
                         }
                     }
@@ -644,11 +647,13 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
             {
                 System.out.println("Day: " + Date.get(i));
             }
+            System.out.println("SIZEE:  " +Title.size());
             for (int i = 0; i < Title.size(); i++) {
                 System.out.println("Title: " +Title.get(i));
                 System.out.println("Building: "+Building.get(i));
                 System.out.println("Time: " +Time.get(i));
                 System.out.println("Link: " + Link.get(i));
+                System.out.println("Image: " + ImageUrl.get(i));
             }
 
         }
