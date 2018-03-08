@@ -7,7 +7,16 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.util.Pair;
 import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 
 /**
  * Created by jorge on 10/9/17.
@@ -41,12 +50,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     Student student = new Student("name","id","","entry");
 
+    // read from csv file
+
+    String line;
+    String Location_table;
+    String columns;
+    String str1;
+    String str2;
+
     private final Context mContext;
 
 
-
-    public DatabaseHelper(Context context)
-    {
+    public DatabaseHelper(Context context) {
         super(context,DATABASE_NAME,null, 1);
         mContext = context;
 
@@ -54,7 +69,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        InputStream read_text = mContext.getResources().openRawResource(R.raw.coordinatesdatabase);
+        FileReader file  = null;
 
+        BufferedReader buffer = new BufferedReader(new InputStreamReader(read_text, Charset.forName("UTF-8")));
         // have to clear app data to create new tables in setting and ucrmap delete data
 
         try {
@@ -91,6 +109,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // + E_COL5 + " TEXT NOT NULL)";
 
         db.execSQL(create_Event);
+
+
+        Location_table ="Loc_Coordinates";
+
+        String create_Location_Coordinates = "CREATE TABLE " + Location_table + "("
+                + "Building" + " TEXT NOT NULL ,"
+                + "Long" + " TEXT NOT NULL , "
+                + "Lat" + " TEXT NOT NULL)";
+        db.execSQL(create_Location_Coordinates);
+
+
+
+
+        columns = "Building, Long, Lat";
+
+        str1 = "INSERT INTO " + Location_table + " (" + columns + ") values(";
+        str2 = ");";
+        try {
+            while ((line = buffer.readLine()) != null)
+            {StringBuilder sb = new StringBuilder(str1);
+                String[] str = line.split(",");
+                sb.append("'" + str[0] + "',");
+                sb.append("'" + str[1] + "',");
+                sb.append("'" + str[2] + "'");
+                sb.append(str2);
+                db.execSQL(sb.toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         toastMessage("Created database");
         Log.e(TAG,"DATABASE: " + "hhh");
 
@@ -104,6 +153,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP IF TABLE EXISTS " + Friend_Table);
         db.execSQL("DROP IF TABLE EXISTS " + Class_Table);
         db.execSQL("DROP IF TABLE EXISTS " + Event_Table);
+        db.execSQL("DROP IF TABLE EXISTS " +  "Loc_Coordinates");
         onCreate(db);
     }
 
@@ -210,6 +260,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d(TAG, "addData: Display" + Class_Table);
         Log.d(TAG, "getallclasses" + day);
 
+        return data;
+    }
+    public Cursor getLatLong(String building)
+    {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT Long,Lat" + " FROM " + Location_table + " WHERE " + "Building" + " = '" + building + "'";
+        Cursor data = db.rawQuery(query,null);
+        Log.d(TAG, "getLatLong" + data.toString());
         return data;
     }
     private void toastMessage(String message){
