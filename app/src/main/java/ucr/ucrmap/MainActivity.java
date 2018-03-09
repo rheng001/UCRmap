@@ -618,6 +618,15 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
                         if(day_number.equals(match_date))
                         {
                             Element link4 = document.getElementById(link2.id().toString());
+
+                            // get the interested button
+                            // div class = action_button
+                            // need the 2nd link for im going
+                            // im interested button
+                            // so if youre logged on ucr events through facebook or adds it to your plans on their website
+                            // need to be logged in for link to redirect and work 
+                            Log.i("im interested button",link4.select("div.action_button > a").get(1).attr("abs:href").toString());
+
                             //Log.i("Day workkss: ",match_date);
                             //Log.i("Day workkss: ",link4.select("div.heading").text());
                             //Log.i("image src",link4.select("img").first().attr("src").toString());
