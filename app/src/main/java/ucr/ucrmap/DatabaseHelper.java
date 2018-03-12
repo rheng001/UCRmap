@@ -37,7 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String C_COL5 = "start_Time";
     private static final String C_COL6 = "end_Time";
     private static final String C_COL7 = "day";
-    private static final String Event_Table = "Eventss";
+    private static final String Event_Table = "Events";
     private static final String E_COL1= "Title";
     //    private static final String E_COL2 = "Location";
     // private static final String E_COL3 = "Event Details";
@@ -54,7 +54,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     String line;
     String Location_table = "Loc_Coordinates";
-    String columns;
+    String Dining_table = "Dining";
+    String Location_columns;
+    String Dining_columns;
     String str1;
     String str2;
 
@@ -70,10 +72,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        InputStream read_text = mContext.getResources().openRawResource(R.raw.coordinatesdatabase);
-        FileReader file  = null;
+        // It will be called whenever there is a first call to getReadableDatabase() or getWritableDatabase() function available in super SQLiteOpenHelper class
 
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(read_text, Charset.forName("UTF-8")));
+        InputStream read_text_location = mContext.getResources().openRawResource(R.raw.coordinatesdatabase);
+        BufferedReader buffer_loc = new BufferedReader(new InputStreamReader(read_text_location, Charset.forName("UTF-8")));
+
+        InputStream read_text_dining = mContext.getResources().openRawResource(R.raw.dining_foodtrucks);
+        BufferedReader buffer_din = new BufferedReader(new InputStreamReader(read_text_dining, Charset.forName("UTF-8")));
+
 
         // have to clear app data to create new tables in setting and ucrmap delete data
 
@@ -104,43 +110,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         {
             Log.e(TAG,"ERROR: " + Log.getStackTraceString(e));
         }
-        String create_Event = "CREATE TABLE " + Event_Table + "("
-                + E_COL1 + " TEXT NOT NULL ,"
-                + E_COL2 + " TEXT NOT NULL , "
-                + E_COL3 + " TEXT NOT NULL)";
-        // + E_COL4 + " TEXT NOT NULL , "
-        // + E_COL5 + " TEXT NOT NULL)";
 
-        db.execSQL(create_Event);
-
-
-
-        String create_Location_Coordinates = "CREATE TABLE " + Location_table + "("
-                + "Building" + " TEXT NOT NULL ,"
-                + "Long" + " TEXT NOT NULL , "
-                + "Lat" + " TEXT NOT NULL)";
-        db.execSQL(create_Location_Coordinates);
-
-
-
-
-        columns = "Building, Long, Lat";
-
-        str1 = "INSERT INTO " + Location_table + " (" + columns + ") values(";
-        str2 = ");";
         try {
-            while ((line = buffer.readLine()) != null)
-            {StringBuilder sb = new StringBuilder(str1);
-                String[] str = line.split(",");
-                sb.append("'" + str[0] + "',");
-                sb.append("'" + str[1] + "',");
-                sb.append("'" + str[2] + "'");
-                sb.append(str2);
-                db.execSQL(sb.toString());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+            String create_Event = "CREATE TABLE " + Event_Table + "("
+                    + "Event Title" + " TEXT NOT NULL ,"
+                    + "Day" + " TEXT NOT NULL , "
+                    + "Time" + " TEXT NOT NULL , "
+                    + "Description" + " TEXT NOT NULL , "
+                    + "Location" + " TEXT NOT NULL)";
+
+            db.execSQL(create_Event);
+        }catch(Exception e)
+        {
+            Log.e(TAG,"ERROR: " + Log.getStackTraceString(e));
+
         }
+
+        try {
+            String create_Location_Coordinates = "CREATE TABLE " + Location_table + "("
+                    + "Building" + " TEXT NOT NULL ,"
+                    + "Long" + " TEXT NOT NULL , "
+                    + "Lat" + " TEXT NOT NULL)";
+            db.execSQL(create_Location_Coordinates);
+        }catch(Exception e)
+        {
+            Log.e(TAG,"ERROR: " + Log.getStackTraceString(e));
+        }
+
+        try{
+            String create_Dining = "CREATE TABLE " + Dining_table + "("
+                    + "Name" + " TEXT NOT NULL ,"
+                    + "Day" + " TEXT NOT NULL , "
+                    + "Time" + " TEXT NOT NULL , "
+                    + "Location" + " TEXT NOT NULL)";
+            db.execSQL(create_Dining);
+        }catch(Exception e)
+        {
+            Log.e(TAG,"ERROR: " + Log.getStackTraceString(e));
+        }
+
+
+
+
+        Location_columns = "Building, Long, Lat";
+        Dining_columns = "Name, Day, Time, Location";
+
+        location_CSV(Location_table,Location_columns,buffer_loc,db);
+        dining_CSV(Dining_table,Dining_columns,buffer_din,db);
+
 
         toastMessage("Created database");
         Log.e(TAG,"DATABASE: " + "hhh");
@@ -271,6 +288,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor data = db.rawQuery(query,null);
         Log.d(TAG, "getLatLong" + data.toString());
         return data;
+    }
+
+    public void location_CSV(String table, String columns, BufferedReader buffer, SQLiteDatabase db)
+    {
+        String str1 = "INSERT INTO " + table + " (" + columns + ") values(";
+        String str2 = ");";
+        try {
+            while ((line = buffer.readLine()) != null)
+            {StringBuilder sb = new StringBuilder(str1);
+                String[] str = line.split(",");
+                sb.append("'" + str[0] + "',");
+                sb.append("'" + str[1] + "',");
+                sb.append("'" + str[2] + "'");
+                sb.append(str2);
+                db.execSQL(sb.toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void dining_CSV(String table, String columns, BufferedReader buffer, SQLiteDatabase db)
+    {
+        String str1 = "INSERT INTO " + table + " (" + columns + ") values(";
+        String str2 = ");";
+        try {
+            while ((line = buffer.readLine()) != null)
+            {StringBuilder sb = new StringBuilder(str1);
+                String[] str = line.split(",");
+                sb.append("'" + str[0] + "',");
+                sb.append("'" + str[1] + "',");
+                sb.append("'" + str[2] + "',");
+                sb.append("'" + str[3] + "'");
+                sb.append(str2);
+                db.execSQL(sb.toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void toastMessage(String message){

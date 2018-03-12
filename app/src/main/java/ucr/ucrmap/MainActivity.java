@@ -137,7 +137,6 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
         Room = new ArrayList<Pair<String, String>>();
 
         mDataBaseHelper = new DatabaseHelper(this);
-
         new doit().execute(); //uncomment for web crawler
 
 
