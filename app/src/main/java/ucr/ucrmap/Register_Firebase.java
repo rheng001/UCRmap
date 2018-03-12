@@ -20,6 +20,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Register_Firebase extends AppCompatActivity {
 
@@ -27,7 +29,9 @@ public class Register_Firebase extends AppCompatActivity {
     private Button sendtodata;
     private EditText reg_email,reg_password,reg_firstname,reg_lastname;
     private ProgressBar progressBar;
+    private DatabaseReference mDatabase;
     private FirebaseAuth mRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +45,8 @@ public class Register_Firebase extends AppCompatActivity {
         reg_lastname=(EditText)findViewById(R.id.Reg_LastName);
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
         mRef = FirebaseAuth.getInstance();
-        //mRef = new Firebase("https://ucrmap-63651.firebaseio.com/Email"); //connect database
-
+        //mDatabase = new Firebase("https://ucrmap-63651.firebaseio.com/Email"); //connect database
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         sendtodata.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -55,7 +59,7 @@ public class Register_Firebase extends AppCompatActivity {
     private void signUp(){
         String pass = reg_password.getText().toString().trim();
         String email = reg_email.getText().toString();
-        String firstname = reg_firstname.getText().toString();
+        final String firstname = reg_firstname.getText().toString();
         String lastname  = reg_lastname.getText().toString();
         if(email.isEmpty())
         {
@@ -96,6 +100,7 @@ public class Register_Firebase extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         sendEmail();
                         Intent intent = new Intent(getApplicationContext(), Login_Firebase.class);
+                        mDatabase.child("users").setValue(firstname);
                         startActivity(intent);
                         // need to learn how to do bundles?
                         //store info into database
