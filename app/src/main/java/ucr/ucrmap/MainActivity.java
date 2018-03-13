@@ -137,7 +137,11 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
         Room = new ArrayList<Pair<String, String>>();
 
         mDataBaseHelper = new DatabaseHelper(this);
+
+        //long startTime = System.currentTimeMillis();
         new doit().execute(); //uncomment for web crawler
+        //long endTime = System.currentTimeMillis();
+        //System.out.println("That took " + (endTime - startTime) + " milliseconds");
 
 
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
@@ -566,31 +570,18 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
     public class doit extends AsyncTask<Void,ArrayList<String>,ArrayList<String>> { //Returning string
 
         String title, date;
-        Document document,document1;
+        Document document,description_document;
         int count;
-        //ArrayList<Pair<String,String>> Date;
-        //ArrayList<Pair<String,String>> Title;
-        //ArrayList<Pair<String,String>> Building;
-        //ArrayList<Pair<String,String>> Time;
-        //ArrayList<Pair<String,String>> Link;
 
-
-        Elements dates_content, eventlist,testlinks,testloc1;
-        Element testtable,testloc, imageelement;
-        int counter= 0;
-        int counter_row= 0;
-        String link1,new_loc,event_info,room;
-
+        Elements dates_content, eventlist,eventlist2,testloc1;
         @Override
         protected ArrayList<String> doInBackground(Void... arg0) { //Want string returned
 
             try {
-                document = Jsoup.connect("https://events.ucr.edu/calendar/week").timeout(0).get();
+                document = Jsoup.connect("https://events.ucr.edu/calendar/week/2018/").timeout(0).get();
                 title = document.title();
                 dates_content = document.getElementsByClass("box_title_small date_divider");
                 eventlist = document.getElementsByClass("item event_item vevent");
-
-
                 for(Element link: dates_content.select("h2")) // gets the date from <h2>
                 {
                     // get dates
@@ -634,6 +625,14 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
                             Time.add(new Pair<String,String>(link4.select("abbr").text(),match_date)); // time
                             Link.add(new Pair<String,String>(link4.select("a").first().attr("abs:href").toString(),match_date)); // link to event
                             ImageUrl.add(new Pair<String, String>(link4.select("img").first().attr("src").toString(),match_date));
+                            String Link_Description = link4.select("a").first().attr("abs:href").toString();
+                            Log.i("Link" , Link_Description);
+                            Link_Description = Link_Description.trim();
+                            description_document = Jsoup.connect(Link_Description.toString()).timeout(0).get();
+                            eventlist2 = description_document.getElementsByClass("description");
+                            // gets description of events 
+                            Log.i("DESCR " , eventlist2.select("p").text());
+
 
                         }
                     }

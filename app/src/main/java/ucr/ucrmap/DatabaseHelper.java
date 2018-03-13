@@ -114,10 +114,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         try {
             String create_Event = "CREATE TABLE " + Event_Table + "("
                     + "Event Title" + " TEXT NOT NULL ,"
-                    + "Day" + " TEXT NOT NULL , "
+                    + "Building" + " TEXT NOT NULL , "
                     + "Time" + " TEXT NOT NULL , "
-                    + "Description" + " TEXT NOT NULL , "
-                    + "Location" + " TEXT NOT NULL)";
+                    + "Link" + " TEXT NOT NULL)";
 
             db.execSQL(create_Event);
         }catch(Exception e)
