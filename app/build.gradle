@@ -47,7 +47,7 @@ dependencies {
 
     compile 'com.nex3z:toggle-button-group:1.1.2'
     compile 'com.surveymonkey:surveymonkey-android-sdk:1.0.6'
-
+    compile "com.android.support:customtabs:26.1.0"
 
 
 
@@ -80,6 +80,7 @@ dependencies {
     implementation files('libs/jsoup-1.11.2.jar')
     testCompile 'junit:junit:4.12'
 }
+
 
 
 apply plugin: 'com.google.gms.google-services'

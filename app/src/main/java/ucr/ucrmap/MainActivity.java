@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
         fragments.add(NavigationFragment.newInstance(0));
         fragments.add(NewMapFragment.newInstance(0));
         fragments.add(PlacesFragment.newInstance(0));
-        fragments.add(AboutFragment.newInstance(0));
+        fragments.add(fragment_ilearn.newInstance(0));
         fragments.add(fragment_profile.newInstance(0));
         fragments.add(fragment_schedule.newInstance(0));
         fragments.add(fragment_friends.newInstance(0));
@@ -296,6 +296,9 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
 
                                 //mNavController.switchTab(INDEX_SCHEDULE);
                             } else if (drawerItem.getIdentifier() == 3) {
+                                mNavController.switchTab(INDEX_ABOUT);
+
+
                                 //mNavController.switchTab(INDEX_FRIENDS);
                             } else if (drawerItem.getIdentifier() == 4) {
 
