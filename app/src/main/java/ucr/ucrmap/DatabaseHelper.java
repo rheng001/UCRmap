@@ -113,9 +113,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         try {
             String create_Event = "CREATE TABLE " + Event_Table + "("
-                    + "Event Title" + " TEXT NOT NULL ,"
+                    + "EventTitle" + " TEXT NOT NULL , "
                     + "Building" + " TEXT NOT NULL , "
                     + "Time" + " TEXT NOT NULL , "
+                    + "Description" + " TEXT NOT NULL , "
                     + "Link" + " TEXT NOT NULL)";
 
             db.execSQL(create_Event);
@@ -158,7 +159,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         dining_CSV(Dining_table,Dining_columns,buffer_din,db);
 
 
-        toastMessage("Created database");
+        //toastMessage("Created database");
         Log.e(TAG,"DATABASE: " + "hhh");
 
     }
@@ -208,17 +209,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
 
     }
-
-    public long addData_Event(String title,String day, String time)
+    public long addData_Event(String event_title,String building, String time, String description, String link)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(E_COL1,title);
-        contentValues.put(E_COL2,day);
-        contentValues.put(E_COL3,time);
-        //contentValues.put(E_COL4,day);
-        //contentValues.put(E_COL5,time);
-        toastMessage("ADDING TO EVENT TABLE");
+        contentValues.put("EventTitle",event_title);
+        contentValues.put("Building",building);
+        contentValues.put("Time",time);
+        contentValues.put("Description",description);
+        contentValues.put("Link",link);
+       // toastMessage("ADDING TO EVENT TABLE");
         Log.d(TAG, "addData: Adding " + "to " + Event_Table);
         long result = db.insert(Event_Table, null, contentValues);
         return result;

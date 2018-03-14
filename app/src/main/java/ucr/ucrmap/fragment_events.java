@@ -361,6 +361,7 @@ public class fragment_events extends Fragment implements View.OnClickListener {
 
     private void save(final EditText eventTitleData, final TextView eventDateData, final TextView eventTimeData)
     {
+        /*
         //https://stackoverflow.com/questions/20464273/get-the-application-context-in-fragment-in-android
         DatabaseHelper mDatabasehelper = new DatabaseHelper(getActivity().getApplicationContext()); // this part understand
         String event = eventTitleData.getText().toString();
@@ -375,9 +376,11 @@ public class fragment_events extends Fragment implements View.OnClickListener {
         }
         // CLOSE DB to not leave it open
         retreive();
+        */
     }
     private void retreive()
     {
+        /*
         eventData.clear();
         DatabaseHelper mDatabasehelper = new DatabaseHelper(getActivity().getApplicationContext()); // this part understand
         Cursor c = mDatabasehelper.getAllEvents();
@@ -395,5 +398,6 @@ public class fragment_events extends Fragment implements View.OnClickListener {
 
             rv.setAdapter(adapter);
         }
+        */
     }
 }

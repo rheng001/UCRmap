@@ -136,12 +136,12 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
         ImageUrl = new ArrayList<Pair<String, String>>();
         Room = new ArrayList<Pair<String, String>>();
 
-        mDataBaseHelper = new DatabaseHelper(this);
+        mDataBaseHelper = new DatabaseHelper(getApplicationContext());
 
-        //long startTime = System.currentTimeMillis();
+        long startTime = System.currentTimeMillis();
         new doit().execute(); //uncomment for web crawler
-        //long endTime = System.currentTimeMillis();
-        //System.out.println("That took " + (endTime - startTime) + " milliseconds");
+        long endTime = System.currentTimeMillis();
+        System.out.println("That took " + (endTime - startTime) + " milliseconds");
 
 
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
@@ -615,24 +615,35 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
                             // im interested button
                             // so if youre logged on ucr events through facebook or adds it to your plans on their website
                             // need to be logged in for link to redirect and work 
-                            Log.i("im interested button",link4.select("div.action_button > a").get(1).attr("abs:href").toString());
+                            //Log.i("im interested button",link4.select("div.action_button > a").get(1).attr("abs:href").toString());
 
                             //Log.i("Day workkss: ",match_date);
                             //Log.i("Day workkss: ",link4.select("div.heading").text());
                             //Log.i("image src",link4.select("img").first().attr("src").toString());
+
+
+                            String title =link4.select("div.heading").text();
+                            String building = link4.select("div.location").text();
+                            String time = link4.select("abbr").text();
+                            String event_link = link4.select("a").first().attr("abs:href").toString();
                             Title.add(new Pair<String,String>(link4.select("div.heading").text(),match_date)); // title
                             Building.add(new Pair<String,String>(link4.select("div.location").text(),match_date)); // building/location and room
                             Time.add(new Pair<String,String>(link4.select("abbr").text(),match_date)); // time
                             Link.add(new Pair<String,String>(link4.select("a").first().attr("abs:href").toString(),match_date)); // link to event
                             ImageUrl.add(new Pair<String, String>(link4.select("img").first().attr("src").toString(),match_date));
                             String Link_Description = link4.select("a").first().attr("abs:href").toString();
-                            Log.i("Link" , Link_Description);
+                            //Log.i("Link" , Link_Description);
                             Link_Description = Link_Description.trim();
+
+
                             description_document = Jsoup.connect(Link_Description.toString()).timeout(0).get();
                             eventlist2 = description_document.getElementsByClass("description");
-                            // gets description of events 
-                            Log.i("DESCR " , eventlist2.select("p").text());
 
+
+                            // / gets description of events
+                            String description = eventlist2.select("p").text();
+                            //Log.i("DESCR " , eventlist2.select("p").text());
+                            mDataBaseHelper.addData_Event(title,building,time,description,event_link);
 
                         }
                     }
@@ -657,10 +668,10 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
             System.out.println("SIZEE:  " +Title.size());
             for (int i = 0; i < Title.size(); i++) {
                 System.out.println("Title: " +Title.get(i));
-                System.out.println("Building: "+Building.get(i));
-                System.out.println("Time: " +Time.get(i));
-                System.out.println("Link: " + Link.get(i));
-                System.out.println("Image: " + ImageUrl.get(i));
+                //System.out.println("Building: "+Building.get(i));
+                //System.out.println("Time: " +Time.get(i));
+                //System.out.println("Link: " + Link.get(i));
+                //System.out.println("Image: " + ImageUrl.get(i));
             }
 
         }
