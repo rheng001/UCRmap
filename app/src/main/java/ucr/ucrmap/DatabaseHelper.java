@@ -57,8 +57,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     String Dining_table = "Dining";
     String Location_columns;
     String Dining_columns;
-    String str1;
-    String str2;
+    String Sports_table = "Sports";
+    String Schedule_columns;
 
 
 
@@ -79,6 +79,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         InputStream read_text_dining = mContext.getResources().openRawResource(R.raw.dining_foodtrucks);
         BufferedReader buffer_din = new BufferedReader(new InputStreamReader(read_text_dining, Charset.forName("UTF-8")));
+
+        InputStream read_text_sports = mContext.getResources().openRawResource(R.raw.sports_schedule);
+        BufferedReader buffer_sports = new BufferedReader(new InputStreamReader(read_text_sports, Charset.forName("UTF-8")));
 
 
         // have to clear app data to create new tables in setting and ucrmap delete data
@@ -148,16 +151,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         {
             Log.e(TAG,"ERROR: " + Log.getStackTraceString(e));
         }
+        try{
+            String create_Sport = "CREATE TABLE " + Sports_table + "("
+                    + "Event" + " TEXT NOT NULL ,"
+                    + "StartDate" + " TEXT NOT NULL , "
+                    + "StartTime" + " TEXT NOT NULL , "
+                    + "EndDate" + " TEXT NOT NULL , "
+                    + "EndTime" + " TEXT NOT NULL , "
+                    + "Location" + " TEXT , "
+                    + "Category" + " TEXT NOT NULL , "
+                    + "Description" + " TEXT NOT NULL)";
+
+            // if there is a 's it reads it as the end
+            // so need to put \ character before '
+            // i think need to put '' to fix it
+            db.execSQL(create_Sport);
+        }catch(Exception e)
+        {
+            Log.e(TAG,"ERROR: " + Log.getStackTraceString(e));
+        }
 
 
 
 
         Location_columns = "Building, Long, Lat";
         Dining_columns = "Name, Day, Time, Location";
+        Schedule_columns = "Event, StartDate, StartTime, EndDate, EndTime, Location, Category, Description";
 
         location_CSV(Location_table,Location_columns,buffer_loc,db);
         dining_CSV(Dining_table,Dining_columns,buffer_din,db);
-
+        sports_csv(Sports_table,Schedule_columns,buffer_sports,db);
 
         //toastMessage("Created database");
         Log.e(TAG,"DATABASE: " + "hhh");
@@ -319,6 +342,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 sb.append("'" + str[1] + "',");
                 sb.append("'" + str[2] + "',");
                 sb.append("'" + str[3] + "'");
+                sb.append(str2);
+                db.execSQL(sb.toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void sports_csv(String table, String columns, BufferedReader buffer, SQLiteDatabase db)
+    {
+        String str1 = "INSERT INTO " + table + " (" + columns + ") values(";
+        String str2 = ");";
+        try {
+            while ((line = buffer.readLine()) != null)
+            {StringBuilder sb = new StringBuilder(str1);
+                String[] str = line.split(",");
+                sb.append("'" + str[0] + "',");
+                sb.append("'" + str[1] + "',");
+                sb.append("'" + str[2] + "',");
+                sb.append("'" + str[3] + "',");
+                sb.append("'" + str[4] + "',");
+                sb.append("'" + str[5] + "',");
+                sb.append("'" + str[6] + "',");
+                sb.append("'" + str[7] + "'");
                 sb.append(str2);
                 db.execSQL(sb.toString());
             }
