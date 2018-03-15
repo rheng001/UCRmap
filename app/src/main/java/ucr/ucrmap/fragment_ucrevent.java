@@ -22,6 +22,7 @@ import com.jaychang.srv.SimpleCell;
 import com.jaychang.srv.SimpleRecyclerView;
 import com.jaychang.srv.decoration.SectionHeaderProvider;
 import com.jaychang.srv.decoration.SimpleSectionHeaderProvider;
+import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -39,7 +40,6 @@ public class fragment_ucrevent extends Fragment {
     NavigationFragment.SendNavigation sendData;
     ShimmerLayout shimmerText;
     View mView;
-
 
 
     public fragment_ucrevent() {
@@ -93,27 +93,12 @@ public class fragment_ucrevent extends Fragment {
 
         simpleRecyclerView = v.findViewById(R.id.recyclerView);
         //shimmerText = (ShimmerLayout) v.findViewById(R.id.shimmer_text);
-
-
-        /*
-        //simpleRecyclerView.setAutoLoadMoreThreshold(4);
-        simpleRecyclerView.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore(SimpleRecyclerView simpleRecyclerView)
-            {
-                bindData();
-
-            }
-        });*/
-
         //shimmerText.startShimmerAnimation();
 
 
         //bindData();
         addRecyclerHeaders();
         bindData();
-
-        //Log.i("Testing", receiveData.getDays().get(2).first);
 
         return v;
     }
@@ -170,7 +155,7 @@ public class fragment_ucrevent extends Fragment {
 
         //LOOP THROUGH GALAXIES INSTANTIATING THEIR CELLS AND ADDING TO CELLS COLLECTION
         for (Galaxy galaxy : Galaxys) {
-            GalaxyCell cell = new GalaxyCell(galaxy);
+            GalaxyCell cell = new GalaxyCell(galaxy, Galaxys );
             // There are two default cell listeners: OnCellClickListener<CELL, VH, T> and OnCellLongClickListener<CELL, VH, T>
             cell.setOnCellClickListener(new SimpleCell.OnCellClickListener<Galaxy>() {
                 @Override
@@ -203,8 +188,6 @@ public class fragment_ucrevent extends Fragment {
                 public void onCellLongClicked(Galaxy item) {
                     setViewLayout(R.layout.model_empty);
                     //shimmerText.stopShimmerAnimation();
-
-                    //bindData();
 
                 }
             });
@@ -240,13 +223,15 @@ public class fragment_ucrevent extends Fragment {
             Log.i("Testing2", receiveData.getDays().get(i).second);
             Log.i("Testing3", receiveData.getEventTitle().get(counter).second);
 
+
+
             try {
             while (receiveData.getEventTitle().get(counter).second.equals(receiveData.getDays().get(i).second))
             {
                 Log.i("Testing2", receiveData.getDays().get(i).second);
                 Log.i("Testing3", receiveData.getEventTitle().get(counter).second);
                 Galaxy g1 = new Galaxy(receiveData.getEventTitle().get(counter).first.toString(), receiveData.getBuilding().get(counter).first.toString(),
-                        receiveData.getTime().get(counter).first.toString(),cat, R.drawable.ic_moo);
+                        receiveData.getTime().get(counter).first.toString(),cat, receiveData.getImage().get(counter).first.toString());
 
                 galaxies.add(g1);
                 counter = counter + 1;
@@ -258,10 +243,5 @@ public class fragment_ucrevent extends Fragment {
         }
             return galaxies;
         }
-
-        //Solutions
-
-        //https://github.com/codepath/android_guides/wiki/Implementing-Pull-to-Refresh-Guide#step-2-setup-swiperefreshlayout
-
 
 }

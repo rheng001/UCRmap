@@ -11,7 +11,7 @@ public class Galaxy {
 
     private String name, description, time, link;
     private Category category;
-    private int image;
+    private String  imageUrl;
 
 
     public Galaxy()
@@ -19,13 +19,13 @@ public class Galaxy {
 
     }
 
-    public Galaxy(String name, String description, String time, /*String link,*/ Category category, int image) {
+    public Galaxy(String name, String description, String time, /*String link,*/ Category category, String imageUrl) {
         this.name = name;
         this.description = description;
         this.time = time;
         //this.link = link;
         this.category = category;
-        this.image = image;
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
@@ -52,8 +52,8 @@ public class Galaxy {
         return category.getName();
     }
 
-    public int getImage() {
-        return image;
+    public String getImage() {
+        return imageUrl;
     }
 
 }

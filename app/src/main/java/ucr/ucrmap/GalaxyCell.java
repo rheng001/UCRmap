@@ -14,6 +14,11 @@ import android.widget.TextView;
 
 import com.jaychang.srv.SimpleCell;
 import com.jaychang.srv.SimpleViewHolder;
+import com.squareup.picasso.Picasso;
+
+import java.util.Collections;
+import java.util.List;
+
 /*
 - Our galaxy cell object.
 - Derives from SimpleCell
@@ -21,9 +26,11 @@ import com.jaychang.srv.SimpleViewHolder;
  */
 public class GalaxyCell extends SimpleCell<Galaxy,GalaxyCell.ViewHolder>  {
 
+    List<Galaxy> listItems = Collections.emptyList();
 
-    public GalaxyCell(@NonNull Galaxy item) {
+    public GalaxyCell(@NonNull Galaxy item, List<Galaxy> listItems) {
         super(item);
+        this.listItems = listItems;
     }
 
     @Override
@@ -45,13 +52,24 @@ public class GalaxyCell extends SimpleCell<Galaxy,GalaxyCell.ViewHolder>  {
      */
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder viewHolder, int i, @NonNull Context context, Object o) {
+
+        final Galaxy listItem = listItems.get(i);
+
+
         viewHolder.titleTxt.setText(getItem().getName());
         viewHolder.descTxt.setText(getItem().getDescription());
         viewHolder.timeTxt.setText(getItem().getTime());
         //viewHolder.linkTxt.setText(getItem().getLink());
-        viewHolder.img.setImageResource(getItem().getImage());
+
+        Picasso.get()
+                .load(listItem.getImage())
+                .into(viewHolder.img);
+
+
 
     }
+
+
     /**
      - Our ViewHolder class.
      - Inner static class.
@@ -68,7 +86,6 @@ public class GalaxyCell extends SimpleCell<Galaxy,GalaxyCell.ViewHolder>  {
             timeTxt=itemView.findViewById(R.id.timeTxt);
             //linkTxt=itemView.findViewById(R.id.linkTxt);
             img=itemView.findViewById(R.id.eventImage);
-
 
 
         }
