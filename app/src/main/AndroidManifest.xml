@@ -23,6 +23,11 @@
         </activity>
         <activity
             android:name=".Login_Firebase"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".SplashActivity"
 
             android:theme="@style/AppTheme">
             <intent-filter>
