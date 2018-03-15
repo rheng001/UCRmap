@@ -25,7 +25,7 @@
             android:layout_height="525dp">
 
             <View
-                android:id="@+id/shimmer_avatar_1"
+                android:id="@+id/eventImage"
                 android:layout_width="@dimen/monogram_width"
                 android:layout_height="@dimen/monogram_width"
                 android:layout_marginRight="11dp"
@@ -35,17 +35,17 @@
                 android:id="@+id/s1"
                 android:layout_width="130dp"
                 android:layout_height="19dp"
-                android:layout_alignTop="@+id/shimmer_avatar_1"
-                android:layout_toRightOf="@+id/shimmer_avatar_1"
+                android:layout_alignTop="@+id/eventImage"
+                android:layout_toRightOf="@+id/eventImage"
                 android:background="@color/colorTransparent" />
 
             <View
                 android:id="@+id/linkTxt"
                 android:layout_width="39dp"
                 android:layout_height="13dp"
-                android:layout_alignBottom="@+id/shimmer_avatar_1"
+                android:layout_alignBottom="@+id/eventImage"
                 android:layout_marginTop="5dp"
-                android:layout_toRightOf="@+id/shimmer_avatar_1"
+                android:layout_toRightOf="@+id/eventImage"
                 android:background="@color/colorTransparent" />
 
             <View
@@ -53,8 +53,8 @@
                 android:layout_width="101dp"
                 android:layout_height="17dp"
                 android:layout_above="@+id/linkTxt"
-                android:layout_toEndOf="@+id/shimmer_avatar_1"
-                android:layout_toRightOf="@+id/shimmer_avatar_1"
+                android:layout_toEndOf="@+id/eventImage"
+                android:layout_toRightOf="@+id/eventImage"
                 android:background="@color/colorTransparent" />
 
 
@@ -62,7 +62,7 @@
                 android:id="@+id/shimmer_divider_1"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@+id/shimmer_avatar_1"
+                android:layout_below="@+id/eventImage"
                 android:layout_marginBottom="11dp"
                 android:layout_marginTop="11dp"
                 android:background="@color/colorTransparent" />

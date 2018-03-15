@@ -48,6 +48,8 @@ dependencies {
     compile 'com.nex3z:toggle-button-group:1.1.2'
     compile 'com.surveymonkey:surveymonkey-android-sdk:1.0.6'
     compile "com.android.support:customtabs:26.1.0"
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 
     implementation 'io.supercharge:shimmerlayout:2.1.0'
 

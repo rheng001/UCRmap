@@ -570,6 +570,12 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
         return Time;
     }
 
+    @Override
+    public ArrayList<Pair<String,String>> getImage() {
+
+        return ImageUrl;
+    }
+
     public class doit extends AsyncTask<Void,ArrayList<String>,ArrayList<String>> { //Returning string
 
         String title, date;
@@ -674,7 +680,7 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
                 //System.out.println("Building: "+Building.get(i));
                 //System.out.println("Time: " +Time.get(i));
                 //System.out.println("Link: " + Link.get(i));
-                //System.out.println("Image: " + ImageUrl.get(i));
+                System.out.println("Image: " + ImageUrl.get(i));
             }
 
         }

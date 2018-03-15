@@ -49,6 +49,8 @@ public class GalaxyCell extends SimpleCell<Galaxy,GalaxyCell.ViewHolder>  {
         viewHolder.descTxt.setText(getItem().getDescription());
         viewHolder.timeTxt.setText(getItem().getTime());
         //viewHolder.linkTxt.setText(getItem().getLink());
+        viewHolder.img.setImageResource(getItem().getImage());
+
     }
     /**
      - Our ViewHolder class.
@@ -65,6 +67,8 @@ public class GalaxyCell extends SimpleCell<Galaxy,GalaxyCell.ViewHolder>  {
             descTxt=itemView.findViewById(R.id.descTxt);
             timeTxt=itemView.findViewById(R.id.timeTxt);
             //linkTxt=itemView.findViewById(R.id.linkTxt);
+            img=itemView.findViewById(R.id.eventImage);
+
 
 
         }

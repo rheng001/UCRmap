@@ -65,6 +65,9 @@ public class fragment_ucrevent extends Fragment {
 
         ArrayList<Pair<String, String>> getLink();
 
+        ArrayList<Pair<String, String>> getImage();
+
+
     }
 
     @Override
@@ -243,7 +246,7 @@ public class fragment_ucrevent extends Fragment {
                 Log.i("Testing2", receiveData.getDays().get(i).second);
                 Log.i("Testing3", receiveData.getEventTitle().get(counter).second);
                 Galaxy g1 = new Galaxy(receiveData.getEventTitle().get(counter).first.toString(), receiveData.getBuilding().get(counter).first.toString(),
-                        receiveData.getTime().get(counter).first.toString(),cat);
+                        receiveData.getTime().get(counter).first.toString(),cat, R.drawable.ic_moo);
 
                 galaxies.add(g1);
                 counter = counter + 1;

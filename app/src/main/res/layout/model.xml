@@ -18,8 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="78dp">
 
-        <View
-            android:id="@+id/shimmer_avatar_1"
+        <ImageView
+            android:id="@+id/eventImage"
             android:layout_width="@dimen/monogram_width"
             android:layout_height="@dimen/monogram_width"
             android:layout_alignParentLeft="true"
@@ -27,18 +27,18 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="14dp"
             android:layout_marginStart="14dp"
-            android:background="@color/colorTransparent" />
+            android:src="@drawable/ic_moo" />
 
         <TextView
             android:id="@+id/nameTxt"
             android:layout_width="match_parent"
             android:layout_height="19dp"
             android:text="Galaxy"
-            android:layout_alignTop="@+id/shimmer_avatar_1"
+            android:layout_alignTop="@+id/eventImage"
             android:layout_marginLeft="17dp"
             android:layout_marginStart="17dp"
-            android:layout_toEndOf="@+id/shimmer_avatar_1"
-            android:layout_toRightOf="@+id/shimmer_avatar_1" />
+            android:layout_toEndOf="@+id/eventImage"
+            android:layout_toRightOf="@+id/eventImage" />
 
         <TextView
             android:id="@+id/timeTxt"
@@ -46,7 +46,7 @@
             android:layout_height="17dp"
             android:text="Time"
             android:layout_marginTop="4dp"
-            android:layout_alignBottom="@+id/shimmer_avatar_1"
+            android:layout_alignBottom="@+id/eventImage"
             android:layout_alignLeft="@+id/descTxt"
             android:layout_alignStart="@+id/descTxt" />
 
