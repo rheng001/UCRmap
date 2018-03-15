@@ -8,4 +8,6 @@
     <dimen name="search_view_inset">5dp</dimen>
     <dimen name="body_text_size">19sp</dimen>
     <dimen name="secondary_text_size">14sp</dimen>
+    <dimen name="monogram_width">60dp</dimen>
+
 </resources>

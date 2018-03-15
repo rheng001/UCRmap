@@ -29,12 +29,17 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import io.supercharge.shimmerlayout.ShimmerLayout;
+
 
 public class fragment_ucrevent extends Fragment {
 
     SimpleRecyclerView simpleRecyclerView;
     ReceiveData receiveData;
     NavigationFragment.SendNavigation sendData;
+    ShimmerLayout shimmerText;
+    View mView;
+
 
 
     public fragment_ucrevent() {
@@ -84,6 +89,7 @@ public class fragment_ucrevent extends Fragment {
         View v = inflater.inflate(R.layout.fragment_ucrevent, container, false);
 
         simpleRecyclerView = v.findViewById(R.id.recyclerView);
+        //shimmerText = (ShimmerLayout) v.findViewById(R.id.shimmer_text);
 
 
         /*
@@ -97,6 +103,9 @@ public class fragment_ucrevent extends Fragment {
             }
         });*/
 
+        //shimmerText.startShimmerAnimation();
+
+
         //bindData();
         addRecyclerHeaders();
         bindData();
@@ -104,6 +113,14 @@ public class fragment_ucrevent extends Fragment {
         //Log.i("Testing", receiveData.getDays().get(2).first);
 
         return v;
+    }
+
+    private void setViewLayout(int id){
+        LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mView = inflater.inflate(id, null);
+        ViewGroup rootView = (ViewGroup) getView();
+        rootView.removeAllViews();
+        rootView.addView(mView);
     }
 
     /*
@@ -181,7 +198,9 @@ public class fragment_ucrevent extends Fragment {
             cell.setOnCellLongClickListener(new SimpleCell.OnCellLongClickListener<Galaxy>() {
                 @Override
                 public void onCellLongClicked(Galaxy item) {
-                    Toast.makeText(getActivity(), item.getTime().toString(), Toast.LENGTH_SHORT).show(); //Time = room number
+                    setViewLayout(R.layout.model_empty);
+                    //shimmerText.stopShimmerAnimation();
+
                     //bindData();
 
                 }
@@ -224,7 +243,7 @@ public class fragment_ucrevent extends Fragment {
                 Log.i("Testing2", receiveData.getDays().get(i).second);
                 Log.i("Testing3", receiveData.getEventTitle().get(counter).second);
                 Galaxy g1 = new Galaxy(receiveData.getEventTitle().get(counter).first.toString(), receiveData.getBuilding().get(counter).first.toString(),
-                        receiveData.getTime().get(counter).first.toString(), receiveData.getLink().get(counter).first.toString(),cat);
+                        receiveData.getTime().get(counter).first.toString(),cat);
 
                 galaxies.add(g1);
                 counter = counter + 1;

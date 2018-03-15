@@ -24,4 +24,8 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
 
+    <color name="colorFontGreyDark">#333333</color>
+    <color name="colorFontGreyLight">#666666</color>
+    <color name="colorLine">#dfdfdf</color>
+
 </resources>

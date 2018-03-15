@@ -17,11 +17,11 @@ public class Galaxy {
 
     }
 
-    public Galaxy(String name, String description, String time, String link, Category category) {
+    public Galaxy(String name, String description, String time, /*String link,*/ Category category) {
         this.name = name;
         this.description = description;
         this.time = time;
-        this.link = link;
+        //this.link = link;
         this.category = category;
     }
 
