@@ -164,6 +164,17 @@ public class fragment_ucrevent extends Fragment {
                     //Toast.makeText(getActivity(), item.getDescription().toString(), Toast.LENGTH_SHORT).show(); //Description = buildng name
                     //Toast.makeText(getActivity(), item.getTime().toString(), Toast.LENGTH_SHORT).show(); //Time = room number
 
+                    //ALSO TO DO: Change building name convention to match ours, ex Chass Interdisplinary South -> INTS
+                                                                                //Arts building -> ARTS
+
+                    //FOR JORGE use example below
+
+                    /*if description(building) equals something in database
+                        builder.setMessage("Navigate to " + item.getDescription().toString() + "?");
+
+                        sendData.setNavigation(building.latitude, building.longitude)
+                     */
+
                     if (item.getDescription().toString().equals("Bell Tower")) {
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
