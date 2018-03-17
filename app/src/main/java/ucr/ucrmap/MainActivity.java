@@ -651,6 +651,7 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
 
                             // / gets description of events
                             String description = eventlist2.select("p").text();
+
                             //Log.i("DESCR " , eventlist2.select("p").text());
                             mDataBaseHelper.addData_Event(title,building,time,description,event_link);
 
@@ -676,11 +677,11 @@ public class MainActivity extends AppCompatActivity implements NewMapFragment.Re
             }
             System.out.println("SIZEE:  " +Title.size());
             for (int i = 0; i < Title.size(); i++) {
-                System.out.println("Title: " +Title.get(i));
+                //System.out.println("Title: " +Title.get(i));
                 //System.out.println("Building: "+Building.get(i));
-                //System.out.println("Time: " +Time.get(i));
+                System.out.println("Time: " +Time.get(i));
                 //System.out.println("Link: " + Link.get(i));
-                System.out.println("Image: " + ImageUrl.get(i));
+                //System.out.println("Image: " + ImageUrl.get(i));
             }
 
         }
